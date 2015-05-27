@@ -40,11 +40,11 @@ class Quest {
         return $bool;
     }
     
-     public function insertQuesSetting($ques_id,$setting_id) {
+     public function insertQuesSetting($ques_id,$setting_id,$active = 1) {
 
-        $query = "INSERT INTO `ques_settings`(`ques_id`, `setting_id`, `active`) VALUES (:ques_id,:setting_id,1)";
+        $query = "INSERT INTO `ques_settings`(`ques_id`, `setting_id`, `active`) VALUES (:ques_id,:setting_id,:active)";
 
-        $bindParams = array("ques_id" => $ques_id, "setting_id" => $setting_id);
+        $bindParams = array("ques_id" => $ques_id, "setting_id" => $setting_id, "active"=>$active);
 
         $id = $this->con->insertQuery($query, $bindParams);
         return $id;
@@ -58,6 +58,31 @@ class Quest {
 
         $id = $this->con->insertQuery($query, $bindParams);
         return $id;
+    }
+    
+    public function inserQuesElement($ques_id, $setting_id, $element_type, $element_name, $element_color, $element_size, $element_font, $element_attachment, $active) {
+        $query = "INSERT INTO `ques_settings_element`(`ques_id`, `setting_id`, `element_type`, `element_name`, `element_color`, `element_size`,"
+                . " `element_font`, `element_attachment`, `active`) "
+                . "VALUES (:ques_id,:setting_id,:element_type,:element_name,:element_color,:element_size,:element_font,:element_attachment,:active)";
+
+        $bindParams = array("setting_id"=>$setting_id,"element_type"=>$element_type,"element_name"=>$element_name,"element_color"=>$element_color,"element_size"=>$element_size,"element_font"=>$element_font,"element_attachment"=>$element_attachment,"active"=>$active);
+
+        $id = $this->con->insertQuery($query, $bindParams);
+        return $id;
+    }
+    
+    public function isValidQuesID($ques_id) {
+        $query = "SELECT COUNT(*) as count FROM `ques_user_xref` WHERE `ques_id` = :ques_id";
+
+        $bindParams = array("ques_id" => $ques_id);
+
+        $qh = $this->con->getQueryHandler($query, $bindParams);
+
+        $res = $qh->fetch(PDO::FETCH_ASSOC);
+
+        $bool = ($res["count"] > 0) ? false : true;
+
+        return $bool;
     }
 
 }
