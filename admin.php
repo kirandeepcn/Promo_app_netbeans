@@ -2,6 +2,11 @@
 include_once 'header.php'; 
 include_once 'check_session.php';
 ?>
+<style>
+    body {
+        background-color: white;
+    }
+</style>
     <div class="clear"></div>
     <div class="outer_div">
       <div class="inn_div_img">
@@ -38,11 +43,10 @@ $('#selectUl').hover(
                 $('select[name=size]')
                     .find('option:eq(' + index + ')')
                     .attr('selected',true);
-                <!--alert($('select[name]').val());-->
             });
     },
     function(){
     });
-	</script>
+</script>
 </body>
 </html>

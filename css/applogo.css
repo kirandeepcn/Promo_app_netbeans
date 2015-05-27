@@ -193,7 +193,7 @@ ul#selectUl:hover li.unselected {
 .inn_div1.marg3 > img {
     margin-top: 60px;
 }
-p{color:#31475e; font-family:"Arial Black", Gadget, sans-serif;font-size:17px; font-weight:bold;line-height:0px;}
+p{color:#31475e; font-family:"Arial Black", Gadget, sans-serif;font-size:17px; font-weight:bold;/*line-height:0px;*/}
 .butt_view{margin-top:60px;width:150px;}
 .logo img{width:350px; margin-left:-5px;}
 /*-----------------------------ended questionnaries------------------------------*/

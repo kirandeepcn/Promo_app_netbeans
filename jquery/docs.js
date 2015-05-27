@@ -512,19 +512,19 @@ $("#btn-toggle").click(function() {
 });
 
 
-$('#toc').toc({
-    'selectors': 'h2,h3', //elements to use as headings
-    'container': '#docs', //element to find all selectors in
-    'smoothScrolling': true, //enable or disable smooth scrolling on click
-    'prefix': 'toc', //prefix for anchor tags and class names
-    'highlightOnScroll': true, //add class to heading that is currently in focus
-    'highlightOffset': 100, //offset to trigger the next headline
-    'anchorName': function(i, heading, prefix) { //custom function for anchor name
-        return heading.id || prefix+i;
-    }
-});
+//$('#toc').toc({
+//    'selectors': 'h2,h3', //elements to use as headings
+//    'container': '#docs', //element to find all selectors in
+//    'smoothScrolling': true, //enable or disable smooth scrolling on click
+//    'prefix': 'toc', //prefix for anchor tags and class names
+//    'highlightOnScroll': true, //add class to heading that is currently in focus
+//    'highlightOffset': 100, //offset to trigger the next headline
+//    'anchorName': function(i, heading, prefix) { //custom function for anchor name
+//        return heading.id || prefix+i;
+//    }
+//});
 
-prettyPrint();
+//prettyPrint();
 
 
 });
