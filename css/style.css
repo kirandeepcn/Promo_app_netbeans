@@ -259,6 +259,7 @@
   /* font-weight: bold; */
   color: #Fff;
    right: 40px;
+   z-index: 100;
 }
 
 .wrapper-dropdown-3:after {
