@@ -15,9 +15,9 @@ class Quest {
         $this->con = new Connection();
     }
 
-    public function createQuestionnaire($name,$user_id,$start_date,$end_date) {
+    public function createQuestionnaire($name,$user_id) {
 
-        $query = "INSERT INTO `ques_user_xref`(`ques_name`, `user_id`, `start_date`, `end_date`) VALUES (:ques_name,:user_id,SYSDATE(),SYSDATE())";
+        $query = "INSERT INTO `ques_user_xref`(`ques_name`, `user_id`) VALUES (:ques_name,:user_id)";
 
         $bindParams = array("ques_name" => $name, "user_id" => $user_id);
 
@@ -45,6 +45,16 @@ class Quest {
         $query = "INSERT INTO `ques_settings`(`ques_id`, `setting_id`, `active`) VALUES (:ques_id,:setting_id,1)";
 
         $bindParams = array("ques_id" => $ques_id, "setting_id" => $setting_id);
+
+        $id = $this->con->insertQuery($query, $bindParams);
+        return $id;
+    }
+    
+    public function insertQuesDate($ques_id,$start_date,$end_date) {
+
+        $query = "INSERT INTO `ques_datetime`(`ques_id`, `start_date`, `end_date`) VALUES (:ques_id,:start_date,:end_date)";
+
+        $bindParams = array("ques_id" => $ques_id, "start_date" => $start_date, "end_date"=>$end_date);
 
         $id = $this->con->insertQuery($query, $bindParams);
         return $id;

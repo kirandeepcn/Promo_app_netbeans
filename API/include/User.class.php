@@ -30,14 +30,14 @@ class User {
 
         if ($accountType == "-1") {
 
-            $query = "SELECT userID FROM `User_Login` WHERE accessToken = :accessToken AND password = :password LIMIT 1";
+            $query = "SELECT userID FROM `User_Login` WHERE accessToken = :accessToken AND password = :password AND role = :role LIMIT 1";
 
-            $bindParams = array("accessToken" => $username, "password" => $hashPass);
+            $bindParams = array("accessToken" => $username, "password" => $hashPass, "role" => "1");
         } else {
 
-            $query = "SELECT `id`, `access_token` FROM `user_login` WHERE `username`=:username AND `password` = :password LIMIT 1";
+            $query = "SELECT `id`, `access_token` FROM `user_login` WHERE `username`=:username AND `password` = :password AND role = :role LIMIT 1";
 
-            $bindParams = array("username" => $username, "password" => $hashPass);
+            $bindParams = array("username" => $username, "password" => $hashPass, "role" => "1");
         }
 
 
@@ -64,6 +64,17 @@ class User {
         $query = "INSERT INTO `user_login`(`access_token`, `username`, `password`, `role`, `active`) VALUES (:access_token,:username,:password,:role,1)";
 
         $bindParams = array("access_token" => $accessToken,"username"=>$username, "password" => $hashPass, "role" => $role);
+
+        $id = $this->con->insertQuery($query, $bindParams);
+
+        return $id;
+    }
+    
+     public function deleteUser($userID) {
+     
+        $query = "DELETE FROM `user_login` WHERE `id` = :user_id";
+
+        $bindParams = array("user_id"=>$userID);
 
         $id = $this->con->insertQuery($query, $bindParams);
 

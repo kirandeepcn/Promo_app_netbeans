@@ -108,7 +108,9 @@ switch ($type) {
         $password = isset($_POST['password']) ? $_POST['password'] : "";
         $allowexport = isset($_POST['allowexport']) ? $_POST['allowexport'] : "";
         $allowimport = isset($_POST['allowimport']) ? $_POST['allowimport'] : "";
-       
+        $start_date = isset($_POST['startdate']) ? $_POST['startdate'] : array();
+        $end_date = isset($_POST['enddate']) ? $_POST['enddate'] : array();
+        $setting_ids = array();
         if ($question == "" || $username == "" || $password == "") {
             echo json_encode(array("code" => "-1", "log" => "Some fields are missing"));
             exit();
@@ -121,19 +123,22 @@ switch ($type) {
                     $setting_ids[] = 2;
         }
         $userObj = new User();
-        $start_date = "";
-        $end_date = "";
         if ($userObj->checkUser($username)) {
             $role = 2;
             $userID = $userObj->insertUser($username, $password,$role);
             $questObj = new Quest();
             if($questObj->checkQuestionnaire($question)) {
-                $ques_id = $questObj->createQuestionnaire($question, $userID, $start_date, $end_date) ;
+                $ques_id = $questObj->createQuestionnaire($question, $userID) ;
                 foreach($setting_ids as $setting_id) {
                     $questObj->insertQuesSetting($ques_id, $setting_id);
                 }
-                echo json_encode(array("code" => "0", "log" => "Questionnaire created"));
+                for($i=0; $i<count($start_date); $i++)
+                {
+                    $questObj->insertQuesDate($ques_id, $start_date[$i], $end_date[$i]);
+                }
+                echo json_encode(array("code" => "0", "log" => "Questionnaire created", "ques_id" => $ques_id));
             } else {
+                $userObj->deleteUser($userID);
                 echo json_encode(array("code" => "-1", "log" => "Questionnaire already present"));
             }            
         } else {
