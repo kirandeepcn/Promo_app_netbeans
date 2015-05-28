@@ -9,12 +9,12 @@ body{ background-color:#ecf0f1; margin:0 ; padding:0 ;}
 .wrapper{ margin:0 auto; width:100%;background-color: #fff;}
 .logo{ text-align:center;}
 .logo img {width: 250px !important;}
- h1{text-align:center; color:#324a60;padding:30px; margin:0 auto; font-family:"Arial Black", Gadget, sans-serif;font-size:18px; font-weight:lighter; }
+ h1{text-align:center; color:#324a60;padding:30px; margin:0 auto; font-family:lato ;font-size:18px; font-weight:lighter; }
  .sec{background-color:#ecf0f1; height:300px; width:100%; margin:0 auto;}
   .right_search{ margin-bottom:10px;}
  .text{height: 33px;padding: 0 11px 6px 8px;width:100%; border:1px solid #e7e8ea;}
  .bb_outer{ margin:0 auto; width:350px; margin-top:44px;}
- button{background-color: #0d7cc1; color:#fff; border:none; font-family:"Arial Black", Gadget, sans-serif;font-size:14px;font-weight:lighter;height: 35px; width: 100px; border-radius:3px; cursor:pointer; }
+ button{background-color: #0d7cc1; color:#fff; border:none; font-family:lato;font-size:14px;font-weight:bold;height: 35px; width: 100px; border-radius:3px; cursor:pointer; }
  .text:focus{border: 1px solid #bbd6e6; color:#0d7cc1; font-weight:bold;}
  .head{width:70%;float:left;}
  .ryt_admin{width:20%;float:right;}
@@ -45,8 +45,8 @@ li {
 	background-color:#fff;
 	
 }
-li a{text-decoration: none;color:#374a61;}
-li.unselected a{background-color:#efefef; display:block;color:#374a61;font-family:"Arial Black", Gadget, sans-serif;font-size:14px; font-weight:lighter;width:150px; border-bottom:1px solid #dcdddf;}
+li a{text-decoration: none;color:#374a61;outline:none;}
+li.unselected a{background-color:#efefef; display:block;color:#374a61;font-family:lato;font-size:14px; font-weight:lighter;width:150px; border-bottom:1px solid #dcdddf;}
 li.unselected a:hover {
   background-color:#efefef; color:#444d5c;
   display: block;}
@@ -65,13 +65,13 @@ ul#selectUl:hover li.unselected {
 
 .droper {
    float: right;
-   font-family: arial;
+   font-family: lato;
    font-size: 14px;
    margin: 10px;
    width: 140px;
 }
 .droper1 {
-   font-family: arial;
+   font-family: lato;
    font-size: 14px;
    margin: 10px;
    width: 140px;
@@ -156,7 +156,7 @@ li {
        
 }
 li a{text-decoration: none;color:#374a61;}
-li.unselected a{background-color:#efefef; display:block;color:#374a61;font-family:"Arial Black", Gadget, sans-serif;font-size:14px; font-weight:lighter;width:150px; border-bottom:1px solid #dcdddf;}
+li.unselected a{background-color:#efefef; display:block;color:#374a61;font-family:lato;font-size:14px; font-weight:lighter;width:150px; border-bottom:1px solid #dcdddf;}
 li.unselected a:hover {
  background-color:#efefef; color:#444d5c;
  display: block;}
@@ -174,7 +174,13 @@ ul#selectUl:hover li.unselected {
 .inner_inn_arr img{ margin:-2px;}
 
 
-.outer_div{width:75%; background-color:#fff; height:480px; margin: 0 auto;}
+.outer_div {
+    background-color: #fff;
+    height: 480px;
+    margin: 0 auto;
+
+    width: 75%;
+}
 .inn_div_img{margin:0 auto; width:75%; padding:50px;}
 .inn_div1{width:28%;float:left; background-color:#ecf0f1;height:275px; border:1px solid gray;border-radius:5px; border:none;}
 
@@ -193,7 +199,7 @@ ul#selectUl:hover li.unselected {
 .inn_div1.marg3 > img {
     margin-top: 60px;
 }
-p{color:#31475e; font-family:"Arial Black", Gadget, sans-serif;font-size:17px; font-weight:bold;/*line-height:0px;*/}
+p{color:#31475e; font-family:lato;font-size:17px; font-weight:bold;line-height:0px;}
 .butt_view{margin-top:60px;width:150px;}
 .logo img{width:350px; margin-left:-5px;}
 /*-----------------------------ended questionnaries------------------------------*/
@@ -205,18 +211,34 @@ p{color:#31475e; font-family:"Arial Black", Gadget, sans-serif;font-size:17px; f
 .butt_view1{margin-top:6px;width:150px;}
 .del_img{float:right; margin-top:-4px;}
 
-/*-----------------------------draft questionnaries------------------------------*/
+/*-----------------------------save questionnaries------------------------------*/
 
-.draft_outer{width:50%; margin:0 auto;}
-.dd_bg{background-color:green; text-align:center;font-family: "Arial Black",Gadget,sans-serif;font-size: 18px;font-weight: bold; color:#fff; width:25%;}
+.draft_outer {
+    margin: 0 auto;
+    padding-top: 15px;
+    width: 50%;
+}
+.dd_bg {
+    border: 2px solid #ade8c1;
+    border-radius: 7px;
+    color: #000;
+    font-family:lato;
+    font-size: 18px;
+    font-weight: bold;
+    height: 50px;
+    width: 49.2%;
+	 line-height: 50px;
+    text-align: center;}
+	
+
 
 /*---------------------------------------- create questionnars---------------------------------------------------*/
 .sec_create{ background-color:#efefef;height:50px; margin:0 auto;width:100%;line-height:30px;}
-.sec_head_ques{  color: #324a60;font-family: "Arial Black",Gadget,sans-serif;font-size: 18px;font-weight: lighter;margin: 0 auto;text-align: center;} 
+.sec_head_ques{  color: #324a60;font-family:lato;font-size: 18px;font-weight: bold;margin: 0 auto;text-align: center;} 
 .container{width:92%;margin:0 auto;}
-h2{margin:0;padding-top: 10px !important;color: #324a60;font-family: "Arial Black",Gadget,sans-serif;font-size: 18px;font-weight: bold;}
+h2{margin:0;padding-top: 10px !important;color: #324a60;font-family:lato;font-size: 18px;font-weight: bold;}
 .sec_head_ques1{padding-top:20px;}
-label{margin:0;padding:0px;color: #324a60;font-family: "Arial Black",Gadget,sans-serif;font-size: 12px;font-weight:bold;}
+label{margin:0;padding:0px;color: #324a60;font-family:lato;font-size: 12px;font-weight:bold;}
 .sec_ques_div{width:340px;height:50px;}
 .fleft{float:left;}
 .fright{float:right;}
@@ -239,7 +261,7 @@ outer_sec6{width:60%;}
 .inn_sec5{width:27%;height:135px;}
 .inn_sec6{width:30%;height:150px;}
 .inn_sec7{width:30%;height:180px;}
-h3{margin:0;padding:0;color: #324a60;font-family: "Arial Black",Gadget,sans-serif;font-size: 14px;font-weight:bold;}
+h3{margin:0;padding:0;color: #324a60;font-family:lato;font-size: 14px;font-weight:bold;}
 .lastouter_sec{text-align:center; margin:0px auto;}
 .bb_bg{ background-color:red !important;}
 .bb_sec6{ height:38px !important;width:140px !important;margin: 10px; font-weight:bold !important; font-size: 15px !important;}
@@ -247,7 +269,7 @@ h3{margin:0;padding:0;color: #324a60;font-family: "Arial Black",Gadget,sans-seri
 /*-----------------------------------welcome page---------------------------------------------*/
 .lastouter_sec1{ margin:20px auto !important; text-align:center;}
 .wel_head{color: rgb(113, 104, 104);font-family: arial;font-size: 14px;margin: 0;padding: 0; font-weight:bold;}
-.browse{/*height:60px;*/ height:auto; margin-bottom: 15px;}
+.browse{height:60px;}
 .button_browse {
     margin-left: -7px;
     margin-top: 10px;
@@ -257,7 +279,7 @@ h3{margin:0;padding:0;color: #324a60;font-family: "Arial Black",Gadget,sans-seri
 	height:135px;
 }
 .wel_lastpara{width:37%;}
-.wel_lastpara_span{color: #324a60;font-family: "Arial Black",Gadget,sans-serif;font-size: 12px;font-weight:bold;}
+.wel_lastpara_span{color: #324a60;font-family:lato;font-size: 12px;font-weight:bold;}
 .onoffswitch1{padding:0 ;position: relative;width: 32px;}
 
 .onoffswitch {
@@ -344,7 +366,7 @@ height: 18px !important;
 
 /*---------------------------------------- questionnars questions---------------------------------------------------*/
 h5{  color: #324a60;
-  font-family: "Arial Black",Gadget,sans-serif;
+  font-family:lato;
   font-size: 13px;
   margin-left:10px;
 }
@@ -393,7 +415,7 @@ button.minus_no {
   margin-top: -27px;
 }
 
-h4{color: #324a60;font-family: "Arial Black",Gadget,sans-serif; font-size:13px;}
+h4{color: #324a60;font-family:lato; font-size:13px;}
 .inner_drag {
     margin-bottom: 10px;
 }
@@ -406,9 +428,9 @@ h4{color: #324a60;font-family: "Arial Black",Gadget,sans-serif; font-size:13px;}
     border-radius: 5px;
 }
 .col-6{width:50%;}
-.label_ff{color: #324a60;font-family: "Arial Black",Gadget,sans-serif;font-size: 12px;}
+.label_ff{color: #324a60;font-family:lato;font-size: 12px;}
 .date_ff{ border: 1px solid #c8c8c8; border-radius: 13px;opacity: 0.5; padding:4px;}
-span{color: #324a60;font-family: "Arial Black",Gadget,sans-serif;font-size: 12px;}
+span{color: #324a60;font-family:lato;font-size: 12px;}
 .input_text{width:40% !important;}
 .txt{width:23% !important;}
 .range1{ border-radius: 2px;
@@ -418,7 +440,7 @@ span{color: #324a60;font-family: "Arial Black",Gadget,sans-serif;font-size: 12px
 
 .last_input{margin-top:40px;}
 .col-4{width:33.333%;}
-.submit_text{color: #324a60;font-family: "Arial Black",Gadget,sans-serif;font-size: 14px; line-height:30px;}
+.submit_text{color: #324a60;font-family:lato;font-size: 14px; line-height:30px;}
 .submit_input{ height: 22px;width: 58%;}
 .left_fields{width:50%;}
 .left_fields_outer{width:100%; float:left;margin-top: 25px;}
@@ -432,14 +454,14 @@ span{color: #324a60;font-family: "Arial Black",Gadget,sans-serif;font-size: 12px
 .r_field{margin-right:221px !important;}
 .mm{margin-left:23px;}
 .mm1{margin-left:17px;}
-.right_fields{ background-color: #f3f3f3;border-radius: 8px; width:30%;font-family: "Arial Black",Gadget,sans-serif;font-size: 16px;}
+.right_fields{ background-color: #f3f3f3;border-radius: 8px; width:30%;font-family:lato;font-size: 16px;}
 .box_head{display:block; text-align:center;}
 ul.box_ul{ max-height:260px; overflow: auto;margin-bottom: 40px;}
 .box_ul li{float:left; display:block; border-top:1px solid #dadada; text-align:center;}
 .box_ul{width:18.8em;}
 .font_bb {
     margin-right: -50px;
-    margin-top: -19px;color: #324a60;font-family: "Arial Black",Gadget,sans-serif; font-size:12px;
+    margin-top: -19px;color: #324a60;font-family:lato; font-size:12px;
 }
 .select_drop{width:163px;}
 .inn_home {
@@ -470,14 +492,6 @@ input.input {
     height: 18px;
     padding: 4px;
     width: 177px;
-}
-
-
-input.input_ques {
-  height: 28px;
-  border-style: groove;
-  padding: 4px;
-  width: 240px;
 }
 .run_time {
   line-height: 25px;
@@ -515,7 +529,7 @@ input.sm_input {
 /*---------------------------thankyou page------------------------*/
 .la_text{height:29px; width:288px;}
 .br_text{height:29px;width:190px;}
-.inner_title{margin-right: 296px;}
+/*.inner_title{margin-right: 296px;}*/
 .thank_chk {
   padding-top: 24px;
 }
@@ -526,6 +540,16 @@ h6 {
   float: right;
   margin-right: -217px;
   font-size: 10px;
-  font-family: "Arial Black",Gadget,sans-serif;
+  font-family:lato;
   font-weight:bold;
+}
+/*------------------goto_home--------------------*/
+.center_div{text-align:center; font-family:lato;
+  font-weight:bold; width:50%;margin: 0 auto; padding:150px; font-size:25px;}
+
+.butt_view2 {
+    font-weight: bold;
+    height: 40px;
+    margin-top: 39px;
+    width: 150px;
 }
