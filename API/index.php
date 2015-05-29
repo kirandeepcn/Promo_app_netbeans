@@ -115,12 +115,18 @@ switch ($type) {
                 echo json_encode(array("code" => "-1", "log" => "Some fields are missing"));
                 exit();
             } 
+            $setting_ids[] = 1;
             if($allowexport != "") {
-                        $setting_ids[] = 1;
+               $active[] = 1;
+            } else {
+               $active[] = 0;
             }
-
+            
+            $setting_ids[] = 2;
             if($allowimport != "") {
-                        $setting_ids[] = 2;
+               $active[] = 1;
+            } else {
+               $active[] = 0;
             }
             $userObj = new User();
             if ($userObj->checkUser($username)) {
@@ -129,8 +135,8 @@ switch ($type) {
                 $questObj = new Quest();
                 if($questObj->checkQuestionnaire($question)) {
                     $ques_id = $questObj->createQuestionnaire($question, $userID) ;
-                    foreach($setting_ids as $setting_id) {
-                        $questObj->insertQuesSetting($ques_id, $setting_id);
+                    for($i=0; $i<count($setting_ids); $i++) {
+                        $questObj->insertQuesSetting($ques_id, $setting_ids[$i],$active[$i]);
                     }
                     for($i=0; $i<count($start_date); $i++)
                     {

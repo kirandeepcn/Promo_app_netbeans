@@ -48,7 +48,32 @@ class Quest {
 
         $id = $this->con->insertQuery($query, $bindParams);
         return $id;
+     }
+     
+     public function updateQuesSetting($ques_id,$setting_id,$active = 1) {
+
+        $query = "UPDATE `ques_settings` SET `active`= :active WHERE `ques_id`= :ques_id AND `setting_id`= :setting_id";
+
+        $bindParams = array("ques_id" => $ques_id, "setting_id" => $setting_id, "active"=>$active);
+
+        $id = $this->con->insertQuery($query, $bindParams);
+        return $id;
+     }
+    
+      public function checkQuesSetting($ques_id,$setting_id) {
+        $query = "SELECT COUNT(*) as count FROM `ques_settings` WHERE `ques_id` = :ques_id AND `setting_id` = :setting_id";
+
+        $bindParams = array("ques_id" => $ques_id, "setting_id"=>$setting_id);
+
+        $qh = $this->con->getQueryHandler($query, $bindParams);
+
+        $res = $qh->fetch(PDO::FETCH_ASSOC);
+
+        $bool = ($res["count"] > 0) ? false : true;
+
+        return $bool;
     }
+
     
     public function insertQuesDate($ques_id,$start_date,$end_date) {
 
@@ -60,12 +85,30 @@ class Quest {
         return $id;
     }
     
-    public function inserQuesElement($ques_id, $setting_id, $element_type, $element_name, $element_color, $element_size, $element_font, $element_attachment, $active) {
+    public function insertQuesElement($ques_id, $setting_id, $element_type, $element_name, $element_color, $element_size, $element_font, $element_attachment, $active) {
         $query = "INSERT INTO `ques_settings_element`(`ques_id`, `setting_id`, `element_type`, `element_name`, `element_color`, `element_size`,"
                 . " `element_font`, `element_attachment`, `active`) "
                 . "VALUES (:ques_id,:setting_id,:element_type,:element_name,:element_color,:element_size,:element_font,:element_attachment,:active)";
 
-        $bindParams = array("setting_id"=>$setting_id,"element_type"=>$element_type,"element_name"=>$element_name,"element_color"=>$element_color,"element_size"=>$element_size,"element_font"=>$element_font,"element_attachment"=>$element_attachment,"active"=>$active);
+        $bindParams = array("ques_id"=> $ques_id ,"setting_id"=>$setting_id,"element_type"=>$element_type,"element_name"=>$element_name,
+            "element_color"=>$element_color,"element_size"=>$element_size,
+            "element_font"=>$element_font,
+            "element_attachment"=>$element_attachment,"active"=>$active);
+
+        $id = $this->con->insertQuery($query, $bindParams);
+        return $id;
+    }
+    
+    public function updateQuesElement($ques_id, $setting_id, $element_type, $element_name, $element_color, $element_size, $element_font, $element_attachment, $active) {
+        $query = "UPDATE `ques_settings_element` SET `element_name`= :element_name,`element_color`= :element_color,`element_size`= :element_size,"
+                . "`element_font`= :element_font,`element_attachment`= :element_attachment,`active`= :active "
+                . "WHERE "
+                . "`ques_id`= :ques_id AND `setting_id`= :setting_id AND `element_type`= :element_type";
+
+        $bindParams = array("ques_id"=> $ques_id ,"setting_id"=>$setting_id,"element_type"=>$element_type,"element_name"=>$element_name,
+            "element_color"=>$element_color,"element_size"=>$element_size,
+            "element_font"=>$element_font,
+            "element_attachment"=>$element_attachment,"active"=>$active);
 
         $id = $this->con->insertQuery($query, $bindParams);
         return $id;
@@ -75,6 +118,47 @@ class Quest {
         $query = "SELECT COUNT(*) as count FROM `ques_user_xref` WHERE `ques_id` = :ques_id";
 
         $bindParams = array("ques_id" => $ques_id);
+
+        $qh = $this->con->getQueryHandler($query, $bindParams);
+
+        $res = $qh->fetch(PDO::FETCH_ASSOC);
+
+        $bool = ($res["count"] > 0) ? false : true;
+
+        return $bool;
+    }
+    
+    public function uploadFile($file, $access_token) {
+        
+
+        if ($file["error"] > 0) {
+
+            //echo json_encode(array("error" => "Error: " . $file["error"], "code" => "0"));
+
+            //exit();
+            return "";
+        }
+
+        $filename = substr($access_token, 5, 10) . "-" . time() . session_id(). ".jpg";
+
+        while (file_exists("images/" . $filename)) {
+
+            $filename = substr($access_token, 5, 10) . time() . session_id(). ".jpg";
+        }
+
+        if (move_uploaded_file($file["tmp_name"], "images/" . $filename)) {
+
+            return $filename;
+        } else {
+
+            return "-1";
+        }
+    }
+    
+     public function checkQuesSettingElement($ques_id,$setting_id) {
+        $query = "SELECT COUNT(*) AS count FROM `ques_settings_element` WHERE `ques_id` = :ques_id AND `setting_id` = :setting_id";
+
+        $bindParams = array("ques_id" => $ques_id, "setting_id"=>$setting_id);
 
         $qh = $this->con->getQueryHandler($query, $bindParams);
 

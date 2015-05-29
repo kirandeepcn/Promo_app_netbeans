@@ -493,6 +493,13 @@ input.input {
     padding: 4px;
     width: 177px;
 }
+
+input.input_ques {
+  height: 28px;
+  padding: 4px;
+  width: 240px;
+}
+
 .run_time {
   line-height: 25px;
 }
