@@ -168,5 +168,17 @@ class Quest {
 
         return $bool;
     }
+    
+    public function insertQuesElement($ques_id, $ques_type_id, $ques_title, $ques_options, $required, $active, $ques_order) {
+        $query = "INSERT INTO `ques_questions`(`ques_id`, `ques_type_id`, `ques_title`, `ques_options`, `required`, `active`, `ques_order`) "
+                . "VALUES "
+                . "(:ques_id,:ques_type_id,:ques_title,:question_options,:required,:active,:ques_order)";
+
+        $bindParams = array("ques_id"=> $ques_id ,"ques_type_id"=>$ques_type_id,"ques_title"=>$ques_title,"ques_options"=>$ques_options,
+            "active"=>$active,"required"=>$required,"ques_order"=>$ques_order);
+
+        $id = $this->con->insertQuery($query, $bindParams);
+        return $id;
+    }
 
 }

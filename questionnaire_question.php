@@ -1,3 +1,21 @@
+<?php 
+//if(!isset($_GET['ques_id'])) {
+//    echo '<h1>Invalid Access !!</h1>';
+//    echo '<script>location.href = "admin.php";</script>';
+//    exit();
+//} else {
+//    include "./API/include/Connection.class.php";
+//    include "./API/include/Quest.class.php";
+//    $questObj = new Quest();
+//    $ques_id = $_GET['ques_id'];
+//    $bool = $questObj->isValidQuesID($ques_id);
+//    if($bool) {
+//        echo '<h1>Invalid Question ID passed !!</h1>';
+//        exit();
+//    }
+//}
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,12 +45,6 @@ function add(id, num) {
 
 }
 
-function check() {
-    $('#outer_drag1').children('.inner_drag').each(function(index){
-        //do stuff
-        alert($(this).html());
-      });
-}
 </script>
 
 <script>
@@ -71,7 +83,7 @@ $(document).ready(function(){
     });
 	$(".btn6").click(function(){
 		btn_num_photo++;
-        $("#outer_drag1").append("<div id='drag_photo"+btn_num_photo+"' class='inner_drag'><div class='inner_title2  inner_drag_hh fleft'> <img src='images/drag.png' alt='move' width='16' height='11' class='handle' /><label> PhotoQuestion</label><input type='checkbox'><span> Required </span></div><div class='clear'> </div><div class='inner_title2  inner_drag_hh fleft'><label> Question Title</label><input type='text' class='title_text title_text2 input_text'><div class='img_m'><img src='images/minus.png' onclick='showpop(\"drag_"+btn_num_photo+"\")'></div></div><div class='clear'></div><div class='sec_ques_div'><input type='text' class='fleft' ><button class='bb_ques fleft'>Browse..</button><input type='file' class='browewin' style='display:none;'/></div><div class='clear'></div><div class='inner_title2  inner_drag_hh fleft'> <label> Answer Type:</label><input type='number' class='drag_num'></div></div>");
+        $("#outer_drag1").append("<div id='drag_photo"+btn_num_photo+"' class='inner_drag'><div class='inner_title2  inner_drag_hh fleft'> <img src='images/drag.png' alt='move' width='16' height='11' class='handle' /><label> PhotoQuestion</label><input type='checkbox'><span> Required </span></div><div class='clear'> </div><div class='inner_title2  inner_drag_hh fleft'><label> Question Title</label><input type='text' class='title_text title_text2 input_text'><div class='img_m'><img src='images/minus.png' onclick='showpop(\"drag_"+btn_num_photo+"\")'></div></div><div class='clear'></div><div class='sec_ques_div'><input type='text' class='fleft' ><button class='bb_ques fleft'>Browse..</button><input type='file' name='photo_ques' class='browewin' style='display:none;'/></div><div class='clear'></div><div class='inner_title2  inner_drag_hh fleft'> <label> Answer Type:</label><input type='number' class='drag_num'></div></div>");
     });
 	$(".btn7").click(function(){
 		btn_num_answer++;
@@ -104,42 +116,98 @@ $(document).ready(function(){
            }
        });
        
-       $(".bb_ques").click(function(){
+       $(".bb_ques").live("click",function(event){
 		$(".browewin").click();	
+                event.preventDefault();
 	});
         
-    $("#text1").click(function(){
-        $("#drag1").show();
-    });
-    $("#text2").click(function(){
-        $("#drag2").show();
-    });
-    $("#text3").click(function(){
-        $("#drag3").show();
-    });
-    $("#text4").click(function(){
-        $("#drag4").show();
-    });
-    $("#text5").click(function(){
-        $("#drag5").show();
-    });
-    $("#text6").click(function(){
-        $("#drag6").show();
-    });
-    $("#text7").click(function(){
-        $("#drag7").show();
-    });
-    
-    $(".bb_img").click(function(){
-        $(".htab_o1").toggle();
-    });
-    
-    $(".ok").click(function(){
-        $("#drag1").remove();
-    });
+        $(".bb_img").click(function(event){
+            $(".htab_o1").toggle();
+            event.preventDefault();
+        });
+
+        $(".ok").click(function(event){
+            $("#drag1").remove();
+            event.preventDefault();
+        });
+        
+        $("#saveandnext").click(function(event){
+            event.preventDefault();            
+            $('#outer_drag').children('.inner_drag').each(function(index){
+                //do stuff
+                //alert($(this).html());
+                //ques_title
+                console.log($(this).find("#ques_title").html());
+                title_temp = $(this).find("#ques_title").html();
+                var required_arr = new Array();
+                var active_arr = new Array();
+                if(title_temp == "Telephone") {
+                    $(this).find("input[name=ques_check]").each(function(){
+                        alert('hi');
+                       temp_required = $(this).is(":checked"); 
+                       if(temp_required) {
+                           required_arr.push("1"); 
+                       } else {
+                           required_arr.push("0"); 
+                       }
+                    });
+                    required = required_arr.join(",");
+                    
+                    $(this).find("input[name=onoffswitch]").each(function(){
+                       temp_active = $(this).is(":checked"); 
+                       if(temp_active) {
+                           active_arr.push("1"); 
+                       } else {
+                           active_arr.push("0"); 
+                       }
+                    });
+                    active = active_arr.join(",");
+                } else {
+                    is_required = $(this).find("input[name=ques_check]").is(":checked");
+                    if(is_required) {
+                        required = "1";
+                    } else {
+                        required = "0";
+                    }
+                    
+                    is_active = $(this).find("input[name=onoffswitch]").is(":checked");
+                    if(is_active == null || title_temp == "First Name" || title_temp == "Last Name") {
+                        active = "1";
+                    } else {
+                        if(is_active) {
+                            active = "1";
+                        } else {
+                            active = "0";
+                        }
+                    }
+                    
+                }
+                
+                
+                order = index+1;
+                if(title_temp == "Date of birth") {
+                    type_id = 5;
+                } else {
+                    type_id = 1;
+                }
+                var ques_type_id = $("<input>").attr("type", "hidden").attr("name", "ques_type_id[]").val(type_id);
+                var ques_title = $("<input>").attr("type", "hidden").attr("name", "ques_title[]").val(title_temp);
+                var ques_order = $("<input>").attr("type", "hidden").attr("name", "ques_order[]").val(order);
+                var ques_required = $("<input>").attr("type", "hidden").attr("name", "ques_required[]").val(required);
+                var ques_active = $("<input>").attr("type", "hidden").attr("name", "ques_active[]").val(active);
+                $("#ques_form").append($(ques_type_id));
+                $("#ques_form").append($(ques_title));
+                $("#ques_form").append($(ques_order));
+                $("#ques_form").append($(ques_required));
+                $("#ques_form").append($(ques_active));
+            });
+            console.log( $( '#ques_form' ).serialize() );        
+            //$("#ques_form").append($(input[2]));
+            $( '#ques_form' ).submit();
+        })
 });
 </script>
-
+<?php var_dump($_POST); ?>
 </head>
 <body>
 <header>
@@ -152,45 +220,46 @@ $(document).ready(function(){
 </div>
 <section>
   <div class="wrapper">
+      <form action="#" id="ques_form" method="post" enctype="multipart/form-data" >
     <div class="container ww">
       <h2 class="sec_head_ques1">Questionnaire Questions</h2>
       <h4>Default</h4>
       <div id="outer_drag">
         <div class="inner_drag">
           <div class="inner_title1 inner_drag_hh fleft"> <img src="images/drag.png" alt="move" width="16" height="11" class="handle" />
-            <label class="label_ff"> First Name </label>
+              <label class="label_ff" id="ques_title">First Name</label>
           </div>
           <div class="inner_title1  inner_drag_hh fleft">
             <input type="text" class="title_text title_text2">
           </div>
           <div class="inner_title1 inner_drag_hh fleft">
-            <input type="checkbox">
+              <input type="checkbox" name="ques_check">
             <span>Required </span> </div>
           <div class="clear"> </div>
         </div>
         <!---inner_drag closed-->
         <div class="inner_drag">
           <div class="inner_title1 inner_drag_hh fleft"> <img src="images/drag.png" alt="move" width="16" height="11" class="handle" />
-            <label class="label_ff"> Last Name </label>
+            <label class="label_ff" id="ques_title">Last Name</label>
           </div>
           <div class="inner_title1 inner_drag_hh fleft">
             <input type="text" class="title_text title_text2">
           </div>
           <div class="inner_title1 inner_drag_hh fleft">
-            <input type="checkbox">
+            <input type="checkbox"  name="ques_check">
             <span>Required </span> </div>
           <div class="clear"> </div>
         </div>
         <!---inner_drag closed-->
         <div class="inner_drag">
           <div class="inner_title1 inner_drag_hh fleft"> <img src="images/drag.png" alt="move" width="16" height="11" class="handle" />
-            <label class="label_ff"> Title </label>
+            <label class="label_ff" id="ques_title">Title</label>
           </div>
           <div class="inner_title1 inner_drag_hh fleft">
             <input type="text" class="title_text title_text2">
           </div>
           <div class="inner_title1  inner_drag_hh fleft">
-            <input type="checkbox">
+            <input type="checkbox" name="ques_check">
             <span>Required </span>
             <div class="onoffswitch1 fright">
               <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="tab5" checked>
@@ -205,13 +274,13 @@ $(document).ready(function(){
         
         <div class="inner_drag">
           <div class="inner_title1 inner_drag_hh fleft"> <img src="images/drag.png" alt="move" width="16" height="11" class="handle" />
-            <label  class="label_ff"> Email </label>
+            <label  class="label_ff" id="ques_title">Email</label>
           </div>
           <div class="inner_title1 inner_drag_hh fleft">
             <input type="text" class="title_text title_text2">
           </div>
           <div class="inner_title1  inner_drag_hh fleft">
-            <input type="checkbox">
+            <input type="checkbox"  name="ques_check">
             <span>Required </span>
             <div class="onoffswitch1 fright">
               <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="tab6" checked>
@@ -225,13 +294,13 @@ $(document).ready(function(){
         <!---inner_drag closed-->
         <div class="inner_drag">
           <div class="inner_title1 inner_drag_hh fleft"> <img src="images/drag.png" alt="move" width="16" height="11" class="handle" />
-            <label  class="label_ff"> Telephone </label>
+            <label  class="label_ff" id="ques_title">Telephone</label>
           </div>
           <div class="inner_title1 inner_drag_hh fleft">
-            <input type="text" class="title_text title_text2">
+            <input type="text" placeholder="Mobile" class="title_text title_text2">
           </div>
           <div class="inner_title1  inner_drag_hh fleft">
-            <input type="checkbox">
+            <input type="checkbox"  name="ques_check">
             <span>Required </span>
             <div class="onoffswitch1 fright">
               <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="tab7" checked>
@@ -240,17 +309,13 @@ $(document).ready(function(){
             </div>
           </div>
           <div class="clear"> </div>
-        </div>
-        
-        <!---inner_drag closed-->
-        
-        <div class="inner_drag">
           <div class="inner_title1 inner_drag_hh fleft"> </div>
           <div class="inner_title1 inner_drag_hh fleft">
-            <input type="text" class="title_text title_text2">
+            <input type="text" placeholder="Home" class="title_text title_text2">
           </div>
+
           <div class="inner_title1  inner_drag_hh fleft">
-            <input type="checkbox">
+            <input type="checkbox"  name="ques_check">
             <span>Required </span>
             <div class="onoffswitch1 fright">
               <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="tab8" checked>
@@ -259,17 +324,12 @@ $(document).ready(function(){
             </div>
           </div>
           <div class="clear"> </div>
-        </div>
-        
-        <!---inner_drag closed-->
-        
-        <div class="inner_drag">
-          <div class="inner_title1 inner_drag_hh fleft"> </div>
+           <div class="inner_title1 inner_drag_hh fleft"> </div>
           <div class="inner_title1 inner_drag_hh fleft">
-            <input type="text" class="title_text title_text2">
+            <input type="text" placeholder="Work" class="title_text title_text2">
           </div>
           <div class="inner_title1  inner_drag_hh fleft">
-            <input type="checkbox">
+            <input type="checkbox"  name="ques_check">
             <span>Required </span>
             <div class="onoffswitch1 fright">
               <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="tab9" checked>
@@ -278,13 +338,13 @@ $(document).ready(function(){
             </div>
           </div>
           <div class="clear"> </div>
-        </div>
+        </div>              
         
         <!---inner_drag closed-->
         
         <div class="inner_drag">
           <div class="inner_title1 inner_drag_hh fleft"> <img src="images/drag.png" alt="move" width="16" height="11" class="handle" />
-            <label  class="label_ff"> Date of birth </label>
+            <label  class="label_ff" id="ques_title">Date of birth</label>
           </div>
           <div class="inner_title1 inner_drag_hh fleft">
             <select name="DOBMonth" class="date_ff">
@@ -303,38 +363,14 @@ $(document).ready(function(){
               <option value="December">December</option>
             </select>
             <select name="DOBDay"  class="date_ff">
-              <option> date </option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-              <option value="6">6</option>
-              <option value="7">7</option>
-              <option value="8">8</option>
-              <option value="9">9</option>
-              <option value="10">10</option>
-              <option value="11">11</option>
-              <option value="12">12</option>
-              <option value="13">13</option>
-              <option value="14">14</option>
-              <option value="15">15</option>
-              <option value="16">16</option>
-              <option value="17">17</option>
-              <option value="18">18</option>
-              <option value="19">19</option>
-              <option value="20">20</option>
-              <option value="21">21</option>
-              <option value="22">22</option>
-              <option value="23">23</option>
-              <option value="24">24</option>
-              <option value="25">25</option>
-              <option value="26">26</option>
-              <option value="27">27</option>
-              <option value="28">28</option>
-              <option value="29">29</option>
-              <option value="30">30</option>
-              <option value="31">31</option>
+              <option>Date</option>
+              <?php               
+              for($day = 1; $day < 31 ; $day++ ) {
+              ?>
+              <option value="<?php echo $day; ?>"><?php echo $day; ?></option>  
+              <?php
+              }
+              ?>
             </select>
             <select name="DOBYear"  class="date_ff">
               <option> Year </option>
@@ -352,7 +388,7 @@ $(document).ready(function(){
             <input type="checkbox">
             <span>MMDDYY</span> </div>
           <div class="inner_title1  inner_drag_hh fleft">
-            <input type="checkbox">
+            <input type="checkbox" name="ques_check">
             <span>Required </span>
             <div class="onoffswitch1 fright">
               <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="tab10" checked>
@@ -366,13 +402,13 @@ $(document).ready(function(){
         <!---inner_drag closed-->
         <div class="inner_drag">
           <div class="inner_title1 inner_drag_hh fleft"> <img src="images/drag.png" alt="move" width="16" height="11" class="handle" />
-            <label class="label_ff"> Street Adress </label>
+            <label class="label_ff" id="ques_title">Street Adress</label>
           </div>
           <div class="inner_title1 inner_drag_hh fleft">
             <input type="text" class="title_text title_text2">
           </div>
           <div class="inner_title1  inner_drag_hh fleft">
-            <input type="checkbox">
+            <input type="checkbox" name="ques_check">
             <span>Required </span>
             <div class="onoffswitch1 fright">
               <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="tab11" checked>
@@ -386,13 +422,13 @@ $(document).ready(function(){
         <!---inner_drag closed-->
         <div class="inner_drag">
           <div class="inner_title1 inner_drag_hh fleft"> <img src="images/drag.png" alt="move" width="16" height="11" class="handle" />
-            <label class="label_ff"> Post Code </label>
+            <label class="label_ff" id="ques_title">Post Code</label>
           </div>
           <div class="inner_title1 inner_drag_hh fleft">
             <input type="text" class="title_text title_text2">
           </div>
           <div class="inner_title1  inner_drag_hh fleft">
-            <input type="checkbox">
+            <input type="checkbox" name="ques_check">
             <span>Required </span>
             <div class="onoffswitch1 fright">
               <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="tab12" checked>
@@ -406,13 +442,13 @@ $(document).ready(function(){
         <!---inner_drag closed-->
         <div class="inner_drag">
           <div class="inner_title1 inner_drag_hh fleft"> <img src="images/drag.png" alt="move" width="16" height="11" class="handle" />
-            <label class="label_ff"> Country </label>
+            <label class="label_ff" id="ques_title">Country</label>
           </div>
           <div class="inner_title1 inner_drag_hh fleft">
             <input type="number" class="drag_num">
           </div>
           <div class="inner_title1  inner_drag_hh fleft">
-            <input type="checkbox">
+            <input type="checkbox" name="ques_check">
             <span>Required </span>
             <div class="onoffswitch1 fright">
               <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="tab13" checked>
@@ -450,19 +486,19 @@ $(document).ready(function(){
       <!---outer_drag1 closed-->
       <div class="blank_div"> </div>
       <div class="last_input col-4 fleft">
-        <label class="submit_text"> Submit The Text</label>
+        <label class="submit_text"> Submit Button Text</label>
         <input type="text" class="submit_input">
       </div>
       <!---input_add closed-->
       <div class="clear"> </div>
       <div class="lastouter_sec">
-          <button class="butt_view bb_sec6" onclick="check()"> Save&Next </button>
+          <button class="butt_view bb_sec6" id="saveandnext"> Save&Next </button>
         <button class="butt_view bb_sec6"> Save&Exit </button>
         <button class="butt_view bb_sec6 bb_bg"> Cancel </button>
       </div>
     </div>
     <!---container closed--> 
-    
+    </form>
   </div>
   <!---wrapper closed--> 
   
