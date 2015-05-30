@@ -16,7 +16,7 @@ include_once 'check_session.php';
           <a href="client_login.php"><button class="butt_view"> Start New </button></a>
         </div>
         <div class="inn_div1 marg1"> <img src="images/img2.jpg" alt="img">
-          <p> Save </p>
+          <p> Saved </p>
           <p>Questionnaires</p>
           <button class="butt_view"> View </button>
         </div>

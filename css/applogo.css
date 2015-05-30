@@ -12,7 +12,7 @@ body{ background-color:#ecf0f1; margin:0 ; padding:0 ;}
  h1{text-align:center; color:#324a60;padding:30px; margin:0 auto; font-family:lato ;font-size:18px; font-weight:lighter; }
  .sec{background-color:#ecf0f1; height:300px; width:100%; margin:0 auto;}
   .right_search{ margin-bottom:10px;}
- .text{height: 33px;padding: 0 11px 6px 8px;width:100%; border:1px solid #e7e8ea;}
+ .text{height: 44px;padding: 0 11px 6px 8px;width:100%; border:1px solid #e7e8ea;}
  .bb_outer{ margin:0 auto; width:350px; margin-top:44px;}
  button{background-color: #0d7cc1; color:#fff; border:none; font-family:lato;font-size:14px;font-weight:bold;height: 35px; width: 100px; border-radius:3px; cursor:pointer; }
  .text:focus{border: 1px solid #bbd6e6; color:#0d7cc1; font-weight:bold;}
@@ -430,7 +430,7 @@ h4{color: #324a60;font-family:lato; font-size:13px;}
 .col-6{width:50%;}
 .label_ff{color: #324a60;font-family:lato;font-size: 12px;}
 .date_ff{ border: 1px solid #c8c8c8; border-radius: 13px;opacity: 0.5; padding:4px;}
-span{color: #324a60;font-family:lato;font-size: 12px;}
+span{color: #324a60;font-family:lato;font-size: 15px;}
 .input_text{width:40% !important;}
 .txt{width:23% !important;}
 .range1{ border-radius: 2px;
@@ -495,7 +495,7 @@ input.input {
 }
 
 input.input_ques {
-  height: 28px;
+  height: 33px;
   padding: 4px;
   width: 240px;
 }
