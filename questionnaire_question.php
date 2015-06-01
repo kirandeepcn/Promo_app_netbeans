@@ -1,5 +1,6 @@
 <?php 
 session_start();
+include_once 'check_session.php';
 if(!isset($_GET['ques_id'])) {
     echo '<h1>Invalid Access !!</h1>';
     echo '<script>location.href = "admin.php";</script>';
@@ -44,7 +45,7 @@ if(!isset($_GET['ques_id'])) {
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="css/applogo1.css">
+<link rel="stylesheet" href="css/applogo.css">
 <script type="text/javascript" src="jquery/jscolor.js"></script>
 <script src="jquery/jquery-1.11.3.min.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>

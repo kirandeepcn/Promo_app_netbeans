@@ -45,7 +45,7 @@ li {
 	background-color:#fff;
 	
 }
-li a{text-decoration: none;color:#374a61;outline:none;}
+li a{text-decoration: none;color:#374a61;}
 li.unselected a{background-color:#efefef; display:block;color:#374a61;font-family:lato;font-size:14px; font-weight:lighter;width:150px; border-bottom:1px solid #dcdddf;}
 li.unselected a:hover {
   background-color:#efefef; color:#444d5c;
@@ -212,12 +212,14 @@ p{color:#31475e; font-family:lato;font-size:17px; font-weight:bold;line-height:0
 .del_img{float:right; margin-top:-4px;}
 
 /*-----------------------------save questionnaries------------------------------*/
-
+.nn{margin-left:6px !important;}
 .draft_outer {
     margin: 0 auto;
     padding-top: 15px;
     width: 50%;
 }
+.lab_mm{margin-left:30px !important;}
+
 .dd_bg {
     border: 2px solid #ade8c1;
     border-radius: 7px;
@@ -230,7 +232,6 @@ p{color:#31475e; font-family:lato;font-size:17px; font-weight:bold;line-height:0
 	 line-height: 50px;
     text-align: center;}
 	
-
 
 /*---------------------------------------- create questionnars---------------------------------------------------*/
 .sec_create{ background-color:#efefef;height:50px; margin:0 auto;width:100%;line-height:30px;}
@@ -245,7 +246,7 @@ label{margin:0;padding:0px;color: #324a60;font-family:lato;font-size: 12px;font-
 .bb_ques{height:20px !important;display:block; width:80px; margin-left:10px; cursor:pointer;}
 .outer_title1{width:100%;}
 .inner_title1{width:25%; height:150px;}
-.title_text{height:15px;padding: 0 11px 6px 8px;width:85%; border:1px solid #e7e8ea;}
+.title_text{height:27px;padding: 5px 11px 6px 8px;width:85%; /*border:1px solid #e7e8ea;*/}
 .title_size{border-radius:4px; border: 1px solid gray; width:70%;}
 .title_size_font{width:75%;border-radius:4px; border: 1px solid gray;}
 .blank_div{width:100%;height:2px; background-color:#404040;} 
@@ -430,7 +431,7 @@ h4{color: #324a60;font-family:lato; font-size:13px;}
 .col-6{width:50%;}
 .label_ff{color: #324a60;font-family:lato;font-size: 12px;}
 .date_ff{ border: 1px solid #c8c8c8; border-radius: 13px;opacity: 0.5; padding:4px;}
-span{color: #324a60;font-family:lato;font-size: 15px;}
+span{color: #324a60;font-family:lato;font-size: 12px;}
 .input_text{width:40% !important;}
 .txt{width:23% !important;}
 .range1{ border-radius: 2px;
@@ -536,7 +537,7 @@ input.sm_input {
 /*---------------------------thankyou page------------------------*/
 .la_text{height:29px; width:288px;}
 .br_text{height:29px;width:190px;}
-/*.inner_title{margin-right: 296px;}*/
+.inner_title{margin-right: 296px;}
 .thank_chk {
   padding-top: 24px;
 }
@@ -559,4 +560,74 @@ h6 {
     height: 40px;
     margin-top: 39px;
     width: 150px;
+}
+/*---------------------------prize---------------------*/
+.prize {
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+}
+.or_span {
+    font-size: 14px;
+	font-family:lato;
+    margin-left: 68px;
+}
+.prize > input {
+    margin-left: 63px;
+}
+.pr_span{font-size: 14px;
+	font-family:lato;
+	    margin-left: 13px;
+		font-weight:bold;}
+	
+.prize > img {
+    margin-bottom: -5px;
+    margin-right: 34px;
+}
+.wheel_inn{width:50%;margin-top: 30px;}
+.wh_tab_mm {
+    margin-left: 30px;
+    margin-right: 15px;
+	  height: 25px;
+    line-height: 25px;
+}
+.panel_mm {margin-left:-12px;}
+.spin_mm{ margin-left:34px;}
+.outline_mm{margin-left:15px;}
+.grand_mm{margin-left:-8px;}
+.runner_mm{margin-left:-2px;}
+.browse_tab {
+    margin-right: 40px;
+}
+
+.random {
+    margin-top: 35px;
+	width:20%;
+}
+.random > img{margin-bottom:-5px;}
+.random_center{text-align:center; width:40%;margin-top: 35px;}
+.random_corner{text-align:center; width:40%;margin-top: 35px;}
+.range_wheel{width:70%; border-radius:2px;margin-left: 68px;}
+.winnr_div1{width:50%;margin-top: 35px;}
+.run_bb{margin-right:276px; margin-top: -18px;}
+.range_wheel1{width:50%; border-radius:2px;margin-left: 68px;}
+
+.spn_positn {
+    margin-left: 185px;
+}
+.bg_random{color:#4ddb64;}
+.bb_text {
+    height: 25px;
+    width: 252px;
+}
+ #chartdiv {
+	width		: 100%;
+	height		: 418px;
+	font-size	: 11px;
+}		
+.pre_bb {
+  margin-left: 194px;
+  border-radius: 5px;
+  height: 37px;
+  width: 139px;
 }
