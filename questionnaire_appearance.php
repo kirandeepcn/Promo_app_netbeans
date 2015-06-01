@@ -16,7 +16,7 @@ if(!isset($_GET['ques_id'])) {
         exit();
     }
     
-    if($_POST['saveandnext']) {
+    if(isset($_POST['saveandnext'])) {
         /** Questionnaire header **/
         //$setting_id[] = 4;
         // Header image
@@ -231,12 +231,13 @@ document.querySelector('#volume').value = vol;
 }
 
 </script>
+<form action="#" method="post" enctype="multipart/form-data" >
 <div class="sec_create">
   <h2 class="sec_head_ques"> Create a Questionnaire</h2>
 </div>
 <section>
   <div class="wrapper">
-      <form action="#" method="post" enctype="multipart/form-data" >
+
     <div class="container ww">
       <h2 class="sec_head_ques1">Questionnaire Header</h2>
       <div class="sec_ques_div">
@@ -300,7 +301,7 @@ document.querySelector('#volume').value = vol;
       <div class="clear"> </div>
       <div class="blank_div"> </div>
     </div>
-   </form>
+  
     <!--container closed--> 
   </div>
   <!--wrapper closed--> 
@@ -516,5 +517,6 @@ document.querySelector('#volume').value = vol;
   </div>
   <!--wrapper closed--> 
 </section>
+</form>
 </body>
 </html>
