@@ -266,6 +266,7 @@ h3{margin:0;padding:0;color: #324a60;font-family:lato;font-size: 14px;font-weigh
 .lastouter_sec{text-align:center; margin:0px auto;}
 .bb_bg{ background-color:red !important;}
 .bb_sec6{ height:38px !important;width:140px !important;margin: 10px; font-weight:bold !important; font-size: 15px !important;}
+#ques_title {margin-left: 10px;}
 
 /*-----------------------------------welcome page---------------------------------------------*/
 .lastouter_sec1{ margin:20px auto !important; text-align:center;}
@@ -409,11 +410,11 @@ button.minus_no {
   background-color:#efefef;
   float: right;
   border-radius: 7px;
-  margin-top:-14px;
+  margin-top:-23px;
   display:none;}
 #img_11 ,#img_12 ,#img_13{
   margin-left: 206px;
-  margin-top: -27px;
+  margin-top: -19px;
 }
 
 h4{color: #324a60;font-family:lato; font-size:13px;}
@@ -449,7 +450,7 @@ span{color: #324a60;font-family:lato;font-size: 12px;}
 
 .inner_title2{width:90%;}
 .img_m{float:right;margin-right:128px;}
-.img_m1{float:right;margin-right:221px;}
+.img_m1{float:right;/*margin-right:254px;*/}
 .img_m2{float:right;margin-right:218px;}
 .img_m3{float:right;margin-right:216px;}
 .r_field{margin-right:221px !important;}
@@ -474,7 +475,7 @@ button.bb_img {
   outline:none;
 }
 .r_check {
-    margin-right: 127px;
+    /*margin-right: 169px;*/
 }
 /*--------------------------- create new questionnare------------------*/
 .top_data{width:68%; margin:0 auto;}

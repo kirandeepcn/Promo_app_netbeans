@@ -196,14 +196,14 @@ if(!isset($_GET['ques_id'])) {
 
 
         $count = count($element_type);
-        $access_token = $_SESSION['access_token'];
-        $insertElementBool = $questObj->checkQuesSettingElement($ques_id, $setting_id);
+        $access_token = $_SESSION['access_token'];        
         for($i=0;$i<$count;$i++) {
             if($element_attachment[$i] != '') {
                 $file_name = $questObj->uploadFile($element_attachment[$i], $access_token);
             } else {
                 $file_name = '';
             }
+            $insertElementBool = $questObj->checkQuesSettingElement($ques_id, $setting_id[$i]);
             if($insertElementBool) {
                 $questObj->insertQuesElement($ques_id, $setting_id[$i], $element_type[$i], $element_name[$i], $element_color[$i], $element_size[$i], $element_font[$i], $file_name, $active[$i]);
             } else {
@@ -218,7 +218,8 @@ if(!isset($_GET['ques_id'])) {
 <script type='text/javascript' src="jquery/docs.js"></script>
 <script>
 $(document).ready(function(){
-	$(".bb_ques").click(function(){
+	$(".bb_ques").click(function(event){
+            event.preventDefault();
 		$(this).closest("div").find(".browewin").click();	
 	});
     

@@ -37,7 +37,9 @@ if(!isset($_GET['ques_id'])) {
         }
         $submit_btn_text = $_POST['submit_btn_text'];
         $questObj->insertQnsrQuestions($ques_id, "8", $submit_btn_text, "","", "1", "1", 999);
-        
+        header("Location: questionnaire_appearance.php?ques_id="+$ques_id);
+        echo "<script>location.href = questionnaire_appearance.php?ques_id=$ques_id;</script>";
+        exit();
     }
 }
 ?>
