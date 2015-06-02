@@ -37,8 +37,8 @@ if(!isset($_GET['ques_id'])) {
         }
         $submit_btn_text = $_POST['submit_btn_text'];
         $questObj->insertQnsrQuestions($ques_id, "8", $submit_btn_text, "","", "1", "1", 999);
-        header("Location: questionnaire_appearance.php?ques_id="+$ques_id);
-        echo "<script>location.href = questionnaire_appearance.php?ques_id=$ques_id;</script>";
+       // header("Location: questionnaire_appearance.php?ques_id="+$ques_id);
+        echo "<script>location.href = 'questionnaire_appearance.php?ques_id=$ques_id';</script>";
         exit();
     }
 }
@@ -72,6 +72,18 @@ function add(id, num) {
 
 }
 
+function add_radio(id, num) {
+        $("#adding_new_option_radio_"+id).before("<div class='inner_title2  inner_drag_hh fleft' id='drag_"+id+"_"+num+"'><label> Options</label><input type='radio'><input type='text' class='title_text title_text2 input_text txt'><div class='img_m1'><img src='images/lgt_m.png' onclick='showpop(\"drag_"+id+"_"+num+"\")'></div></div>");
+	 num++;
+	 $("#adding_new_option_radio_"+id).html("<img src='images/lgt_p.png' style='margin-left:100px' onclick='add_radio(\""+id+"\", \""+num+"\");'>");
+}
+
+function add_dropdown(id, num) {
+        $("#adding_new_option_dropdown_"+id).before("<div class='inner_title2  inner_drag_hh fleft' id='drag_"+id+"_"+num+"'><label> Options</label><input type='checkbox'><input type='text' class='title_text title_text2 input_text txt'><div class='img_m1'><img src='images/lgt_m.png' onclick='showpop(\"drag_"+id+"_"+num+"\")'></div></div>");
+        num++;
+        $("#adding_new_option_dropdown_"+id).html("<img src='images/lgt_p.png' style='margin-left:100px' onclick='add_dropdown(\""+id+"\", \""+num+"\");'>");
+}
+
 $(document).ready(function(){
 	var  btn_num = 0;
         var  btn_num_area = 0;
@@ -98,12 +110,12 @@ $(document).ready(function(){
 	$(".btn4").click(function(){
             btn_num_radio++;
             btn_num2++;
-            $("#outer_drag1").append("<div id='drag_radio"+btn_num_radio+"' class='inner_drag'><div class='inner_title2  inner_drag_hh fleft'> <img src='images/drag.png' alt='move' width='16' height='11' class='handle' /><label id='ques_type'>Radio Button</label><input type='checkbox' name=ques_check><span> Required </span> </div><div class='clear'> </div><div class='inner_title2  inner_drag_hh fleft'><label> Question Title</label><input type='text' id='ques_title' class='title_text title_text2 input_text' value='' id='minus_id_check'><div class='img_m r_check fright' id='img_13'><img src='images/minus.png' onclick='showpop(\"drag_radio"+btn_num_radio+"\")'></div></div><div class='clear'> </div><div class='inner_title2  inner_drag_hh fleft'  id='drag_1"+btn_num2+"'><label> Options</label><input type='radio'><input type='text' name='options_temp' class='title_text title_text2 input_text txt'><div class='img_m1'><img src='images/minus.png' onclick='showpop(\"drag_1"+btn_num2+"\")'></div></div><div class='clear'> </div><div class='inner_drag minus_img1'> <img src='images/lgt_p.png' style='margin-left:100px' onclick='add()';> </div></div>");
+            $("#outer_drag1").append("<div id='drag_radio"+btn_num_radio+"' class='inner_drag'><div class='inner_title2  inner_drag_hh fleft'> <img src='images/drag.png' alt='move' width='16' height='11' class='handle' /><label id='ques_type'>Radio Button</label><input type='checkbox' name=ques_check><span> Required </span> </div><div class='clear'> </div><div class='inner_title2  inner_drag_hh fleft'><label> Question Title</label><input type='text' id='ques_title' class='title_text title_text2 input_text' value='' id='minus_id_check'><div class='img_m r_check fright' id='img_13'><img src='images/minus.png' onclick='showpop(\"drag_radio"+btn_num_radio+"\")'></div></div><div class='clear'> </div><div class='inner_title2  inner_drag_hh fleft'  id='drag_1"+btn_num2+"'><label> Options</label><input type='radio'><input type='text' name='options_temp' class='title_text title_text2 input_text txt'><div class='img_m1'><img src='images/minus.png' onclick='showpop(\"drag_1"+btn_num2+"\")'></div></div><div class='clear'> </div><div class='inner_drag minus_img1'> <img src='images/lgt_p.png' style='margin-left:100px' onclick='add_radio(\""+btn_num_radio+"\", \"1\");';> </div></div>");
         });
 	$(".btn5").click(function(){
             btn_num_dropdown++;
             btn_num3++;
-            $("#outer_drag1").append("<div id='drag_dropdown"+btn_num_dropdown+"' class='inner_drag'><div class='inner_title2  inner_drag_hh fleft'> <img src='images/drag.png' alt='move' width='16' height='11' class='handle' /><label id='ques_type'>Drop Down</label><input type='checkbox' name=ques_check><span> Required </span> </div><div class='clear'> </div><div class='inner_title2  inner_drag_hh fleft'><label> Question Title</label><input type='text' id='ques_title' class='title_text title_text2 input_text' value='' id='minus_id_check'><div class='img_m r_check fright' id='img_13'><img src='images/minus.png' onclick='showpop(\"drag_dropdown"+btn_num_dropdown+"\")'></div></div><div class='clear'> </div><div class='inner_title2  inner_drag_hh fleft'  id='drag_1"+btn_num3+"'><label> Options</label><input type='checkbox'><input type='text' name='options_temp' class='title_text title_text2 input_text txt'><div class='img_m1'><img src='images/minus.png' onclick='showpop(\"drag_1"+btn_num3+"\")'></div></div><div class='clear'> </div><div class='inner_drag minus_img2'> <img src='images/lgt_p.png' style='margin-left:100px' onclick='add()';> </div></div>");
+            $("#outer_drag1").append("<div id='drag_dropdown"+btn_num_dropdown+"' class='inner_drag'><div class='inner_title2  inner_drag_hh fleft'> <img src='images/drag.png' alt='move' width='16' height='11' class='handle' /><label id='ques_type'>Drop Down</label><input type='checkbox' name=ques_check><span> Required </span> </div><div class='clear'> </div><div class='inner_title2  inner_drag_hh fleft'><label> Question Title</label><input type='text' id='ques_title' class='title_text title_text2 input_text' value='' id='minus_id_check'><div class='img_m r_check fright' id='img_13'><img src='images/minus.png' onclick='showpop(\"drag_dropdown"+btn_num_dropdown+"\")'></div></div><div class='clear'> </div><div class='inner_title2  inner_drag_hh fleft'  id='drag_1"+btn_num3+"'><label> Options</label><input type='checkbox'><input type='text' name='options_temp' class='title_text title_text2 input_text txt'><div class='img_m1'><img src='images/minus.png' onclick='showpop(\"drag_1"+btn_num3+"\")'></div></div><div class='clear'> </div><div class='inner_drag minus_img2'> <img src='images/lgt_p.png' style='margin-left:100px' onclick='add_dropdown(\""+btn_num_dropdown+"\", \"1\");';> </div></div>");
         });
 	$(".btn6").click(function(){
             btn_num_photo++;

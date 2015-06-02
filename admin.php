@@ -18,7 +18,7 @@ include_once 'check_session.php';
         <div class="inn_div1 marg1"> <img src="images/img2.jpg" alt="img">
           <p> Saved </p>
           <p>Questionnaires</p>
-          <button class="butt_view"> View </button>
+          <a href="save.php"><button class="butt_view"> View </button></a>
         </div>
         <div class="inn_div1 marg1"> <img src="images/img2.jpg" alt="img">
           <p> Ended </p>

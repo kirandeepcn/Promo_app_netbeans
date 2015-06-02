@@ -181,5 +181,20 @@ class Quest {
         $id = $this->con->insertQuery($query, $bindParams);
         return $id;
     }
+    
+    public function getQuesList($status)
+    {
+        $query = "SELECT `ques_id`, `ques_name`,  DATE(`updated_datetime`) as updated_datetime, `status` FROM `ques_user_xref` WHERE `status` = :status";
+
+        $bindParams = array("status" => $status);
+
+        $qh = $this->con->getQueryHandler($query, $bindParams);
+
+        while ($res = $qh->fetch(PDO::FETCH_ASSOC)) {
+            $output[] = $res;
+        }
+
+        return $output;
+    }
 
 }

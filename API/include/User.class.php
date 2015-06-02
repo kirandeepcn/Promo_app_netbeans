@@ -124,9 +124,9 @@ class User {
 
     public function getUserIDFromAccToken($accessToken) {
 
-        $query = "SELECT `userID` FROM `User_Login` WHERE `accessToken` = :accessToken";
+        $query = "SELECT `id` FROM `user_login` WHERE `access_token` = :access_token";
 
-        $bindParams = array("accessToken" => $accessToken);
+        $bindParams = array("access_token" => $accessToken);
 
         $qh = $this->con->getQueryHandler($query, $bindParams);
 
