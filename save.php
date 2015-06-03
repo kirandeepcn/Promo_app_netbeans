@@ -42,13 +42,13 @@ for (var i = 0; i < styleSheets.length; i++) {
             $ques_list = $questObj->getQuesList("0");
             foreach($ques_list as $ques) 
             {
-                $name_arr = explode(" ", $ques['ques_name']);
-                foreach ($name_arr as $name) {
-                    $temp_arr[] = "<p>".$name."</p>";
-                }
-                $name_final = join(" ", $temp_arr);
-          ?>
-        <div class="inn_div_img">
+//                $name_arr = explode(" ", $ques['ques_name']);
+//                foreach ($name_arr as $name) {
+//                    $temp_arr[] = "<p>".$name."</p>";
+//                }
+//                $name_final = join(" ", $temp_arr);
+                $name_final = "<p>".$ques['ques_name']."</p>";
+          ?>      
           <div class="inn_div2 marg1"> <img src="images/home_y.jpg" alt="img">
             <?php echo $name_final; ?>
               <a href="welcome-page.php?ques_id=<?php echo $ques['ques_id']; ?>" ><button class="butt_view1"> Edit </button></a>
@@ -86,7 +86,6 @@ for (var i = 0; i < styleSheets.length; i++) {
           </div>-->
           <div class="clear"> </div>
         </div>
-      </div>
       <div id="tabs-2">
         <div class="inn_div_img">
           <div class="inn_div2 marg1"> <img src="images/home_g.jpg" alt="img">

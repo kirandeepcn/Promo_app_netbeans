@@ -196,5 +196,46 @@ class Quest {
 
         return $output;
     }
+    
+    public function getQuesNameFromID($ques_id)
+    {
+        $query = "SELECT  `ques_name`, `user_id` FROM `ques_user_xref` WHERE `ques_id` = :ques_id";
+
+        $bindParams = array("ques_id" => $ques_id);
+
+        $qh = $this->con->getQueryHandler($query, $bindParams);
+
+        $res = $qh->fetch(PDO::FETCH_ASSOC);
+
+        return $res;
+    }
+    
+    public function getQuesDateFromID($ques_id)
+    {
+        $query = "SELECT `start_date`, `end_date` FROM `ques_datetime` WHERE `ques_id` = :ques_id";
+
+        $bindParams = array("ques_id" => $ques_id);
+
+        $qh = $this->con->getQueryHandler($query, $bindParams);
+
+        while ($res = $qh->fetch(PDO::FETCH_ASSOC)) {
+            $output[] = $res;
+        }
+
+        return $output;
+    }
+    
+    public function getQuesClientFromID($user_id)
+    {
+        $query = "SELECT  `username` FROM `user_login` WHERE `id` = :user_id";
+
+        $bindParams = array("user_id" => $user_id);
+
+        $qh = $this->con->getQueryHandler($query, $bindParams);
+
+       $res = $qh->fetch(PDO::FETCH_ASSOC);
+
+        return $res;
+    }
 
 }
