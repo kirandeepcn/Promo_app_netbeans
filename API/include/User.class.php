@@ -70,6 +70,22 @@ class User {
         return $id;
     }
     
+     public function updateUser($user_id,$username, $password, $role) {
+
+        $accessToken = sha1(substr(md5($username), 0, 15));
+       
+
+        $hashPass = substr(hash('sha512', $password), 0, 20);
+
+        $query = "UPDATE `user_login` SET `access_token`= :access_token,`username`= :username,`password`= :password,`role`= :role WHERE `id` = :user_id";
+
+        $bindParams = array("user_id"=>$user_id,"access_token" => $accessToken,"username"=>$username, "password" => $hashPass, "role" => $role);
+
+        $id = $this->con->insertQuery($query, $bindParams);
+
+        return $id;
+    }
+    
      public function deleteUser($userID) {
      
         $query = "DELETE FROM `user_login` WHERE `id` = :user_id";

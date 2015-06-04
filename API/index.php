@@ -152,6 +152,67 @@ switch ($type) {
             }
         break;
         
+       case "update_quest":
+            $ques_id = isset($_POST['ques_id']) ? $_POST['ques_id'] : "";
+            $question = isset($_POST['ques']) ? $_POST['ques'] : "";
+            $username = isset($_POST['clientname']) ? $_POST['clientname'] : "";
+            $password = isset($_POST['password']) ? $_POST['password'] : "";
+            $allowexport = isset($_POST['allowexport']) ? $_POST['allowexport'] : "";
+            $allowimport = isset($_POST['allowimport']) ? $_POST['allowimport'] : "";
+            $start_date = isset($_POST['startdate']) ? $_POST['startdate'] : array();
+            $end_date = isset($_POST['enddate']) ? $_POST['enddate'] : array();
+            $setting_ids = array();
+            if ($question == "" || $username == "" || $password == "") {
+                echo json_encode(array("code" => "-1", "log" => "Some fields are missing"));
+                exit();
+            } 
+            $setting_ids[] = 1;
+            if($allowexport != "") {
+               $active[] = 1;
+            } else {
+               $active[] = 0;
+            }
+            
+            $setting_ids[] = 2;
+            if($allowimport != "") {
+               $active[] = 1;
+            } else {
+               $active[] = 0;
+            }
+
+            $questObj = new Quest();
+            $client_id_arr = $questObj->getQuesNameFromID($ques_id);
+            $ques_name_old = $client_id_arr['ques_name'];
+            $client_id = $client_id_arr['user_id'];
+            $userObj = new User();
+
+            $userID = $userObj->updateUser($client_id, $username, $password, "2");
+            if($ques_name_old != $question) {
+               if($questObj->checkQuestionnaire($question)) {
+                   $flag = true;
+               } else {
+                   $flag = false;
+               }
+            } else {
+                $flag = true;
+            }
+            if($flag) {
+                $questObj->updateQuestionnaire($question, $ques_id);
+                $questObj->deleteQuesSetting($ques_id);
+                for($i=0; $i<count($setting_ids); $i++) {
+                    $questObj->insertQuesSetting($ques_id, $setting_ids[$i],$active[$i]);
+                }
+                $questObj->deleteQuesDate($ques_id);
+                for($i=0; $i<count($start_date); $i++)
+                {
+                    $questObj->insertQuesDate($ques_id, $start_date[$i], $end_date[$i]);
+                }
+                echo json_encode(array("code" => "0", "log" => "Questionnaire created", "ques_id" => $ques_id));
+            } else {
+                $userObj->deleteUser($userID);
+                echo json_encode(array("code" => "-1", "log" => "Questionnaire already present"));
+            }            
+        break;
     case "ques_element":
         $is_welcome = isset($_POST['is_welcome'])?$_POST['is_welcome']:"";
         $ques_id = isset($_POST['ques_id'])?$_POST['ques_id']:"";

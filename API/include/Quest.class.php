@@ -25,6 +25,16 @@ class Quest {
         return $id;
     }
     
+    public function updateQuestionnaire($name,$ques_id) {
+
+        $query = "UPDATE `ques_user_xref` SET `ques_name`= :ques_name WHERE `ques_id` = :ques_id";
+
+        $bindParams = array("ques_name" => $name, "ques_id" => $ques_id);
+
+        $id = $this->con->insertQuery($query, $bindParams);
+        return $id;
+    }
+    
     public function checkQuestionnaire($name) {
 
         $query = "SELECT COUNT(*) as count FROM `ques_user_xref` WHERE `ques_name` = :ques_name";
@@ -45,6 +55,16 @@ class Quest {
         $query = "INSERT INTO `ques_settings`(`ques_id`, `setting_id`, `active`) VALUES (:ques_id,:setting_id,:active)";
 
         $bindParams = array("ques_id" => $ques_id, "setting_id" => $setting_id, "active"=>$active);
+
+        $id = $this->con->insertQuery($query, $bindParams);
+        return $id;
+     }
+     
+     public function deleteQuesSetting($ques_id) {
+
+        $query = "DELETE FROM `ques_settings` WHERE `ques_id` = :ques_id AND `setting_id` IN (1,2) ";
+
+        $bindParams = array("ques_id" => $ques_id);
 
         $id = $this->con->insertQuery($query, $bindParams);
         return $id;
@@ -80,6 +100,16 @@ class Quest {
         $query = "INSERT INTO `ques_datetime`(`ques_id`, `start_date`, `end_date`) VALUES (:ques_id,:start_date,:end_date)";
 
         $bindParams = array("ques_id" => $ques_id, "start_date" => $start_date, "end_date"=>$end_date);
+
+        $id = $this->con->insertQuery($query, $bindParams);
+        return $id;
+    }
+    
+    public function deleteQuesDate($ques_id) {
+
+        $query = "DELETE FROM `ques_datetime` WHERE `ques_id` = :ques_id";
+
+        $bindParams = array("ques_id" => $ques_id);
 
         $id = $this->con->insertQuery($query, $bindParams);
         return $id;
@@ -212,12 +242,14 @@ class Quest {
     
     public function getQuesDateFromID($ques_id)
     {
-        $query = "SELECT `start_date`, `end_date` FROM `ques_datetime` WHERE `ques_id` = :ques_id";
+        $query = "SELECT DATE_FORMAT(`start_date`,'%Y/%m/%d %h:%i') as start_date, DATE_FORMAT(`end_date`,'%Y/%m/%d %h:%i') as end_date FROM `ques_datetime` WHERE `ques_id` = :ques_id";
 
         $bindParams = array("ques_id" => $ques_id);
 
         $qh = $this->con->getQueryHandler($query, $bindParams);
-
+        
+        $output = array();
+        
         while ($res = $qh->fetch(PDO::FETCH_ASSOC)) {
             $output[] = $res;
         }
@@ -237,5 +269,25 @@ class Quest {
 
         return $res;
     }
+    
+    public function getQuesSettingFromID($ques_id)
+    {
+        $query = "SELECT `setting_id`, `active` FROM `ques_settings` WHERE `ques_id` = :ques_id AND `setting_id` IN ('1','2')";
+
+        $bindParams = array("ques_id" => $ques_id);
+
+        $qh = $this->con->getQueryHandler($query, $bindParams);
+       
+       while ($res = $qh->fetch(PDO::FETCH_ASSOC)) {
+           if($res['setting_id'] == "1") {
+               $allow_export = ($res['active'] == "1")?true:false;
+           } else {
+               $allow_preview = ($res['active'] == "1")?true:false;
+           }            
+        }
+
+        return array("is_export"=>$allow_export,"is_preview"=>$allow_preview);
+    }
+    
 
 }

@@ -9,11 +9,24 @@
 <script type='text/javascript' src="jquery/docs.js"></script>
 <script src="http://www.amcharts.com/lib/3/amcharts.js"></script>
 <script src="http://www.amcharts.com/lib/3/pie.js"></script>
-<!--script src="http://www.amcharts.com/lib/3/themes/light.js"--></script>
+<!--script src="http://www.amcharts.com/lib/3/themes/light.js"></script-->
 <script>
+ function showpop(id) {
+    if (confirm("Wouuld you like to remove this color box") == true) {
+         $("#"+id).remove();
+    } else {
+       
+    }    
+}
 $(document).ready(function(){
-	$("minus_img img").click(function(){
-		$("#op").append("<div class='wheel_tabs'><label class='fleft wh_tab_mm'>Panel Color</label><div class='example'><input type='text' name='preferredRgb'id='24' value='orangered' /></div>");	
+	var  box_col = 0;
+	var  num = 0;
+	
+	$(".minus_img3 img").click(function(){
+		box_col++;
+		num++;
+		 var abc=$("#op");
+		$("#op").append("<div id='drag_"+box_col+"'class='wheel_tabs'><div class='example'><input type='text' name='preferredRgb' id='num' value='orangered'  /><div><img src='images/minus.png' onclick='showpop(\"drag_"+box_col+"\")'></div></div>");	
 	});
     
 });
@@ -38,9 +51,7 @@ $(document).ready(function(){
 });
 </script>
 <script>
-function myFunction() {
-    window.open("http://localhost/promoapps/questionnaire_question.php");
-}
+
 function outputUpdate1(vol) {
 
 document.querySelector('#1').value = vol;
@@ -61,7 +72,24 @@ document.querySelector('#3').value = vol;
 
 
 </script>
+<script type="text/javascript">
 
+$(document).ready(function(){
+	$('#hmw').click(function(){
+		$('#hmws_bt').click();
+	});
+  
+       $("#outer_drag").sortable({
+           handle : '.handle',
+           update : function () {
+               var order = $('#outer_drag').sortable('serialize');                
+           }
+       });
+       
+
+</script>
+
+</style>
 </head>
 <body>
 <header>
@@ -83,15 +111,73 @@ document.querySelector('#3').value = vol;
     </div>
   </div>
 </section>
-<secton>
+
+<section>
 <div class="wrapper">
   <div class="container ww">
     <div class="wheel_app">
       <h2 class="sec_head_ques1">Prize Wheel Appearance</h2>
       <div class="fleft wheel_inn"> 
-     <div id="chartdiv"></div>	
-     <input type="button" class="pre_bb" value="Preview Button" onclick="myFunction()" />
-      
+<div>
+<canvas id="canvas" width="400" height="300">
+</canvas>
+</div>
+
+<script type="text/javascript">
+//var tval = document.getElementById("tval").value;
+//function gettotal_1(){
+//var tval = $("#hmw_id").val();
+
+	var i = 6;
+	 var value=360/6;
+	 
+	var myColor = ["#ECD078","#D95B43","#C02942","#542437","#53777A","red","pink","yellow","green"];
+	var myData = [];
+	for(var k = 0; k < i; k++){
+		myData[k] = value;
+	}
+	//$("#hmw_id").val(tval);
+	//alert(myData);
+//}
+function getTotal(){
+	
+var myTotal = 0;
+for (var j = 0; j < myData.length; j++) {
+myTotal += (typeof myData[j] == 'number') ? myData[j] : 0;
+}
+return myTotal;
+}
+
+function plotData() {
+var canvas;
+var ctx;
+var lastend = 0;
+var myTotal = getTotal();
+
+canvas = document.getElementById("canvas");
+
+
+
+ctx = canvas.getContext("2d");
+ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+for (var i = 0; i < myData.length; i++) {
+ctx.fillStyle = myColor[i];
+ctx.beginPath();
+ctx.moveTo(200,150);
+ctx.arc(200,150,150,lastend,lastend+
+  (Math.PI*2*(myData[i]/myTotal)),false);
+ctx.lineTo(200,150);
+ctx.fill();
+lastend += Math.PI*2*(myData[i]/myTotal);
+}
+}
+
+plotData();
+
+</script>
+     <input type="button" id="hmw" class="pre_bb" value="Preview Button"  />
+  
       
        </div>
       <!---wheel_inn closed----->
@@ -99,7 +185,7 @@ document.querySelector('#3').value = vol;
         <div class="wheel_tabs">
           <label class="fleft wh_tab_mm">Page Background Color</label>
           <div class='example'>
-            <input type='text' name='preferredRgb' id='18' value='orangered' />
+            <input type='text' name="pb_col" id='18' value='' />
           </div>
         </div>
         <div class="clear"></div>
@@ -115,21 +201,21 @@ document.querySelector('#3').value = vol;
         <div class="wheel_tabs">
           <label class="fleft wh_tab_mm ouline_mm">Wheel Outline Color</label>
           <div class='example outline_mm'>
-            <input type='text' name='preferredRgb' id='20' value='orangered' />
+            <input type='text' name="bcol" id='2' value='' />
           </div>
         </div>
         <div class="clear"></div>
         <br>
         <div class="wheel_tabs">
-        <form id="numpie" method="POST" name="col" onSubmit="myFunction()" >
+		
+		
+        
           <label class="fleft wh_tab_mm">How Many Wheel Panels?</label>
           <div class="panel_mm fleft">
-            <input type="number" name="enter" class="title_size title_size_font" value="" id="text"/>
-           
-            
-           
+            <input type="number"  name="tval" class="title_size title_size_font" value="" id="hmw_id"/>
           
-            </form>
+      
+		 
           </div>
         </div>
         <div class="clear"></div>
@@ -164,10 +250,12 @@ document.querySelector('#3').value = vol;
             <input type='text' name='preferredRgb' id='24' value='orangered' />
           </div>
         </div>
+		<div id="op"></div>
         <div class="clear"></div>
+		<div id="op"></div>
         <br>
         <div class="inner_drag minus_img3"><img src="images/lgt_p.png" style="margin-left:100px;">Add another color</div>
-        <div id="op"></div>
+        
         <label class="fleft wh_tab_mm">Upload logo for center of the wheel </label>
         <input type="text">
         <button class="bb_ques fright browse_tab">Browse..</button>
@@ -187,6 +275,9 @@ document.querySelector('#3').value = vol;
             <input type="number" class="title_size title_size_font">
           </div>
         </div>
+		 <input type="submit" id="hmws_bt"onclick="gettotal_1()" />
+	
+		 
         <div class="clear"></div>
         <br>
       </div>
@@ -330,7 +421,7 @@ document.querySelector('#3').value = vol;
           <label>Background image color overlay</label>
           <br>
           <div class='example'>
-            <input type='text' name='preferredRgb' id='3' value='orangered' />
+            <input type='text' name='preferredRgb' id='20' value='orangered' />
           </div>
         </div>
         <div class="inner_title3 inner_title_ttl hh fleft">
@@ -429,7 +520,7 @@ document.querySelector('#3').value = vol;
 -->
 </section>
 
-<script>
+<!--script>
 var data;
 var i = 0;
 function myFunction() {
@@ -480,50 +571,6 @@ var chart = AmCharts.makeChart( "chartdiv", {
 );
 	
 	
-</script>
-
-
-
-
-
-
-
-<!--
-<script>
-	var lol_1 = i = 0;
-	var lol = document.getElementById('lolz');
-	function kk() {
-	var lol_1  = lol.value;
-	
-	}
-
-var chart = AmCharts.makeChart( "chartdiv", {
-  "type": "pie",
-  "dataProvider": [
-
-
-  {
-    "country": i,
-    "litres": 301.9
-	  
-  },
-  
-  {
-    "country": "1",
-    "litres": 301.9
-  }
-  ],
-  "valueField": "litres",
-  "titleField": "country",
-  "export": {
-    "enabled": true
-  }
-  
-} 
-
-);
-	</script>
-    
-    -->
+</script-->
 </body>
 </html>
