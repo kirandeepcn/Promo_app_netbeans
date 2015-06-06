@@ -289,5 +289,37 @@ class Quest {
         return array("is_export"=>$allow_export,"is_preview"=>$allow_preview);
     }
     
+    public function isWelcome($ques_id)
+    {
+        $query = "SELECT `setting_id`, `active` FROM `ques_settings` WHERE `ques_id` = :ques_id AND `setting_id` IN ('3')";
+
+        $bindParams = array("ques_id" => $ques_id);
+
+        $qh = $this->con->getQueryHandler($query, $bindParams);
+       
+       $res = $qh->fetch(PDO::FETCH_ASSOC);
+       $is_welcome = ($res['active'] == "1")?true:false;
+
+        return $is_welcome;
+    }
+    
+    public function getQuesSettingElement($ques_id,$setting_id)
+    {
+        $setting_id_join = join(",", $setting_id);
+        $query = "SELECT `element_id`, `element_type`, `element_name`, `element_color`, `element_size`, `element_font`, `element_attachment`, `active` "
+                . "FROM "
+                . "`ques_settings_element` "
+                . "WHERE `ques_id` = :ques_id AND `setting_id` IN ($setting_id_join)";
+
+        $bindParams = array("ques_id" => $ques_id);
+
+        $qh = $this->con->getQueryHandler($query, $bindParams);
+       
+       while ($res = $qh->fetch(PDO::FETCH_ASSOC)) {
+           $output[] = $res;
+        }
+
+        return $output;
+    }
 
 }

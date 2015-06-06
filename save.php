@@ -10,7 +10,7 @@ $(function() {
     $( "#tabs" ).tabs();
 });
 var styleSheets = document.styleSheets;
-var href = 'http://www.codenomad.net/promo_app/css/style.css';
+var href = 'css/style.css';
 for (var i = 0; i < styleSheets.length; i++) {
     if (styleSheets[i].href == href) {
         styleSheets[i].disabled = true;
@@ -51,7 +51,7 @@ for (var i = 0; i < styleSheets.length; i++) {
           ?>      
           <div class="inn_div2 marg1"> <img src="images/home_y.jpg" alt="img">
             <?php echo $name_final; ?>
-              <a href="welcome-page.php?ques_id=<?php echo $ques['ques_id']; ?>" ><button class="butt_view1"> Edit </button></a>
+              <a href="client_login.php?ques_id=<?php echo $ques['ques_id']; ?>" ><button class="butt_view1"> Edit </button></a>
             <button class="butt_view1"> Run </button>
             <button class="butt_view1 nn"> Preview </button>
             <br>

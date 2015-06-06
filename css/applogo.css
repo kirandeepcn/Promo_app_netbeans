@@ -199,12 +199,12 @@ ul#selectUl:hover li.unselected {
 .inn_div1.marg3 > img {
     margin-top: 60px;
 }
-p{color:#31475e; font-family:lato;font-size:17px; font-weight:bold;line-height:0px;}
+p{color:#31475e; font-family:lato;font-size:17px; font-weight:bold;word-wrap: break-word; margin:0; padding:0;}
 .butt_view{margin-top:60px;width:150px;}
 .logo img{width:350px; margin-left:-5px;}
 /*-----------------------------ended questionnaries------------------------------*/
 
-.inn_div2{width:28%;float:left; background-color:#ecf0f1;height:330px; border:1px solid gray;border-radius:5px; border:none;}
+.inn_div2{width:28%;float:left; background-color:#ecf0f1;height:auto; border:1px solid gray;border-radius:5px; border:none;}
 .inn_div2.marg1 > img {
     margin-top: 40px;
 }
@@ -231,6 +231,7 @@ p{color:#31475e; font-family:lato;font-size:17px; font-weight:bold;line-height:0
     width: 49.2%;
 	 line-height: 50px;
     text-align: center;}
+	.qus_name{height:63px;overflow:hidden;}
 	
 
 /*---------------------------------------- create questionnars---------------------------------------------------*/
@@ -266,7 +267,7 @@ h3{margin:0;padding:0;color: #324a60;font-family:lato;font-size: 14px;font-weigh
 .lastouter_sec{text-align:center; margin:0px auto;}
 .bb_bg{ background-color:red !important;}
 .bb_sec6{ height:38px !important;width:140px !important;margin: 10px; font-weight:bold !important; font-size: 15px !important;}
-#ques_title {margin-left: 10px;}
+#ques_title {/*margin-left: 10px;*/}
 
 /*-----------------------------------welcome page---------------------------------------------*/
 .lastouter_sec1{ margin:20px auto !important; text-align:center;}
@@ -277,8 +278,8 @@ h3{margin:0;padding:0;color: #324a60;font-family:lato;font-size: 14px;font-weigh
     margin-top: 10px;
 }
 .inner_title3.fleft {
-    width: 30%;
-	height:135px;
+    width: 20%;
+    height:135px;
 }
 .wel_lastpara{width:37%;}
 .wel_lastpara_span{color: #324a60;font-family:lato;font-size: 12px;font-weight:bold;}
@@ -414,7 +415,7 @@ button.minus_no {
   display:none;}
 #img_11 ,#img_12 ,#img_13{
   margin-left: 206px;
-  margin-top: -19px;
+  margin-top: -27px;
 }
 
 h4{color: #324a60;font-family:lato; font-size:13px;}
@@ -450,7 +451,7 @@ span{color: #324a60;font-family:lato;font-size: 12px;}
 
 .inner_title2{width:90%;}
 .img_m{float:right;margin-right:128px;}
-.img_m1{float:right;/*margin-right:254px;*/}
+.img_m1{float:right;margin-right: 225px;}
 .img_m2{float:right;margin-right:218px;}
 .img_m3{float:right;margin-right:216px;}
 .r_field{margin-right:221px !important;}
@@ -598,7 +599,7 @@ h6 {
 .grand_mm{margin-left:-8px;}
 .runner_mm{margin-left:-2px;}
 .browse_tab {
-    margin-right: 40px;
+    margin-right: 19px;
 }
 
 .random {
@@ -620,15 +621,34 @@ h6 {
 .bb_text {
     height: 25px;
     width: 252px;
-}
- #chartdiv {
-	width		: 100%;
-	height		: 418px;
-	font-size	: 11px;
-}		
+}	
 .pre_bb {
-  margin-left: 194px;
+  margin-left: 186px;
   border-radius: 5px;
   height: 37px;
   width: 139px;
+   margin-top: 115px;
 }
+.arrow-down {
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  margin-left: 188px;
+  z-index: 99;
+  position: absolute;
+  margin-top: -13px;
+}
+.outer_can {
+  width: 300px;
+  height: 300px;
+  border-radius: 100%;
+  border: #ccc solid 5px;
+  position: absolute;
+  margin: -5px 0 0 45px;
+}
+.cnt_img{ width:80px ; height:80px ; border-radius:100% ;border:2px solid #fff;  top:50% ; left:50% ; margin-top:-40px ; background-color:#fff; margin-left:-40px ; z-index:999; position:absolute;}
+/*.pieContainer { height: 100px;margin-left:199px; margin-top:100px; }
+ .pieBackground { background-color: grey; position: absolute; width: 100px; height: 100px; -moz-border-radius: 50px; -webkit-border-radius: 50px; -o-border-radius: 50px; border-radius: 50px; -moz-box-shadow: -1px 1px 3px #000; -webkit-box-shadow: -1px 1px 3px #000; -o-box-shadow: -1px 1px 3px #000; box-shadow: -1px 1px 3px #000; }
+ .pie { position: absolute; width: 100px; height: 100px; -moz-border-radius: 50px; -webkit-border-radius: 50px; -o-border-radius: 50px; border-radius: 50px; clip: rect(0px, 50px, 100px, 0px); }
+ .hold { position: absolute; width: 100px; height: 100px; -moz-border-radius: 50px; -webkit-border-radius: 50px; -o-border-radius: 50px; border-radius: 50px; clip: rect(0px, 100px, 100px, 50px); }*/
