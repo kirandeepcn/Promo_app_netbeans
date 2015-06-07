@@ -15,7 +15,239 @@ if(!isset($_GET['ques_id'])) {
         echo '<h1>Invalid Question ID passed !!</h1>';
         exit();
     }
+    $first_name = '
+            <div class="inner_drag">
+          <div class="inner_title1 inner_drag_hh fleft"> <img src="images/drag.png" alt="move" width="16" height="11" class="handle" />
+              <label class="label_ff" id="ques_title">First Name</label>
+          </div>
+          <div class="inner_title1  inner_drag_hh fleft">
+            <input type="text" class="title_text title_text2">
+          </div>
+          <div class="inner_title1 inner_drag_hh fleft">
+              <input type="checkbox" name="ques_check">
+            <span>Required </span> </div>
+          <div class="clear"> </div>
+        </div>';
     
+    $last_name = '
+            <div class="inner_drag">
+            <div class="inner_title1 inner_drag_hh fleft"> <img src="images/drag.png" alt="move" width="16" height="11" class="handle" />
+              <label class="label_ff" id="ques_title">Last Name</label>
+            </div>
+            <div class="inner_title1 inner_drag_hh fleft">
+              <input type="text" class="title_text title_text2">
+            </div>
+            <div class="inner_title1 inner_drag_hh fleft">
+              <input type="checkbox"  name="ques_check">
+              <span>Required </span> </div>
+            <div class="clear"> </div>
+          </div>';
+    
+   $title = '<div class="inner_drag">
+          <div class="inner_title1 inner_drag_hh fleft"> <img src="images/drag.png" alt="move" width="16" height="11" class="handle" />
+            <label class="label_ff" id="ques_title">Title</label>
+          </div>
+          <div class="inner_title1 inner_drag_hh fleft">
+            <input type="text" class="title_text title_text2">
+          </div>
+          <div class="inner_title1  inner_drag_hh fleft">
+            <input type="checkbox" name="ques_check">
+            <span>Required </span>
+            <div class="onoffswitch1 fright">
+              <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="tab5" checked>
+              <label class="onoffswitch-label" for="tab5"> <span class="onoffswitch-inner onoffswitch-inner1"></span> <span class="onoffswitch-switch onoffswitch-switch1"></span> </label>
+              <div class="font_bb fright"> Show </div>
+            </div>
+          </div>
+          <div class="clear"> </div>
+        </div>';
+                
+        
+     $email = '<div class="inner_drag">
+          <div class="inner_title1 inner_drag_hh fleft"> <img src="images/drag.png" alt="move" width="16" height="11" class="handle" />
+            <label  class="label_ff" id="ques_title">Email</label>
+          </div>
+          <div class="inner_title1 inner_drag_hh fleft">
+            <input type="text" class="title_text title_text2">
+          </div>
+          <div class="inner_title1  inner_drag_hh fleft">
+            <input type="checkbox"  name="ques_check">
+            <span>Required </span>
+            <div class="onoffswitch1 fright">
+              <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="tab6" checked>
+              <label class="onoffswitch-label" for="tab6"> <span class="onoffswitch-inner onoffswitch-inner1"></span> <span class="onoffswitch-switch onoffswitch-switch1"></span> </label>
+              <div class="font_bb fright"> Show </div>
+            </div>
+          </div>
+          <div class="clear"> </div>
+        </div>';
+                
+        $telephone = '<div class="inner_drag">
+          <div class="inner_title1 inner_drag_hh fleft"> <img src="images/drag.png" alt="move" width="16" height="11" class="handle" />
+            <label  class="label_ff" id="ques_title">Telephone</label>
+          </div>
+          <div class="inner_title1 inner_drag_hh fleft">
+              <input type="text" placeholder="Mobile" id="tele_val" value="Mobile" class="title_text title_text2">
+          </div>
+          <div class="inner_title1  inner_drag_hh fleft">
+            <input type="checkbox"  name="ques_check">
+            <span>Required </span>
+            <div class="onoffswitch1 fright">
+              <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="tab7" checked>
+              <label class="onoffswitch-label" for="tab7"> <span class="onoffswitch-inner onoffswitch-inner1"></span> <span class="onoffswitch-switch onoffswitch-switch1"></span> </label>
+              <div class="font_bb fright"> Show </div>
+            </div>
+          </div>
+          <div class="clear"> </div>
+          <div class="inner_title1 inner_drag_hh fleft"> </div>
+          <div class="inner_title1 inner_drag_hh fleft">
+              <input type="text" id="tele_val" placeholder="Home" value="Home" class="title_text title_text2">
+          </div>
+
+          <div class="inner_title1  inner_drag_hh fleft">
+            <input type="checkbox"  name="ques_check">
+            <span>Required </span>
+            <div class="onoffswitch1 fright">
+              <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="tab8" checked>
+              <label class="onoffswitch-label" for="tab8"> <span class="onoffswitch-inner onoffswitch-inner1"></span> <span class="onoffswitch-switch onoffswitch-switch1"></span> </label>
+              <div class="font_bb fright"> Show </div>
+            </div>
+          </div>
+          <div class="clear"> </div>
+           <div class="inner_title1 inner_drag_hh fleft"> </div>
+          <div class="inner_title1 inner_drag_hh fleft">
+            <input type="text" placeholder="Work" id="tele_val" value="Work" class="title_text title_text2">
+          </div>
+          <div class="inner_title1  inner_drag_hh fleft">
+            <input type="checkbox"  name="ques_check">
+            <span>Required </span>
+            <div class="onoffswitch1 fright">
+              <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="tab9" checked>
+              <label class="onoffswitch-label" for="tab9"> <span class="onoffswitch-inner onoffswitch-inner1"></span> <span class="onoffswitch-switch onoffswitch-switch1"></span> </label>
+              <div class="font_bb fright"> Show </div>
+            </div>
+          </div>
+          <div class="clear"> </div>
+        </div>';              
+        
+        
+        $dob = '<div class="inner_drag">
+          <div class="inner_title1 inner_drag_hh fleft"> <img src="images/drag.png" alt="move" width="16" height="11" class="handle" />
+            <label  class="label_ff" id="ques_title">Date of birth</label>
+          </div>
+          <div class="inner_title1 inner_drag_hh fleft">
+            <select name="DOBMonth" class="date_ff">
+              <option> Month </option>
+              <option value="January">January</option>
+              <option value="Febuary">Febuary</option>
+              <option value="March">March</option>
+              <option value="April">April</option>
+              <option value="May">May</option>
+              <option value="June">June</option>
+              <option value="July">July</option>
+              <option value="August">August</option>
+              <option value="September">September</option>
+              <option value="October">October</option>
+              <option value="November">November</option>
+              <option value="December">December</option>
+            </select>
+            <select name="DOBDay"  class="date_ff">
+              <option>Date</option>';
+        
+              for($day = 1; $day <= 31 ; $day++ ) {              
+              $days_arr[] = "<option value='$day'>$day</option>"; 
+              }
+              $days = join(" ", $days_arr);
+              
+        $dob = $dob.$days;
+
+        $dob = $dob.'</select>
+        <select name="DOBYear"  class="date_ff">
+        <option> Year </option>';
+              
+              $current_year = date("Y"); 
+              for($year = $current_year; $year < ($current_year+10) ; $year++ ) {
+                $year_arr[] = "<option value='$year'>$year</option>";
+              }
+              $years = join(" ",$year_arr);
+              
+        $dob = $dob.$years;
+        $dob = $dob.'</select>
+        <input type="radio" name="dformat" value="DDMMYY" checked="checked">
+        <span>DDMMYY</span>
+        <input type="radio" name="dformat" value="MMDDYY">
+        <span>MMDDYY</span> </div>
+        <div class="inner_title1  inner_drag_hh fleft">
+        <input type="checkbox" name="ques_check">
+        <span>Required </span>
+        <div class="onoffswitch1 fright">
+        <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="tab10" checked>
+        <label class="onoffswitch-label" for="tab10"> <span class="onoffswitch-inner onoffswitch-inner1"></span> <span class="onoffswitch-switch onoffswitch-switch1"></span> </label>
+        <div class="font_bb fright"> Show </div>
+        </div>
+        </div>
+        <div class="clear"> </div>
+        </div>';
+                
+       $address =  '<div class="inner_drag">
+          <div class="inner_title1 inner_drag_hh fleft"> <img src="images/drag.png" alt="move" width="16" height="11" class="handle" />
+            <label class="label_ff" id="ques_title">Street Address</label>
+          </div>
+          <div class="inner_title1 inner_drag_hh fleft">
+            <input type="text" class="title_text title_text2">
+          </div>
+          <div class="inner_title1  inner_drag_hh fleft">
+            <input type="checkbox" name="ques_check">
+            <span>Required </span>
+            <div class="onoffswitch1 fright">
+              <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="tab11" checked>
+              <label class="onoffswitch-label" for="tab11"> <span class="onoffswitch-inner onoffswitch-inner1"></span> <span class="onoffswitch-switch onoffswitch-switch1"></span> </label>
+              <div class="font_bb fright"> Show </div>
+            </div>
+          </div>
+          <div class="clear"> </div>
+        </div>';
+                
+        $post_code = '<div class="inner_drag">
+          <div class="inner_title1 inner_drag_hh fleft"> <img src="images/drag.png" alt="move" width="16" height="11" class="handle" />
+            <label class="label_ff" id="ques_title">Post Code</label>
+          </div>
+          <div class="inner_title1 inner_drag_hh fleft">
+            <input type="text" class="title_text title_text2">
+          </div>
+          <div class="inner_title1  inner_drag_hh fleft">
+            <input type="checkbox" name="ques_check">
+            <span>Required </span>
+            <div class="onoffswitch1 fright">
+              <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="tab12" checked>
+              <label class="onoffswitch-label" for="tab12"> <span class="onoffswitch-inner onoffswitch-inner1"></span> <span class="onoffswitch-switch onoffswitch-switch1"></span> </label>
+              <div class="font_bb fright"> Show </div>
+            </div>
+          </div>
+          <div class="clear"> </div>
+        </div>';
+                
+        $country = '<div class="inner_drag">
+          <div class="inner_title1 inner_drag_hh fleft"> <img src="images/drag.png" alt="move" width="16" height="11" class="handle" />
+            <label class="label_ff" id="ques_title">Country</label>
+          </div>
+          <div class="inner_title1 inner_drag_hh fleft">
+            <input type="text" class="title_text title_text2">
+          </div>
+          <div class="inner_title1  inner_drag_hh fleft">
+            <input type="checkbox" name="ques_check">
+            <span>Required </span>
+            <div class="onoffswitch1 fright">
+              <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="tab13" checked>
+              <label class="onoffswitch-label" for="tab13"> <span class="onoffswitch-inner onoffswitch-inner1"></span> <span class="onoffswitch-switch onoffswitch-switch1"></span> </label>
+              <div class="font_bb fright"> Show </div>
+            </div>
+          </div>
+          <div class="clear"> </div>
+        </div>';
+    
+        $order_ques = array($first_name,$last_name,$title,$email,$telephone,$dob,$address,$post_code,$country);
+        
     if(isset($_POST['submit_btn_text'])) {        
         $count = count($_POST['ques_type_id']);                
         $file_index = 0;
@@ -40,6 +272,162 @@ if(!isset($_GET['ques_id'])) {
        // header("Location: questionnaire_appearance.php?ques_id="+$ques_id);
         echo "<script>location.href = 'questionnaire_appearance.php?ques_id=$ques_id';</script>";
         exit();
+    } else {
+        $temp_order = $questObj->getQuesQuestionnaire($ques_id);
+        
+        if(!empty($temp_order)) {
+            $order_ques = array();
+            foreach($temp_order as $temp) {
+                if($temp['ques_title'] == "First Name") {
+                    $required = ($temp['required'] == "1")?"checked":"";
+                    $first_name = '
+                        <div class="inner_drag">
+                      <div class="inner_title1 inner_drag_hh fleft"> <img src="images/drag.png" alt="move" width="16" height="11" class="handle" />
+                          <label class="label_ff" id="ques_title">First Name</label>
+                      </div>
+                      <div class="inner_title1  inner_drag_hh fleft">
+                        <input type="text" class="title_text title_text2">
+                      </div>
+                      <div class="inner_title1 inner_drag_hh fleft">
+                          <input type="checkbox" name="ques_check" '.$required.'>
+                        <span>Required </span> </div>
+                      <div class="clear"> </div>
+                    </div>';
+                    $element = $first_name;
+                } else if($temp['ques_title'] == "Last Name") {
+                    $required = ($temp['required'] == "1")?"checked":"";
+                    $last_name = '
+                    <div class="inner_drag">
+                    <div class="inner_title1 inner_drag_hh fleft"> <img src="images/drag.png" alt="move" width="16" height="11" class="handle" />
+                      <label class="label_ff" id="ques_title">Last Name</label>
+                    </div>
+                    <div class="inner_title1 inner_drag_hh fleft">
+                      <input type="text" class="title_text title_text2">
+                    </div>
+                    <div class="inner_title1 inner_drag_hh fleft">
+                      <input type="checkbox"  name="ques_check" '.$required.'>
+                      <span>Required </span> </div>
+                    <div class="clear"> </div>
+                  </div>';
+                    $element = $last_name;
+                } else if($temp['ques_title'] == "Title") {
+                    $required = ($temp['required'] == "1")?"checked":"";
+                    $active = ($temp['active'] == "1")?"checked":"";
+                    $title = '<div class="inner_drag">
+                      <div class="inner_title1 inner_drag_hh fleft"> <img src="images/drag.png" alt="move" width="16" height="11" class="handle" />
+                        <label class="label_ff" id="ques_title">Title</label>
+                      </div>
+                      <div class="inner_title1 inner_drag_hh fleft">
+                        <input type="text" class="title_text title_text2">
+                      </div>
+                      <div class="inner_title1  inner_drag_hh fleft">
+                        <input type="checkbox" name="ques_check" '.$required.'>
+                        <span>Required </span>
+                        <div class="onoffswitch1 fright">
+                          <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="tab5" '.$active.'>
+                          <label class="onoffswitch-label" for="tab5"> <span class="onoffswitch-inner onoffswitch-inner1"></span> <span class="onoffswitch-switch onoffswitch-switch1"></span> </label>
+                          <div class="font_bb fright"> Show </div>
+                        </div>
+                      </div>
+                      <div class="clear"> </div>
+                    </div>';
+                    $element = $title;
+                } else if($temp['ques_title'] == "Email") {
+                    $required = ($temp['required'] == "1")?"checked":"";
+                    $active = ($temp['active'] == "1")?"checked":"";
+                    $email = '<div class="inner_drag">
+                    <div class="inner_title1 inner_drag_hh fleft"> <img src="images/drag.png" alt="move" width="16" height="11" class="handle" />
+                    <label  class="label_ff" id="ques_title">Email</label>
+                    </div>
+                    <div class="inner_title1 inner_drag_hh fleft">
+                    <input type="text" class="title_text title_text2">
+                    </div>
+                    <div class="inner_title1  inner_drag_hh fleft">
+                    <input type="checkbox"  name="ques_check" '.$required.'>
+                    <span>Required </span>
+                    <div class="onoffswitch1 fright">
+                    <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="tab6" '.$active.'>
+                    <label class="onoffswitch-label" for="tab6"> <span class="onoffswitch-inner onoffswitch-inner1"></span> <span class="onoffswitch-switch onoffswitch-switch1"></span> </label>
+                    <div class="font_bb fright"> Show </div>
+                    </div>
+                    </div>
+                    <div class="clear"> </div>
+                    </div>';
+                    $element = $email;
+                } else if($temp['ques_title'] == "Telephone") {
+                    $required_arr = explode(",", $temp['required']);
+                    $active_arr = explode(",", $temp['active']);
+
+                    $mobile_req = ($required_arr[0] == "1")?"checked":"";
+                    $home_req = ($required_arr[1] == "1")?"checked":"";
+                    $work_req = ($required_arr[2] == "1")?"checked":"";
+
+                    $mobile_active = ($active_arr[0] == "1")?"checked":"";
+                    $home_active = ($active_arr[1] == "1")?"checked":"";
+                    $work_active = ($active_arr[2] == "1")?"checked":"";
+
+                    $telephone = '<div class="inner_drag">
+                    <div class="inner_title1 inner_drag_hh fleft"> <img src="images/drag.png" alt="move" width="16" height="11" class="handle" />
+                    <label  class="label_ff" id="ques_title">Telephone</label>
+                    </div>
+                    <div class="inner_title1 inner_drag_hh fleft">
+                    <input type="text" placeholder="Mobile" id="tele_val" value="Mobile" class="title_text title_text2">
+                    </div>
+                    <div class="inner_title1  inner_drag_hh fleft">
+                    <input type="checkbox"  name="ques_check" '.$mobile_req.'>
+                    <span>Required </span>
+                    <div class="onoffswitch1 fright">
+                    <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="tab7" '.$mobile_active.'>
+                    <label class="onoffswitch-label" for="tab7"> <span class="onoffswitch-inner onoffswitch-inner1"></span> <span class="onoffswitch-switch onoffswitch-switch1"></span> </label>
+                    <div class="font_bb fright"> Show </div>
+                    </div>
+                    </div>
+                    <div class="clear"> </div>
+                    <div class="inner_title1 inner_drag_hh fleft"> </div>
+                    <div class="inner_title1 inner_drag_hh fleft">
+                    <input type="text" id="tele_val" placeholder="Home" value="Home" class="title_text title_text2">
+                    </div>
+
+                    <div class="inner_title1  inner_drag_hh fleft">
+                    <input type="checkbox"  name="ques_check" '.$home_req.'>
+                    <span>Required </span>
+                    <div class="onoffswitch1 fright">
+                    <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="tab8" '.$home_active.'>
+                    <label class="onoffswitch-label" for="tab8"> <span class="onoffswitch-inner onoffswitch-inner1"></span> <span class="onoffswitch-switch onoffswitch-switch1"></span> </label>
+                    <div class="font_bb fright"> Show </div>
+                    </div>
+                    </div>
+                    <div class="clear"> </div>
+                    <div class="inner_title1 inner_drag_hh fleft"> </div>
+                    <div class="inner_title1 inner_drag_hh fleft">
+                    <input type="text" placeholder="Work" id="tele_val" value="Work" class="title_text title_text2">
+                    </div>
+                    <div class="inner_title1  inner_drag_hh fleft">
+                    <input type="checkbox"  name="ques_check" '.$work_req.'>
+                    <span>Required </span>
+                    <div class="onoffswitch1 fright">
+                    <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="tab9" '.$work_active.'>
+                    <label class="onoffswitch-label" for="tab9"> <span class="onoffswitch-inner onoffswitch-inner1"></span> <span class="onoffswitch-switch onoffswitch-switch1"></span> </label>
+                    <div class="font_bb fright"> Show </div>
+                    </div>
+                    </div>
+                    <div class="clear"> </div>
+                    </div>';
+                    $element = $telephone;
+                } else if($temp['ques_title'] == "Date of birth") {
+                    $element = $dob;
+                } else if($temp['ques_title'] == "Street Address") {
+                    $element = $address;
+                } else if($temp['ques_title'] == "Post Code") {
+                    $element = $post_code;
+                } else if($temp['ques_title'] == "Country") {
+                    $element = $country;
+                } else {
+                    continue;
+                }
+                $order_ques[] = $element;
+            }
+        }
     }
 }
 ?>
@@ -58,28 +446,24 @@ if(!isset($_GET['ques_id'])) {
 function showpop(id) {
     if (confirm("Would You Like To Delete This Question") == true) {
          $("#"+id).remove();
-    } else {
-       
-    }    
+    }   
 }
 
 function add(id, num) {
 		//num_new = num + 1;
          $("#adding_new_option_checkbox_"+id).before("<div class='inner_title2  inner_drag_hh fleft' id='drag_"+id+"_"+num+"'><label> Options</label><input type='checkbox'><input type='text' class='title_text title_text2 input_text txt' name='options_temp'><div class='img_m1'><img src='images/minus.png' onclick='showpop(\"drag_"+id+"_"+num+"\")'></div></div>");
 		 num++;
-		 $("#adding_new_option_checkbox_"+id).html("<img src='images/lgt_p.png' style='margin-left:100px' onclick='add(\""+id+"\", \""+num+"\");'>");
-		 
-
+		 $("#adding_new_option_checkbox_"+id).html("<img src='images/lgt_p.png' style='margin-left:100px' onclick='add(\""+id+"\", \""+num+"\");'>");		 
 }
 
 function add_radio(id, num) {
-        $("#adding_new_option_radio_"+id).before("<div class='inner_title2  inner_drag_hh fleft' id='drag_"+id+"_"+num+"'><label> Options</label><input type='radio'><input type='text' class='title_text title_text2 input_text txt'><div class='img_m1'><img src='images/lgt_m.png' onclick='showpop(\"drag_"+id+"_"+num+"\")'></div></div>");
+        $("#adding_new_option_radio_"+id).before("<div class='inner_title2  inner_drag_hh fleft' id='drag_"+id+"_"+num+"'><label> Options</label><input type='radio'><input type='text' class='title_text title_text2 input_text txt'><div class='img_m1'><img src='images/minus.png' onclick='showpop(\"drag_"+id+"_"+num+"\")'></div></div>");
 	 num++;
 	 $("#adding_new_option_radio_"+id).html("<img src='images/lgt_p.png' style='margin-left:100px' onclick='add_radio(\""+id+"\", \""+num+"\");'>");
 }
 
 function add_dropdown(id, num) {
-        $("#adding_new_option_dropdown_"+id).before("<div class='inner_title2  inner_drag_hh fleft' id='drag_"+id+"_"+num+"'><label> Options</label><input type='checkbox'><input type='text' class='title_text title_text2 input_text txt'><div class='img_m1'><img src='images/lgt_m.png' onclick='showpop(\"drag_"+id+"_"+num+"\")'></div></div>");
+        $("#adding_new_option_dropdown_"+id).before("<div class='inner_title2  inner_drag_hh fleft' id='drag_"+id+"_"+num+"'><label> Options</label><input type='checkbox'><input type='text' class='title_text title_text2 input_text txt'><div class='img_m1'><img src='images/minus.png' onclick='showpop(\"drag_"+id+"_"+num+"\")'></div></div>");
         num++;
         $("#adding_new_option_dropdown_"+id).html("<img src='images/lgt_p.png' style='margin-left:100px' onclick='add_dropdown(\""+id+"\", \""+num+"\");'>");
 }
@@ -92,9 +476,6 @@ $(document).ready(function(){
 	var  btn_num_dropdown =0;
 	var  btn_num_photo =0;
 	var  btn_num_answer =0;
-	var  btn_num1 = 0;
-	var  btn_num2 = 0;
-	var  btn_num3 = 0;
         $(".btn1").click(function(){
             btn_num++;
             $("#outer_drag1").append("<div id='drag_"+btn_num+"' class='inner_drag'><div class='inner_title2  inner_drag_hh fleft'><img src='images/drag.png' alt='move' width='16' height='11' class='handle' /><label id='ques_type'>Text Line</label><input type='checkbox' name='ques_check'><span> Required </span> </div><div class='clear'> </div><div class='inner_title2  inner_drag_hh fleft'><label> Question Title</label><input type='text' id='ques_title' class='title_text title_text2 input_text'><div class='img_m' id='img_1'><img src='images/minus.png' id='img_1'onclick='showpop(\"drag_"+btn_num+"\")'></div></div></div></div>");
@@ -109,13 +490,11 @@ $(document).ready(function(){
         });
 	$(".btn4").click(function(){
             btn_num_radio++;
-            btn_num2++;
-            $("#outer_drag1").append("<div id='drag_radio"+btn_num_radio+"' class='inner_drag'><div class='inner_title2  inner_drag_hh fleft'> <img src='images/drag.png' alt='move' width='16' height='11' class='handle' /><label id='ques_type'>Radio Button</label><input type='checkbox' name=ques_check><span> Required </span> </div><div class='clear'> </div><div class='inner_title2  inner_drag_hh fleft'><label> Question Title</label><input type='text' id='ques_title' class='title_text title_text2 input_text' value='' id='minus_id_check'><div class='img_m r_check fright' id='img_13'><img src='images/minus.png' onclick='showpop(\"drag_radio"+btn_num_radio+"\")'></div></div><div class='clear'> </div><div class='inner_title2  inner_drag_hh fleft'  id='drag_1"+btn_num2+"'><label> Options</label><input type='radio'><input type='text' name='options_temp' class='title_text title_text2 input_text txt'><div class='img_m1'><img src='images/minus.png' onclick='showpop(\"drag_1"+btn_num2+"\")'></div></div><div class='clear'> </div><div class='inner_drag minus_img1'> <img src='images/lgt_p.png' style='margin-left:100px' onclick='add_radio(\""+btn_num_radio+"\", \"1\");';> </div></div>");
+            $("#outer_drag1").append("<div id='drag_radio"+btn_num_radio+"' class='inner_drag'><div class='inner_title2  inner_drag_hh fleft'> <img src='images/drag.png' alt='move' width='16' height='11' class='handle' /><label id='ques_type'>Radio Button</label><input type='checkbox' name=ques_check><span> Required </span> </div><div class='clear'> </div><div class='inner_title2  inner_drag_hh fleft'><label> Question Title</label><input type='text' id='ques_title' class='title_text title_text2 input_text' value='' id='minus_id_check'><div class='img_m r_check fright' id='img_13'><img src='images/minus.png' onclick='showpop(\"drag_radio"+btn_num_radio+"\")'></div></div><div class='clear'> </div><div class='inner_title2  inner_drag_hh fleft'  id='drag_"+btn_num_radio+"_0'><label> Options</label><input type='radio'><input type='text' name='options_temp' class='title_text title_text2 input_text txt'><div class='img_m1'><img src='images/minus.png' onclick='showpop(\"drag_"+btn_num_radio+"_0\")'></'></div></div><div class='clear'> </div><div id='adding_new_option_radio_"+btn_num_radio+"' class='inner_drag minus_img1'> <img src='images/lgt_p.png' style='margin-left:100px' onclick='add_radio(\""+btn_num_radio+"\", \"1\");';> </div></div>");
         });
 	$(".btn5").click(function(){
             btn_num_dropdown++;
-            btn_num3++;
-            $("#outer_drag1").append("<div id='drag_dropdown"+btn_num_dropdown+"' class='inner_drag'><div class='inner_title2  inner_drag_hh fleft'> <img src='images/drag.png' alt='move' width='16' height='11' class='handle' /><label id='ques_type'>Drop Down</label><input type='checkbox' name=ques_check><span> Required </span> </div><div class='clear'> </div><div class='inner_title2  inner_drag_hh fleft'><label> Question Title</label><input type='text' id='ques_title' class='title_text title_text2 input_text' value='' id='minus_id_check'><div class='img_m r_check fright' id='img_13'><img src='images/minus.png' onclick='showpop(\"drag_dropdown"+btn_num_dropdown+"\")'></div></div><div class='clear'> </div><div class='inner_title2  inner_drag_hh fleft'  id='drag_1"+btn_num3+"'><label> Options</label><input type='checkbox'><input type='text' name='options_temp' class='title_text title_text2 input_text txt'><div class='img_m1'><img src='images/minus.png' onclick='showpop(\"drag_1"+btn_num3+"\")'></div></div><div class='clear'> </div><div class='inner_drag minus_img2'> <img src='images/lgt_p.png' style='margin-left:100px' onclick='add_dropdown(\""+btn_num_dropdown+"\", \"1\");';> </div></div>");
+            $("#outer_drag1").append("<div id='drag_dropdown"+btn_num_dropdown+"' class='inner_drag'><div class='inner_title2  inner_drag_hh fleft'> <img src='images/drag.png' alt='move' width='16' height='11' class='handle' /><label id='ques_type'>Drop Down</label><input type='checkbox' name=ques_check><span> Required </span> </div><div class='clear'> </div><div class='inner_title2  inner_drag_hh fleft'><label> Question Title</label><input type='text' id='ques_title' class='title_text title_text2 input_text' value='' id='minus_id_check'><div class='img_m r_check fright' id='img_13'><img src='images/minus.png' onclick='showpop(\"drag_dropdown"+btn_num_dropdown+"\")'></div></div><div class='clear'> </div><div class='inner_title2  inner_drag_hh fleft'  id='drag_"+btn_num_dropdown+"_0'><label> Options</label><input type='checkbox'><input type='text' name='options_temp' class='title_text title_text2 input_text txt'><div class='img_m1'><img src='images/minus.png' onclick='showpop(\"drag_"+btn_num_dropdown+"_0\")'></div></div><div class='clear'> </div><div id='adding_new_option_dropdown_"+btn_num_dropdown+"' class='inner_drag minus_img2'> <img src='images/lgt_p.png' style='margin-left:100px' onclick='add_dropdown(\""+btn_num_dropdown+"\", \"1\");';> </div></div>");
         });
 	$(".btn6").click(function(){
             btn_num_photo++;
@@ -235,8 +614,6 @@ $(document).ready(function(){
                 $("#ques_form").append($(ques_active));
                 $("#ques_form").append($(ques_options));
             });
-            //console.log( $( '#ques_form' ).serialize() );        
-            //$("#ques_form").append($(input[2]));
             
              $('#outer_drag1').children('.inner_drag').each(function(index){
                
@@ -286,9 +663,7 @@ $(document).ready(function(){
                 } else if(ques_type === "Photo Question") {
                    ques_options = "";
                 }
-//                } else if(ques_type === "Rating Scale") {
-//                    
-//                }
+
                 
                 //Creating hidden elements to pass the values
                 var ques_type_id = $("<input>").attr("type", "hidden").attr("name", "ques_type_id[]").val(type_id);
@@ -330,239 +705,14 @@ $(document).ready(function(){
       <h2 class="sec_head_ques1">Questionnaire Questions</h2>
       <h4>Default</h4>
       <div id="outer_drag">
-        <div class="inner_drag">
-          <div class="inner_title1 inner_drag_hh fleft"> <img src="images/drag.png" alt="move" width="16" height="11" class="handle" />
-              <label class="label_ff" id="ques_title">First Name</label>
-          </div>
-          <div class="inner_title1  inner_drag_hh fleft">
-            <input type="text" class="title_text title_text2">
-          </div>
-          <div class="inner_title1 inner_drag_hh fleft">
-              <input type="checkbox" name="ques_check">
-            <span>Required </span> </div>
-          <div class="clear"> </div>
-        </div>
-        <!---inner_drag closed-->
-        <div class="inner_drag">
-          <div class="inner_title1 inner_drag_hh fleft"> <img src="images/drag.png" alt="move" width="16" height="11" class="handle" />
-            <label class="label_ff" id="ques_title">Last Name</label>
-          </div>
-          <div class="inner_title1 inner_drag_hh fleft">
-            <input type="text" class="title_text title_text2">
-          </div>
-          <div class="inner_title1 inner_drag_hh fleft">
-            <input type="checkbox"  name="ques_check">
-            <span>Required </span> </div>
-          <div class="clear"> </div>
-        </div>
-        <!---inner_drag closed-->
-        <div class="inner_drag">
-          <div class="inner_title1 inner_drag_hh fleft"> <img src="images/drag.png" alt="move" width="16" height="11" class="handle" />
-            <label class="label_ff" id="ques_title">Title</label>
-          </div>
-          <div class="inner_title1 inner_drag_hh fleft">
-            <input type="text" class="title_text title_text2">
-          </div>
-          <div class="inner_title1  inner_drag_hh fleft">
-            <input type="checkbox" name="ques_check">
-            <span>Required </span>
-            <div class="onoffswitch1 fright">
-              <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="tab5" checked>
-              <label class="onoffswitch-label" for="tab5"> <span class="onoffswitch-inner onoffswitch-inner1"></span> <span class="onoffswitch-switch onoffswitch-switch1"></span> </label>
-              <div class="font_bb fright"> Show </div>
-            </div>
-          </div>
-          <div class="clear"> </div>
-        </div>
-        
-        <!---inner_drag closed-->
-        
-        <div class="inner_drag">
-          <div class="inner_title1 inner_drag_hh fleft"> <img src="images/drag.png" alt="move" width="16" height="11" class="handle" />
-            <label  class="label_ff" id="ques_title">Email</label>
-          </div>
-          <div class="inner_title1 inner_drag_hh fleft">
-            <input type="text" class="title_text title_text2">
-          </div>
-          <div class="inner_title1  inner_drag_hh fleft">
-            <input type="checkbox"  name="ques_check">
-            <span>Required </span>
-            <div class="onoffswitch1 fright">
-              <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="tab6" checked>
-              <label class="onoffswitch-label" for="tab6"> <span class="onoffswitch-inner onoffswitch-inner1"></span> <span class="onoffswitch-switch onoffswitch-switch1"></span> </label>
-              <div class="font_bb fright"> Show </div>
-            </div>
-          </div>
-          <div class="clear"> </div>
-        </div>
-        
-        <!---inner_drag closed-->
-        <div class="inner_drag">
-          <div class="inner_title1 inner_drag_hh fleft"> <img src="images/drag.png" alt="move" width="16" height="11" class="handle" />
-            <label  class="label_ff" id="ques_title">Telephone</label>
-          </div>
-          <div class="inner_title1 inner_drag_hh fleft">
-              <input type="text" placeholder="Mobile" id="tele_val" value="Mobile" class="title_text title_text2">
-          </div>
-          <div class="inner_title1  inner_drag_hh fleft">
-            <input type="checkbox"  name="ques_check">
-            <span>Required </span>
-            <div class="onoffswitch1 fright">
-              <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="tab7" checked>
-              <label class="onoffswitch-label" for="tab7"> <span class="onoffswitch-inner onoffswitch-inner1"></span> <span class="onoffswitch-switch onoffswitch-switch1"></span> </label>
-              <div class="font_bb fright"> Show </div>
-            </div>
-          </div>
-          <div class="clear"> </div>
-          <div class="inner_title1 inner_drag_hh fleft"> </div>
-          <div class="inner_title1 inner_drag_hh fleft">
-              <input type="text" id="tele_val" placeholder="Home" value="Home" class="title_text title_text2">
-          </div>
+        <?php 
 
-          <div class="inner_title1  inner_drag_hh fleft">
-            <input type="checkbox"  name="ques_check">
-            <span>Required </span>
-            <div class="onoffswitch1 fright">
-              <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="tab8" checked>
-              <label class="onoffswitch-label" for="tab8"> <span class="onoffswitch-inner onoffswitch-inner1"></span> <span class="onoffswitch-switch onoffswitch-switch1"></span> </label>
-              <div class="font_bb fright"> Show </div>
-            </div>
-          </div>
-          <div class="clear"> </div>
-           <div class="inner_title1 inner_drag_hh fleft"> </div>
-          <div class="inner_title1 inner_drag_hh fleft">
-            <input type="text" placeholder="Work" id="tele_val" value="Work" class="title_text title_text2">
-          </div>
-          <div class="inner_title1  inner_drag_hh fleft">
-            <input type="checkbox"  name="ques_check">
-            <span>Required </span>
-            <div class="onoffswitch1 fright">
-              <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="tab9" checked>
-              <label class="onoffswitch-label" for="tab9"> <span class="onoffswitch-inner onoffswitch-inner1"></span> <span class="onoffswitch-switch onoffswitch-switch1"></span> </label>
-              <div class="font_bb fright"> Show </div>
-            </div>
-          </div>
-          <div class="clear"> </div>
-        </div>              
+        foreach($order_ques as $order) {
+            echo $order;
+        }
+        ?>
+
         
-        <!---inner_drag closed-->
-        
-        <div class="inner_drag">
-          <div class="inner_title1 inner_drag_hh fleft"> <img src="images/drag.png" alt="move" width="16" height="11" class="handle" />
-            <label  class="label_ff" id="ques_title">Date of birth</label>
-          </div>
-          <div class="inner_title1 inner_drag_hh fleft">
-            <select name="DOBMonth" class="date_ff">
-              <option> Month </option>
-              <option value="January">January</option>
-              <option value="Febuary">Febuary</option>
-              <option value="March">March</option>
-              <option value="April">April</option>
-              <option value="May">May</option>
-              <option value="June">June</option>
-              <option value="July">July</option>
-              <option value="August">August</option>
-              <option value="September">September</option>
-              <option value="October">October</option>
-              <option value="November">November</option>
-              <option value="December">December</option>
-            </select>
-            <select name="DOBDay"  class="date_ff">
-              <option>Date</option>
-              <?php               
-              for($day = 1; $day <= 31 ; $day++ ) {
-              ?>
-              <option value="<?php echo $day; ?>"><?php echo $day; ?></option>  
-              <?php
-              }
-              ?>
-            </select>
-            <select name="DOBYear"  class="date_ff">
-              <option> Year </option>
-              <?php 
-              $current_year = date("Y"); 
-              for($year = $current_year; $year < ($current_year+10) ; $year++ ) {
-              ?>
-                <option value="<?php echo $year; ?>"><?php echo $year; ?></option>
-              <?php
-              }
-              ?>
-            </select>
-              <input type="radio" name="dformat" value="DDMMYY" checked="checked">
-            <span>DDMMYY</span>
-            <input type="radio" name="dformat" value="MMDDYY">
-            <span>MMDDYY</span> </div>
-          <div class="inner_title1  inner_drag_hh fleft">
-            <input type="checkbox" name="ques_check">
-            <span>Required </span>
-            <div class="onoffswitch1 fright">
-              <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="tab10" checked>
-              <label class="onoffswitch-label" for="tab10"> <span class="onoffswitch-inner onoffswitch-inner1"></span> <span class="onoffswitch-switch onoffswitch-switch1"></span> </label>
-              <div class="font_bb fright"> Show </div>
-            </div>
-          </div>
-          <div class="clear"> </div>
-        </div>
-        
-        <!---inner_drag closed-->
-        <div class="inner_drag">
-          <div class="inner_title1 inner_drag_hh fleft"> <img src="images/drag.png" alt="move" width="16" height="11" class="handle" />
-            <label class="label_ff" id="ques_title">Street Adress</label>
-          </div>
-          <div class="inner_title1 inner_drag_hh fleft">
-            <input type="text" class="title_text title_text2">
-          </div>
-          <div class="inner_title1  inner_drag_hh fleft">
-            <input type="checkbox" name="ques_check">
-            <span>Required </span>
-            <div class="onoffswitch1 fright">
-              <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="tab11" checked>
-              <label class="onoffswitch-label" for="tab11"> <span class="onoffswitch-inner onoffswitch-inner1"></span> <span class="onoffswitch-switch onoffswitch-switch1"></span> </label>
-              <div class="font_bb fright"> Show </div>
-            </div>
-          </div>
-          <div class="clear"> </div>
-        </div>
-        
-        <!---inner_drag closed-->
-        <div class="inner_drag">
-          <div class="inner_title1 inner_drag_hh fleft"> <img src="images/drag.png" alt="move" width="16" height="11" class="handle" />
-            <label class="label_ff" id="ques_title">Post Code</label>
-          </div>
-          <div class="inner_title1 inner_drag_hh fleft">
-            <input type="text" class="title_text title_text2">
-          </div>
-          <div class="inner_title1  inner_drag_hh fleft">
-            <input type="checkbox" name="ques_check">
-            <span>Required </span>
-            <div class="onoffswitch1 fright">
-              <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="tab12" checked>
-              <label class="onoffswitch-label" for="tab12"> <span class="onoffswitch-inner onoffswitch-inner1"></span> <span class="onoffswitch-switch onoffswitch-switch1"></span> </label>
-              <div class="font_bb fright"> Show </div>
-            </div>
-          </div>
-          <div class="clear"> </div>
-        </div>
-        
-        <!---inner_drag closed-->
-        <div class="inner_drag">
-          <div class="inner_title1 inner_drag_hh fleft"> <img src="images/drag.png" alt="move" width="16" height="11" class="handle" />
-            <label class="label_ff" id="ques_title">Country</label>
-          </div>
-          <div class="inner_title1 inner_drag_hh fleft">
-            <input type="number" class="drag_num">
-          </div>
-          <div class="inner_title1  inner_drag_hh fleft">
-            <input type="checkbox" name="ques_check">
-            <span>Required </span>
-            <div class="onoffswitch1 fright">
-              <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="tab13" checked>
-              <label class="onoffswitch-label" for="tab13"> <span class="onoffswitch-inner onoffswitch-inner1"></span> <span class="onoffswitch-switch onoffswitch-switch1"></span> </label>
-              <div class="font_bb fright"> Show </div>
-            </div>
-          </div>
-          <div class="clear"> </div>
-        </div>
         <br>
         <br>
         <div class="blank_div"> </div>
