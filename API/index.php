@@ -22,7 +22,7 @@ switch ($type) {
             if(isset($_POST['username']) && isset($_POST['password']) ) {
             $username = isset($_POST['username']) ? $_POST['username'] : "";
             $password = isset($_POST['password']) ? $_POST['password'] : "";
-            $accountType = "1";
+            $accountType = isset($_POST['account_type']) ? $_POST['account_type'] : "2";
             $access_token = $userObj->authenticateUser($username, $password, $accountType);            
             $check = ($access_token != -1) ? true : false;  
             if($check) {

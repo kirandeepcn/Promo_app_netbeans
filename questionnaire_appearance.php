@@ -246,7 +246,6 @@ document.querySelector('#volume').value = vol;
         <label class="sec_head_ques1 fright">(crop to fit 0*0 area)</label>
       </div>
       <div class="sec_ques_div">
-        <input type="text" class="fleft" >
         <button class="bb_ques fleft">Browse..</button>
         <input type="file" name="header_image" class="browewin" style="display:none;"/>
       </div>
@@ -315,7 +314,6 @@ document.querySelector('#volume').value = vol;
         <div class="inner_title3 inner_title_ttl hh fleft">
           <label class="sec_head_ques1 "> Background-image </label>
           <div class="sec_ques_div">
-            <input type="text" class="fleft" >
             <button class="bb_ques fleft">Browse..</button>
             <input type="file" name="appearance_image" class="browewin" style="display:none;"/>
           </div>
@@ -478,7 +476,6 @@ document.querySelector('#volume').value = vol;
         <label class="sec_head_ques1 fright">(crop to fit 0*0 area)</label>
       </div>
       <div class="sec_ques_div">
-        <input type="text" class="fleft" >
         <button class="bb_ques fleft">Browse..</button>
         <input type="file" name="footer_image" class="browewin" style="display:none;"/>
       </div>

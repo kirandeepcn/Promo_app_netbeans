@@ -252,6 +252,7 @@ if(!isset($_GET['ques_id'])) {
         $count = count($_POST['ques_type_id']);                
         $file_index = 0;
         $access_token = $_SESSION['access_token'];
+        $questObj->deleteQnsrQuestions($ques_id);
         for($i=0; $i<$count; $i++)
         {
             if($_POST['ques_type_id'][$i] == "6") {
@@ -274,7 +275,7 @@ if(!isset($_GET['ques_id'])) {
         exit();
     } else {
         $temp_order = $questObj->getQuesQuestionnaire($ques_id);
-        
+        $order_ques_dyn = array();
         if(!empty($temp_order)) {
             $order_ques = array();
             foreach($temp_order as $temp) {
@@ -415,14 +416,161 @@ if(!isset($_GET['ques_id'])) {
                     </div>';
                     $element = $telephone;
                 } else if($temp['ques_title'] == "Date of birth") {
+                    $dob_type1 = ($temp['ques_options'] == "DDMMYY")?"checked":"";
+                    $dob_type2 = ($temp['ques_options'] == "MMDDYY")?"checked":"";
+                    $required = ($temp['required'] == "1")?"checked":"";
+                    $active = ($temp['active'] == "1")?"checked":"";
+                    $dob = '<div class="inner_drag">
+                    <div class="inner_title1 inner_drag_hh fleft"> <img src="images/drag.png" alt="move" width="16" height="11" class="handle" />
+                      <label  class="label_ff" id="ques_title">Date of birth</label>
+                    </div>
+                    <div class="inner_title1 inner_drag_hh fleft">
+                      <select name="DOBMonth" class="date_ff">
+                        <option> Month </option>
+                        <option value="January">January</option>
+                        <option value="Febuary">Febuary</option>
+                        <option value="March">March</option>
+                        <option value="April">April</option>
+                        <option value="May">May</option>
+                        <option value="June">June</option>
+                        <option value="July">July</option>
+                        <option value="August">August</option>
+                        <option value="September">September</option>
+                        <option value="October">October</option>
+                        <option value="November">November</option>
+                        <option value="December">December</option>
+                      </select>
+                      <select name="DOBDay"  class="date_ff">
+                        <option>Date</option>';
+
+                        for($day = 1; $day <= 31 ; $day++ ) {              
+                        $days_arr[] = "<option value='$day'>$day</option>"; 
+                        }
+                        $days = join(" ", $days_arr);
+
+                    $dob = $dob.$days;
+
+                    $dob = $dob.'</select>
+                    <select name="DOBYear"  class="date_ff">
+                    <option> Year </option>';
+
+                        $current_year = date("Y"); 
+                        for($year = $current_year; $year < ($current_year+10) ; $year++ ) {
+                          $year_arr[] = "<option value='$year'>$year</option>";
+                        }
+                        $years = join(" ",$year_arr);
+
+                    $dob = $dob.$years;
+                    $dob = $dob.'</select>
+                    <input type="radio" name="dformat" value="DDMMYY" '.$dob_type1.'>
+                    <span>DDMMYY</span>
+                    <input type="radio" name="dformat" value="MMDDYY" '.$dob_type2.'>
+                    <span>MMDDYY</span> </div>
+                    <div class="inner_title1  inner_drag_hh fleft">
+                    <input type="checkbox" name="ques_check" '.$required.'>
+                    <span>Required </span>
+                    <div class="onoffswitch1 fright">
+                    <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="tab10" '.$active.'>
+                    <label class="onoffswitch-label" for="tab10"> <span class="onoffswitch-inner onoffswitch-inner1"></span> <span class="onoffswitch-switch onoffswitch-switch1"></span> </label>
+                    <div class="font_bb fright"> Show </div>
+                    </div>
+                    </div>
+                    <div class="clear"> </div>
+                    </div>';
                     $element = $dob;
                 } else if($temp['ques_title'] == "Street Address") {
+                    $required = ($temp['required'] == "1")?"checked":"";
+                    $active = ($temp['active'] == "1")?"checked":"";
+                    $address =  '<div class="inner_drag">
+                    <div class="inner_title1 inner_drag_hh fleft"> <img src="images/drag.png" alt="move" width="16" height="11" class="handle" />
+                    <label class="label_ff" id="ques_title">Street Address</label>
+                    </div>
+                    <div class="inner_title1 inner_drag_hh fleft">
+                    <input type="text" class="title_text title_text2">
+                    </div>
+                    <div class="inner_title1  inner_drag_hh fleft">
+                    <input type="checkbox" name="ques_check" '.$required.'>
+                    <span>Required </span>
+                    <div class="onoffswitch1 fright">
+                    <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="tab11" '.$active.'>
+                    <label class="onoffswitch-label" for="tab11"> <span class="onoffswitch-inner onoffswitch-inner1"></span> <span class="onoffswitch-switch onoffswitch-switch1"></span> </label>
+                    <div class="font_bb fright"> Show </div>
+                    </div>
+                    </div>
+                    <div class="clear"> </div>
+                    </div>';
+                    
                     $element = $address;
                 } else if($temp['ques_title'] == "Post Code") {
+                    $required = ($temp['required'] == "1")?"checked":"";
+                    $active = ($temp['active'] == "1")?"checked":"";
+                    $post_code = '<div class="inner_drag">
+                    <div class="inner_title1 inner_drag_hh fleft"> <img src="images/drag.png" alt="move" width="16" height="11" class="handle" />
+                    <label class="label_ff" id="ques_title">Post Code</label>
+                    </div>
+                    <div class="inner_title1 inner_drag_hh fleft">
+                    <input type="text" class="title_text title_text2">
+                    </div>
+                    <div class="inner_title1  inner_drag_hh fleft">
+                    <input type="checkbox" name="ques_check" '.$required.'>
+                    <span>Required </span>
+                    <div class="onoffswitch1 fright">
+                    <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="tab12" '.$active.'>
+                    <label class="onoffswitch-label" for="tab12"> <span class="onoffswitch-inner onoffswitch-inner1"></span> <span class="onoffswitch-switch onoffswitch-switch1"></span> </label>
+                    <div class="font_bb fright"> Show </div>
+                    </div>
+                    </div>
+                    <div class="clear"> </div>
+                    </div>';
                     $element = $post_code;
                 } else if($temp['ques_title'] == "Country") {
+                    $required = ($temp['required'] == "1")?"checked":"";
+                    $active = ($temp['active'] == "1")?"checked":"";
+                    $country = '<div class="inner_drag">
+                    <div class="inner_title1 inner_drag_hh fleft"> <img src="images/drag.png" alt="move" width="16" height="11" class="handle" />
+                    <label class="label_ff" id="ques_title">Country</label>
+                    </div>
+                    <div class="inner_title1 inner_drag_hh fleft">
+                    <input type="text" class="title_text title_text2">
+                    </div>
+                    <div class="inner_title1  inner_drag_hh fleft">
+                    <input type="checkbox" name="ques_check" '.$required.'>
+                    <span>Required </span>
+                    <div class="onoffswitch1 fright">
+                    <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="tab13" '.$active.'>
+                    <label class="onoffswitch-label" for="tab13"> <span class="onoffswitch-inner onoffswitch-inner1"></span> <span class="onoffswitch-switch onoffswitch-switch1"></span> </label>
+                    <div class="font_bb fright"> Show </div>
+                    </div>
+                    </div>
+                    <div class="clear"> </div>
+                    </div>';
                     $element = $country;
                 } else {
+                    if($temp['ques_type_id'] == "1") {
+                        $order_ques_dyn[] = 'btn_num++; '.
+                        '$("#outer_drag1").append("<div id=\'drag_"+btn_num+"\' class=\'inner_drag\'><div class=\'inner_title2  inner_drag_hh fleft\'><img src=\'images/drag.png\' alt=\'move\' width=\'16\' height=\'11\' class=\'handle\' /><label id=\'ques_type\'>Text Line</label><input type=\'checkbox\' name=\'ques_check\'><span> Required </span> </div><div class=\'clear\'> </div><div class=\'inner_title2  inner_drag_hh fleft\'><label> Question Title</label><input type=\'text\' id=\'ques_title\' class=\'title_text title_text2 input_text\'><div class=\'img_m\' id=\'img_1\'><img src=\'images/minus.png\' id=\'img_1\'onclick=\'showpop(\"drag_"+btn_num+"\")\'></div></div></div></div>");';
+                    } else if($temp['ques_type_id'] == "2") {
+                        $order_ques_dyn[] = "btn_num_area++;".
+                        "$(\"#outer_drag1\").append(\"<div id='drag_\"+btn_num_area+\"' class='inner_drag'><div class='inner_title2  inner_drag_hh fleft'><img src='images/drag.png' alt='move' width='16' height='11' class='handle' /><label id='ques_type'>Text Area</label><input type='checkbox' name=ques_check><span> Required </span> </div><div class='clear'> </div><div class='inner_title2  inner_drag_hh fleft'><label> Question Title</label><input type='text' id='ques_title' class='title_text title_text2 input_text'><div class='img_m'><img src='images/minus.png' onClick='showpop(\\\"drag_\"+btn_num_area+\"\\\")'></div></div></div>\");";
+                    } else if($temp['ques_type_id'] == "3") {
+                       $order_ques_dyn[] = "btn_num_check++;".
+                        "$(\"#outer_drag1\").append(\"<div id='drag_check\"+btn_num_check+\"' class='inner_drag'><div class='inner_drag'><div class='inner_title2  inner_drag_hh fleft'> <img src='images/drag.png' alt='move' width='16' height='11' class='handle' /><label id='ques_type'>Check Boxes</label><input type='checkbox' name=ques_check><span> Required </span> </div><div class='clear'> </div><div class='inner_title2  inner_drag_hh fleft'><label> Question Title</label><input type='text' id='ques_title' class='title_text title_text2 input_text' value='' id='minus_id_check'><div class='img_m r_check fright' id='img_13'><img src='images/minus.png' onclick='showpop(\\\"drag_check\"+btn_num_check+\"\\\")'></div></div><div class='clear'> </div><div class='inner_title2  inner_drag_hh fleft' id='drag_\"+btn_num_check+\"_0'><label> Options</label><input type='checkbox'><input type='text' name='options_temp' class='title_text title_text2 input_text txt'><div class='img_m1'><img src='images/minus.png' onclick='showpop(\\\"drag_\"+btn_num_check+\"_0\\\")'></div></div><div class='clear'><div id='adding_new_option_checkbox_\"+btn_num_check+\"' class='inner_drag minus_img3'> <img src='images/lgt_p.png' style='margin-left:100px' onclick='add(\\\"\"+btn_num_check+\"\\\", \\\"1\\\");'> </div> </div></div></div>\");";
+
+                    } else if($temp['ques_type_id'] == "4") {
+                         $order_ques_dyn[] = "btn_num_radio++;".
+                        "$(\"#outer_drag1\").append(\"<div id='drag_radio\"+btn_num_radio+\"' class='inner_drag'><div class='inner_title2  inner_drag_hh fleft'> <img src='images/drag.png' alt='move' width='16' height='11' class='handle' /><label id='ques_type'>Radio Button</label><input type='checkbox' name=ques_check><span> Required </span> </div><div class='clear'> </div><div class='inner_title2  inner_drag_hh fleft'><label> Question Title</label><input type='text' id='ques_title' class='title_text title_text2 input_text' value='' id='minus_id_check'><div class='img_m r_check fright' id='img_13'><img src='images/minus.png' onclick='showpop(\\\"drag_radio\"+btn_num_radio+\"\\\")'></div></div><div class='clear'> </div><div class='inner_title2  inner_drag_hh fleft'  id='drag_\"+btn_num_radio+\"_0'><label> Options</label><input type='radio'><input type='text' name='options_temp' class='title_text title_text2 input_text txt'><div class='img_m1'><img src='images/minus.png' onclick='showpop(\\\"drag_\"+btn_num_radio+\"_0\\\")'></'></div></div><div class='clear'> </div><div id='adding_new_option_radio_\"+btn_num_radio+\"' class='inner_drag minus_img1'> <img src='images/lgt_p.png' style='margin-left:100px' onclick='add_radio(\\\"\"+btn_num_radio+\"\\\", \\\"1\\\");';> </div></div>\");";
+                    } else if($temp['ques_type_id'] == "5") {
+                        $order_ques_dyn[] = "btn_num_dropdown++;".
+                        "$(\"#outer_drag1\").append(\"<div id='drag_dropdown\"+btn_num_dropdown+\"' class='inner_drag'><div class='inner_title2  inner_drag_hh fleft'> <img src='images/drag.png' alt='move' width='16' height='11' class='handle' /><label id='ques_type'>Drop Down</label><input type='checkbox' name=ques_check><span> Required </span> </div><div class='clear'> </div><div class='inner_title2  inner_drag_hh fleft'><label> Question Title</label><input type='text' id='ques_title' class='title_text title_text2 input_text' value='' id='minus_id_check'><div class='img_m r_check fright' id='img_13'><img src='images/minus.png' onclick='showpop(\\\"drag_dropdown\"+btn_num_dropdown+\"\\\")'></div></div><div class='clear'> </div><div class='inner_title2  inner_drag_hh fleft'  id='drag_\"+btn_num_dropdown+\"_0'><label> Options</label><input type='checkbox'><input type='text' name='options_temp' class='title_text title_text2 input_text txt'><div class='img_m1'><img src='images/minus.png' onclick='showpop(\\\"drag_\"+btn_num_dropdown+\"_0\\\")'></div></div><div class='clear'> </div><div id='adding_new_option_dropdown_\"+btn_num_dropdown+\"' class='inner_drag minus_img2'> <img src='images/lgt_p.png' style='margin-left:100px' onclick='add_dropdown(\\\"\"+btn_num_dropdown+\"\\\", \\\"1\\\");';> </div></div>\");";                            
+                    } else if($temp['ques_type_id'] == "6") {
+                         $order_ques_dyn[] = "btn_num_photo++;".
+                        "$(\"#outer_drag1\").append(\"<div id='drag_photo\"+btn_num_photo+\"' class='inner_drag'><div class='inner_title2  inner_drag_hh fleft'> <img src='images/drag.png' alt='move' width='16' height='11' class='handle' /><label id='ques_type'>Photo Question</label><input type='checkbox' name=ques_check><span> Required </span></div><div class='clear'> </div><div class='inner_title2  inner_drag_hh fleft'><label> Question Title</label><input type='text' id='ques_title' class='title_text title_text2 input_text'><div class='img_m'><img src='images/minus.png' onclick='showpop(\\\"drag_photo\"+btn_num_photo+\"\\\")'></div></div><div class='clear'></div><div class='sec_ques_div'><input type='text' class='fleft' ><button class='bb_ques fleft'>Browse..</button><input type='file' name='photo_ques[]' class='browewin' style='display:none;'/></div><div class='clear'></div><div class='inner_title2  inner_drag_hh fleft'> <label> Answer Type:</label><input type='number' class='drag_num'></div></div><div class='clear'> </div>\");";
+                    } else if($temp['ques_type_id'] == "7") {
+                          $order_ques_dyn[] = "btn_num_answer++;".
+                        "$(\"#outer_drag1\").append(\"<div id='drag_answer\"+btn_num_answer+\"' class='inner_drag'><label id='ques_type'>Rating Scale</label><input type='checkbox' name=ques_check><span> Required </span><br><br><div class='clear'> </div><div class='inner_title2  inner_drag_hh'><label>Question Title</label><input type='text' id='ques_title' class='title_text title_text2 input_text '><div class='img_m'><img src='images/minus.png' onclick='showpop(\\\"drag_\"+btn_num_answer+\"\\\")'></div></div><div class='inner_title2  inner_drag_hh'><label>Left Value</label><input type='text' name='options_temp' class='title_text title_text2 input_text mm'></div><div class='inner_title2 inner_drag_hh'><label> Right Value</label><input type='text' name='options_temp' class='title_text title_text2 input_text mm1'></div><div class='clear'> </div><input type='range' class='range1'></div>\");";
+                    } else if($temp['ques_type_id'] == "8") {
+                        $button_text = $temp['ques_title'];
+                    }
                     continue;
                 }
                 $order_ques[] = $element;
@@ -476,6 +624,13 @@ $(document).ready(function(){
 	var  btn_num_dropdown =0;
 	var  btn_num_photo =0;
 	var  btn_num_answer =0;
+        
+        <?php
+        foreach($order_ques_dyn as $order_dyn) {
+            echo $order_dyn;
+        }
+        ?>
+        
         $(".btn1").click(function(){
             btn_num++;
             $("#outer_drag1").append("<div id='drag_"+btn_num+"' class='inner_drag'><div class='inner_title2  inner_drag_hh fleft'><img src='images/drag.png' alt='move' width='16' height='11' class='handle' /><label id='ques_type'>Text Line</label><input type='checkbox' name='ques_check'><span> Required </span> </div><div class='clear'> </div><div class='inner_title2  inner_drag_hh fleft'><label> Question Title</label><input type='text' id='ques_title' class='title_text title_text2 input_text'><div class='img_m' id='img_1'><img src='images/minus.png' id='img_1'onclick='showpop(\"drag_"+btn_num+"\")'></div></div></div></div>");
@@ -692,8 +847,37 @@ $(document).ready(function(){
 <body>
 <header>
   <div class="wrapper">
-    <div class="logo"> <img src="images/logo.jpg" alt="logo"> </div>
-  </div>
+    <div class="logo"> <img src="images/logo.jpg" alt="logo"> 
+ 
+    <div class="ryt_admin">
+
+        <div class="inner_admin">
+
+          <div class="droper">
+
+            <div class="dropper_inner">
+            <?php if(isset($_SESSION['access_token'])) {
+             ?>
+                <div class="user_name"> Admin <img src="images/arrow.jpg" alt="arrow" id="show" style="width: auto!important"> </div>
+
+             
+                    <div class="htab_o">
+
+                      <div class="htab hr_l"> Change Password </div>
+
+                      <div class="htab" id="log"> Logout </div>
+
+                    </div>
+              <?php } ?>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+        </div>
+     </div>
 </header>
 <div class="sec_create">
   <h2 class="sec_head_ques"> Create a Questionnaire</h2>
@@ -742,7 +926,7 @@ $(document).ready(function(){
       <div class="blank_div"> </div>
       <div class="last_input col-4 fleft">
         <label class="submit_text"> Submit Button Text</label>
-        <input type="text" name="submit_btn_text" class="submit_input">
+        <input type="text" name="submit_btn_text" class="submit_input" value="<?php echo $button_text; ?>">
       </div>
       <!---input_add closed-->
       <div class="clear"> </div>

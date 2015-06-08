@@ -209,6 +209,15 @@ class Quest {
         $id = $this->con->insertQuery($query, $bindParams);
         return $id;
     }
+    
+    public function deleteQnsrQuestions($ques_id) {
+        $query = "DELETE FROM `ques_questions` WHERE `ques_id` = :ques_id";
+
+        $bindParams = array("ques_id" => $ques_id);
+
+        $id = $this->con->insertQuery($query, $bindParams);
+        return $id;
+    }
 
     public function getQuesList($status) {
         $query = "SELECT `ques_id`, `ques_name`,  DATE(`updated_datetime`) as updated_datetime, `status` FROM `ques_user_xref` WHERE `status` = :status";
