@@ -37,7 +37,7 @@ class User {
 
             $query = "SELECT `id`, `access_token` FROM `user_login` WHERE `username`=:username AND `password` = :password AND role = :role LIMIT 1";
 
-            $bindParams = array("username" => $username, "password" => $hashPass, "role" => "1");
+            $bindParams = array("username" => $username, "password" => $hashPass, "role" => $accountType);
         }
 
 

@@ -322,7 +322,7 @@ class Quest {
 
     public function getQuesSettingElement($ques_id, $setting_id) {
         $setting_id_join = join(",", $setting_id);
-        $query = "SELECT `element_id`, `element_type`, `element_name`, `element_color`, `element_size`, `element_font`, `element_attachment`, `active` "
+        $query = "SELECT `setting_id`,`element_id`, `element_type`, `element_name`, `element_color`, `element_size`, `element_font`, `element_attachment`, `active` "
                 . "FROM "
                 . "`ques_settings_element` "
                 . "WHERE `ques_id` = :ques_id AND `setting_id` IN ($setting_id_join)";
@@ -330,12 +330,22 @@ class Quest {
         $bindParams = array("ques_id" => $ques_id);
 
         $qh = $this->con->getQueryHandler($query, $bindParams);
-
+        $output = array();
         while ($res = $qh->fetch(PDO::FETCH_ASSOC)) {
             $output[] = $res;
         }
 
         return $output;
+    }
+    
+    public function deleteQnsrSettings($ques_id,$setting_ids) {
+        $setting_id_join = join(",", $setting_ids);
+        $query = "DELETE FROM `ques_settings_element` WHERE `ques_id` = :ques_id AND `setting_id` IN ($setting_id_join)";
+
+        $bindParams = array("ques_id" => $ques_id);
+
+        $id = $this->con->insertQuery($query, $bindParams);
+        return $id;
     }
 
 }

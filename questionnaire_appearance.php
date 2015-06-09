@@ -15,6 +15,45 @@ if(!isset($_GET['ques_id'])) {
         echo '<h1>Invalid Question ID passed !!</h1>';
         exit();
     }
+    $re_header_image = "";
+    
+    $re_title_color = 'orangered';
+    $re_title_font = "";
+    $re_title_name = "";
+    $re_title_size = "";
+    
+    $re_text_color = 'orangered';
+    $re_text_font = "";
+    $re_text_name = "";
+    $re_text_size = "";
+    
+    $re_bg_image = "";
+    $re_bg_color = "orangered";
+    $re_bg_re_color = "orangered";
+
+    $re_ques_size = "";
+    $re_ques_font = "";
+    $re_ques_color = "orangered";
+    
+    $re_ans_size = "";
+    $re_ans_font = "";
+    $re_ans_color = "orangered";
+    
+    $re_btn_color = "";
+    $re_btn_size = "";
+    $re_btn_text_color = "orangered";
+    
+    $re_checkbox_color = "orangered";
+    
+    $re_radio_color = "orangered";
+    
+    $re_footer_image = "";
+    
+    $re_footer_text_name = "";
+    $re_footer_text_size = "";
+    $re_footer_text_font = "";
+    $re_footer_text_color = "orangered";
+
     
     if(isset($_POST['saveandnext'])) {
         /** Questionnaire header **/
@@ -196,20 +235,67 @@ if(!isset($_GET['ques_id'])) {
 
 
         $count = count($element_type);
-        $access_token = $_SESSION['access_token'];        
+        $access_token = $_SESSION['access_token'];  
+        $questObj->deleteQnsrSettings($ques_id, array(4,5,6));
         for($i=0;$i<$count;$i++) {
             if($element_attachment[$i] != '') {
                 $file_name = $questObj->uploadFile($element_attachment[$i], $access_token);
             } else {
                 $file_name = '';
             }
-            $insertElementBool = $questObj->checkQuesSettingElement($ques_id, $setting_id[$i]);
-            if($insertElementBool) {
-                $questObj->insertQuesElement($ques_id, $setting_id[$i], $element_type[$i], $element_name[$i], $element_color[$i], $element_size[$i], $element_font[$i], $file_name, $active[$i]);
-            } else {
-                $questObj->updateQuesElement($ques_id, $setting_id[$i], $element_type[$i], $element_name[$i], $element_color[$i], $element_size[$i], $element_font[$i], $file_name, $active[$i]);
-            }
+            $questObj->insertQuesElement($ques_id, $setting_id[$i], $element_type[$i], $element_name[$i], $element_color[$i], $element_size[$i], $element_font[$i], $file_name, $active[$i]);
         }        
+    } else {
+        $quest_app_arr = $questObj->getQuesSettingElement($ques_id, array(4,5,6));
+        foreach($quest_app_arr as $quest_app) {
+            if($quest_app['setting_id'] == "4") {
+                if($quest_app['element_type'] == "Header Image") {
+                    $re_header_image = ($quest_app['element_attachment'] == "")?"":"images/".$quest_app['element_attachment'];
+                } else if($quest_app['element_type'] == "Header Title") {
+                    $re_title_name = $quest_app['element_name'];
+                    $re_title_size = $quest_app['element_size'];
+                    $re_title_font = $quest_app['element_font'];
+                    $re_title_color = $quest_app['element_color'];
+                } else if($quest_app['element_type'] == "Header Text") {
+                    $re_text_name = $quest_app['element_name'];
+                    $re_text_size = $quest_app['element_size'];
+                    $re_text_font = $quest_app['element_font'];
+                    $re_text_color = $quest_app['element_color'];
+                }
+            } else if($quest_app['setting_id'] == "5") {
+                if($quest_app['element_type'] == "Background Image") {
+                    $re_bg_image = ($quest_app['element_attachment'] == "")?"":"images/".$quest_app['element_attachment'];
+                    $re_bg_color = $quest_app['element_color'];
+                } else if($quest_app['element_type'] == "Background color") {
+                    $re_bg_re_color = $quest_app['element_color'];
+                } else if($quest_app['element_type'] == "Question text") {
+                    $re_ques_size = $quest_app['element_size'];
+                    $re_ques_font = $quest_app['element_font'];
+                    $re_ques_color = $quest_app['element_color'];
+                } else if($quest_app['element_type'] == "Answer text") {                    
+                    $re_ans_size = $quest_app['element_size'];
+                    $re_ans_font = $quest_app['element_font'];
+                    $re_ans_color = $quest_app['element_color'];
+                } else if($quest_app['element_type'] == "Button") {
+                    $re_btn_color = $quest_app['element_name'];
+                    $re_btn_size = $quest_app['element_size'];                    
+                    $re_btn_text_color = $quest_app['element_color'];
+                } else if($quest_app['element_type'] == "Checkbox") {                   
+                    $re_checkbox_color = $quest_app['element_color'];
+                } else if($quest_app['element_type'] == "Radio box") {
+                    $re_radio_color = $quest_app['element_color'];
+                }
+            } else if($quest_app['setting_id'] == "6") {
+                 if($quest_app['element_type'] == "Footer Image") {
+                    $re_footer_image = ($quest_app['element_attachment'] == "")?"":"images/".$quest_app['element_attachment'];
+                } else if($quest_app['element_type'] == "Footer Text") {
+                    $re_footer_text_name = $quest_app['element_name'];
+                    $re_footer_text_size = $quest_app['element_size'];
+                    $re_footer_text_font = $quest_app['element_font'];
+                    $re_footer_text_color = $quest_app['element_color'];
+                }
+            }
+        }
     }
 }
 
@@ -253,23 +339,23 @@ document.querySelector('#volume').value = vol;
         <div class="inner_title1 fleft">
           <label>Title</label>
           <br>
-          <input type="text" name="title_name" class="title_text">
+          <input type="text" name="title_name" class="title_text" value="<?php echo $re_title_name ?>">
         </div>
         <div class="inner_title1 fleft ">
           <label>Title Size</label>
           <br>
-          <input type="number" name="title_size" class="title_size title_text">
+          <input type="number" name="title_size" value="<?php echo $re_title_size ?>" class="title_size title_text">
         </div>
         <div class="inner_title1 fleft">
           <label>Title Font</label>
           <br>
-          <input type="text" name="title_font" class="title_text">
+          <input type="text" name="title_font" class="title_text" value="<?php echo $re_title_font ?>">
         </div>
         <div class="inner_title1 fleft">
           <label>Title Color</label>
           <br>
           <div class='example'>
-            <input type='text' name="title_color" id='1' value='orangered' />
+            <input type='text' name="title_color" id='1' value="<?php echo $re_title_color ?>" />
           </div>
         </div>
       </div>
@@ -278,23 +364,23 @@ document.querySelector('#volume').value = vol;
         <div class="inner_title1 fleft">
           <label>Text</label>
           <br>
-          <textarea rows="5" cols="25" name="text_name"></textarea>
+          <textarea rows="5" cols="25" name="text_name" ><?php echo $re_text_name ?></textarea>
         </div>
         <div class="inner_title1 fleft ">
           <label>Text Size</label>
           <br>
-          <input type="number" name="text_size" class="title_size title_text">
+          <input type="number" name="text_size" value="<?php echo $re_text_size ?>" class="title_size title_text">
         </div>
         <div class="inner_title1 fleft">
           <label>Text Font</label>
           <br>
-          <input type="text" name="text_font" class="title_text">
+          <input type="text" name="text_font" class="title_text" value="<?php echo $re_text_font ?>">
         </div>
         <div class="inner_title1 fleft">
           <label>Text Color</label>
           <br>
           <div class='example'>
-            <input type='text' name="text_color"  id='2' value='orangered' />
+            <input type='text' name="text_color"  id='2' value="<?php echo $re_text_color ?>" />
           </div>
         </div>
       </div>
@@ -322,7 +408,7 @@ document.querySelector('#volume').value = vol;
           <label>Background image color overlay</label>
           <br>
           <div class='example'>
-            <input type='text' name='appearance_image_overlay' id='3' value='orangered' />
+            <input type='text' name='appearance_image_overlay' id='3' value="<?php echo $re_bg_color; ?>" />
           </div>
         </div>
         <div class="inner_title3 inner_title_ttl hh fleft">
@@ -337,7 +423,7 @@ document.querySelector('#volume').value = vol;
         <label>Background color</label>
         <br>
         <div class='example1'>
-          <input type='text' name='appearance_color' id='4' value='orangered' />
+          <input type='text' name='appearance_color' id='4' value="<?php echo $re_bg_re_color?>" />
         </div>
       </div>
       <div class="clear"> </div>
@@ -354,18 +440,18 @@ document.querySelector('#volume').value = vol;
         <div class="inner_title1 inner_title_ttl hh fleft ">
           <label>Size</label>
           <br>
-          <input type="number" name="ques_text_size" class="title_size title_text">
+          <input type="number" name="ques_text_size" class="title_size title_text" value="<?php echo $re_ques_size?>">
         </div>
         <div class="inner_title1 inner_title_ttl hh fleft">
           <label> Font</label>
           <br>
-          <input type="text" name="ques_font" class="title_text">
+          <input type="text" name="ques_font" class="title_text" value="<?php echo $re_ques_font?>">
         </div>
         <div class="inner_title1 inner_title_ttl fleft">
           <label> Color</label>
           <br>
           <div class='example'>
-            <input type='text' name="ques_color" id='5' value='orangered' />
+            <input type='text' name="ques_color" id='5' value="<?php echo $re_ques_color?>" />
           </div>
         </div>
       </div>
@@ -384,18 +470,18 @@ document.querySelector('#volume').value = vol;
         <label>Box Background color</label>
         <br>
         <div class='example'>
-          <input type='text' name='box_bg_color' id='6' value='orangered' />
+          <input type='text' name='box_bg_color' id='6' value="<?php echo $re_ans_color?>" />
         </div>
       </div>
       <div class="inn_sec4 fleft inner_title_ttl">
         <label>Size</label>
         <br>
-        <input type="number" name="answer_size" class="title_size title_text">
+        <input type="number" name="answer_size" class="title_size title_text" value="<?php echo $re_ans_size?>">
       </div>
       <div class="inn_sec4 fleft inner_title_ttl">
         <label>Font</label>
         <br>
-        <input type="number" name="answer_font" class="title_size_font title_text">
+        <input type="number" name="answer_font" class="title_size_font title_text" value="<?php echo $re_ans_font?>">
       </div>
       <div class="inn_sec4 fleft inner_title_ttl">
         <label>Color</label>
@@ -419,19 +505,19 @@ document.querySelector('#volume').value = vol;
           <label>Button Color</label>
           <br>
           <div class='example'>
-            <input type='text' name='btn_color' id='8' value='orangered' />
+            <input type='text' name='btn_color' id='8' value="<?php echo $re_btn_color?>"  />
           </div>
         </div>
         <div class="inn_sec5 hh fleft inner_title_ttl">
           <label>Button Size</label>
           <br>
-          <input type="number" name="btn_size" class="title_size title_text">
+          <input type="number" name="btn_size" class="title_size title_text" value="<?php echo $re_btn_size?>">
         </div>
         <div class="inn_sec5 fleft inner_title_ttl">
-          <label>Button TextColor</label>
+          <label>Button Text Color</label>
           <br>
           <div class='example'>
-            <input type='text' name='btn_text_color' id='9' value='orangered' />
+            <input type='text' name='btn_text_color' id='9' value="<?php echo $re_btn_text_color?>" />
           </div>
         </div>
       </div>
@@ -449,14 +535,14 @@ document.querySelector('#volume').value = vol;
           <label>Check Box Color</label>
           <br>
           <div class='example'>
-            <input type='text' name='checkbox_color' id='10' value='orangered' />
+            <input type='text' name='checkbox_color' id='10' value="<?php echo $re_checkbox_color?>" />
           </div>
         </div>
         <div class="inn_sec6 fleft inner_title_ttl">
           <label>Radio Button Color</label>
           <br>
           <div class='example'>
-            <input type='text' name='radio_color' id='11' value='orangered' />
+            <input type='text' name='radio_color' id='11' value="<?php echo $re_radio_color?>" />
           </div>
         </div>
       </div>
@@ -472,7 +558,7 @@ document.querySelector('#volume').value = vol;
     <div class="container ww">
       <h2 class="sec_head_ques1">Questionnaire Footer</h2>
       <div class="sec_ques_div">
-        <label class="sec_head_ques1 fleft">Header image/video </label>
+        <label class="sec_head_ques1 fleft">Footer image/video </label>
         <label class="sec_head_ques1 fright">(crop to fit 0*0 area)</label>
       </div>
       <div class="sec_ques_div">
@@ -483,23 +569,23 @@ document.querySelector('#volume').value = vol;
         <div class="inner_title1 fleft">
           <label>Text</label>
           <br>
-          <textarea name="footer_text" rows="5" cols="25"></textarea>
+          <textarea name="footer_text" rows="5" cols="25"><?php echo $re_footer_text_name?></textarea>
         </div>
         <div class="inner_title1 fleft ">
           <label>Text Size</label>
           <br>
-          <input type="number" name="footer_text_size" class="title_size title_text">
+          <input type="number" name="footer_text_size" class="title_size title_text" value="<?php echo $re_footer_text_size?>">
         </div>
         <div class="inner_title1 fleft">
           <label>Text Font</label>
           <br>
-          <input type="text" name="footer_text_font" class="title_text">
+          <input type="text" name="footer_text_font" class="title_text" value="<?php echo $re_footer_text_font?>">
         </div>
         <div class="inner_title1 fleft">
           <label>Text Color</label>
           <br>
           <div class='example'>
-            <input type='text' name='footer_text_color' id='12' value='orangered' />
+            <input type='text' name='footer_text_color' id='12' value="<?php echo $re_footer_text_color?>" />
           </div>
         </div>
       </div>
