@@ -225,7 +225,7 @@ class Quest {
         $bindParams = array("status" => $status);
 
         $qh = $this->con->getQueryHandler($query, $bindParams);
-
+        $output = array();
         while ($res = $qh->fetch(PDO::FETCH_ASSOC)) {
             $output[] = $res;
         }

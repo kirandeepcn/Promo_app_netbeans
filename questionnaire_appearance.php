@@ -244,7 +244,8 @@ if(!isset($_GET['ques_id'])) {
                 $file_name = '';
             }
             $questObj->insertQuesElement($ques_id, $setting_id[$i], $element_type[$i], $element_name[$i], $element_color[$i], $element_size[$i], $element_font[$i], $file_name, $active[$i]);
-        }        
+        }
+        echo "<script>location.href = 'thankyou_page.php?ques_id=$ques_id';</script>";
     } else {
         $quest_app_arr = $questObj->getQuesSettingElement($ques_id, array(4,5,6));
         foreach($quest_app_arr as $quest_app) {
@@ -303,11 +304,36 @@ if(!isset($_GET['ques_id'])) {
 <script type="text/javascript" src="jquery/spectrum.js"></script>
 <script type='text/javascript' src="jquery/docs.js"></script>
 <script>
+function readURL(input) {
+
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function(e) {
+            $(input).closest("div").find('#dispimg').attr('src', e.target.result);
+            $(input).closest("div").find('#dispimg').show();
+        };
+
+        reader.readAsDataURL(input.files[0]);
+    }
+}
 $(document).ready(function(){
 	$(".bb_ques").click(function(event){
             event.preventDefault();
 		$(this).closest("div").find(".browewin").click();	
 	});
+        
+        $("#header_image").change(function() {
+            readURL(this);
+        });
+        
+        $("#appearance_image").change(function() {
+            readURL(this);
+        });
+
+        $("#footer_image").change(function() {
+            readURL(this);
+        });
     
 });
 
@@ -328,12 +354,12 @@ document.querySelector('#volume').value = vol;
     <div class="container ww">
       <h2 class="sec_head_ques1">Questionnaire Header</h2>
       <div class="sec_ques_div">
-        <label class="sec_head_ques1 fleft">Header image/video </label>
+        <label class="sec_head_ques1 fleft">Header image </label>
         <label class="sec_head_ques1 fright">(crop to fit 0*0 area)</label>
       </div>
       <div class="sec_ques_div">
         <button class="bb_ques fleft">Browse..</button>
-        <input type="file" name="header_image" class="browewin" style="display:none;"/>
+        <input type="file" name="header_image" id="header_image" class="browewin" style="display:none;"/>
       </div>
       <div class="outer_title1">
         <div class="inner_title1 fleft">
@@ -401,7 +427,7 @@ document.querySelector('#volume').value = vol;
           <label class="sec_head_ques1 "> Background-image </label>
           <div class="sec_ques_div">
             <button class="bb_ques fleft">Browse..</button>
-            <input type="file" name="appearance_image" class="browewin" style="display:none;"/>
+            <input type="file" name="appearance_image" id="appearance_image" class="browewin" style="display:none;"/>
           </div>
         </div>
         <div class="inner_title3 inner_title_ttl hh fleft ">
@@ -481,7 +507,7 @@ document.querySelector('#volume').value = vol;
       <div class="inn_sec4 fleft inner_title_ttl">
         <label>Font</label>
         <br>
-        <input type="number" name="answer_font" class="title_size_font title_text" value="<?php echo $re_ans_font?>">
+        <input type="text" name="answer_font" class="title_size_font title_text" value="<?php echo $re_ans_font?>">
       </div>
       <div class="inn_sec4 fleft inner_title_ttl">
         <label>Color</label>
@@ -558,12 +584,12 @@ document.querySelector('#volume').value = vol;
     <div class="container ww">
       <h2 class="sec_head_ques1">Questionnaire Footer</h2>
       <div class="sec_ques_div">
-        <label class="sec_head_ques1 fleft">Footer image/video </label>
+        <label class="sec_head_ques1 fleft">Footer image</label>
         <label class="sec_head_ques1 fright">(crop to fit 0*0 area)</label>
       </div>
       <div class="sec_ques_div">
         <button class="bb_ques fleft">Browse..</button>
-        <input type="file" name="footer_image" class="browewin" style="display:none;"/>
+        <input type="file" name="footer_image" id="footer_image" class="browewin" style="display:none;"/>
       </div>
       <div class="outer_title1">
         <div class="inner_title1 fleft">

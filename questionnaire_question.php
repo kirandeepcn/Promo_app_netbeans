@@ -245,6 +245,7 @@ if(!isset($_GET['ques_id'])) {
           </div>
           <div class="clear"> </div>
         </div>';
+        $button_text = "";
     
         $order_ques = array($first_name,$last_name,$title,$email,$telephone,$dob,$address,$post_code,$country);
         

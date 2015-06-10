@@ -42,11 +42,6 @@ for (var i = 0; i < styleSheets.length; i++) {
             $ques_list = $questObj->getQuesList("0");
             foreach($ques_list as $ques) 
             {
-//                $name_arr = explode(" ", $ques['ques_name']);
-//                foreach ($name_arr as $name) {
-//                    $temp_arr[] = "<p>".$name."</p>";
-//                }
-//                $name_final = join(" ", $temp_arr);
                 $name_final = "<p>".$ques['ques_name']."</p>";
           ?>      
           <div class="inn_div2 marg1"> <img src="images/home_y.jpg" alt="img">
@@ -61,29 +56,10 @@ for (var i = 0; i < styleSheets.length; i++) {
           </div>
             <?php 
             }
-            ?>
-         <!-- <div class="inn_div2 marg1"> <img src="images/home_y.jpg" alt="img">
-            <p> Questionnaires </p>
-            <p> Name </p>
-            <button class="butt_view1"> Edit </button>
-            <button class="butt_view1"> Run </button>
-            <button class="butt_view1 nn"> Preview </button>
-            <br>
-            <br>
-            <label class="lab_mm">last Modified: 15-05-2015</label>
-            <div  class="del_img"><a href="#"><img src="images/delete.jpg"></a></div>
-          </div>
-          <div class="inn_div2 marg1"> <img src="images/home_y.jpg" alt="img">
-            <p> Questionnaires </p>
-            <p> Name </p>
-            <button class="butt_view1"> Edit </button>
-            <button class="butt_view1"> Run </button>
-            <button class="butt_view1 nn"> Preview </button>
-            <br>
-            <br>
-            <label class="lab_mm">last Modified: 15-05-2015</label>
-            <div  class="del_img"> <a href="#"><img src="images/delete.jpg"></a></div>
-          </div>-->
+            if(empty($ques_list)) {
+                echo '<h1>No questionnaires in Draft !</h1>';
+            }
+            ?>         
           <div class="clear"> </div>
         </div>
       <div id="tabs-2">
