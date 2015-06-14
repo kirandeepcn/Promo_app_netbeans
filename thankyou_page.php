@@ -2,17 +2,6 @@
 include "./header.php";
 include "./check_session.php";
 
- $re_title_name =   $re_title_size =  $re_title_name =  $re_title_font =  $re_title_size = $re_button_name = $re_button_size = $re_button_font = $re_text_name = $re_text_font = $re_text_size = "";
-$re_tap_active = $re_button_active =  0; 
- $re_title_color = "orangered";
-$re_back_color = "orangered";
-$re_text_color = "orangered";
-$re_button_color ="orangered";
-$re_title_font = "Dropdown";
-$re_title_size = "Dropdown";
-
-$get_ques_id = $_GET['ques_id'];
-
 if(!isset($_GET['ques_id'])) {
     echo '<h1>Invalid Access !!</h1>';
     echo '<script>location.href = "admin.php";</script>';
@@ -118,61 +107,24 @@ if(!isset($_GET['ques_id'])) {
 
         $count = count($element_type);
         $access_token = $_SESSION['access_token'];
-        $questObj->deleteQnsrSettings($ques_id, array($setting_id));
+        $insertElementBool = $questObj->checkQuesSettingElement($ques_id, $setting_id);
         for($i=0;$i<$count;$i++) {
             if($element_attachment[$i] != '') {
                 $file_name = $questObj->uploadFile($element_attachment[$i], $access_token);
             } else {
                 $file_name = '';
             }
-            $questObj->insertQuesElement($ques_id, $setting_id, $element_type[$i], $element_name[$i], $element_color[$i], $element_size[$i], $element_font[$i], $file_name, $active[$i]);            
+            if($insertElementBool) {
+                $questObj->insertQuesElement($ques_id, $setting_id, $element_type[$i], $element_name[$i], $element_color[$i], $element_size[$i], $element_font[$i], $file_name, $active[$i]);
+            } else {
+                $questObj->updateQuesElement($ques_id, $setting_id, $element_type[$i], $element_name[$i], $element_color[$i], $element_size[$i], $element_font[$i], $file_name, $active[$i]);
+            }
         }
         echo "<script>location.href = 'prize_wheel.php?ques_id=$ques_id'; </script>";
         exit();
-    } else {
-        
-
-	$quest_app_arr = $questObj->getQuesSettingElement($ques_id, array(7));
-	
-	foreach($quest_app_arr as $quest_app) {
-	if($quest_app['element_type'] == "Title") {
-                    $re_title_name = $quest_app['element_name'];
-                    $re_title_size = $quest_app['element_size'];
-                    $re_title_font = $quest_app['element_font'];
-                    $re_title_color = $quest_app['element_color'];
-                }
-
- 
-	if($quest_app['element_type'] =="Text") {
-                    $re_text_name = $quest_app['element_name'];
-                    $re_text_size = $quest_app['element_size'];
-                    $re_text_font = $quest_app['element_font'];
-                    $re_text_color = $quest_app['element_color'];
-	}
-       if($quest_app['element_type'] == "Background Image")
-	{
-			$re_back_color = $quest_app['element_color'];
-	}
-
-	if($quest_app['element_type'] == "Button")
-	{
-			$re_button_name = $quest_app['element_name'];
-                    	$re_button_size = $quest_app['element_size'];
-                    	$re_button_color = $quest_app['element_color'];
-			$re_button_active = $quest_app['active'];
-	}
-
-	if($quest_app['element_type'] == "Tap")
-	{
-		$re_tap_active = $quest_app['active'];	
-	}
-
-}
     }
     
 }
-
-
 ?>
 
 
@@ -220,36 +172,6 @@ $(document).ready(function(){
             
 });
 
-function checkbox(ques_id)
-{
-	
-	
-	$.ajax({
-			  method: "POST",
-			  url: "fetch_thankyou.php",
-			  data: {id: ques_id}, 
-			  success: function(result){
-         			returnedData = JSON.parse(result);
-				//alert(returnedData.title_name);
-				$('input[name=ques_title]').val(returnedData.title_name);
-				$('input[name=title_color]').val(returnedData.title_color);
-				$('input[name=ques_text]').val(returnedData.text_name);
-				$('input[name=text_font]').val(returnedData.text_font);
-				$('input[name=text_size]').val(returnedData.text_size);
-				$('input[name=text_color]').val(returnedData.text_color);
-				$('input[name=bgcolor]').val(returnedData.background_color);
-				$('input[name=btn_text]').val(returnedData.button_name);
-				$('input[name=btn_size]').val(returnedData.button_size);
-				$('input[name=btn_color]').val(returnedData.button_color);
-				$('input[name=btn_switch]').val(returnedData.button_active);
-				$('input[name=onoffswitch]').val(returnedData.tap_active);
-				$('#title_size').html(returnedData.title_size);
-				$('#title_font').html(returnedData.title_font);
-
-			}
-			});
-}
-
 </script>
 
 <div class="sec_create">
@@ -262,7 +184,7 @@ function checkbox(ques_id)
     <div class="thank_head fleft";>
         <h2 class="sec_head_ques1">Thank you/Submission page</h2></div>
         <div class="thank_chk">
-        <input type="checkbox" class="fright" onclick="checkbox(<?php echo $get_ques_id?>);">
+        <input type="checkbox" class="fright";>
         <h6>Copy Customization from welcome page?</h6>
         </div>
          <div class="clear"> </div>
@@ -279,14 +201,14 @@ function checkbox(ques_id)
         <div class="inner_title1 fleft">
             <label>Title</label>
             <br>
-            <input type="text" name="ques_title" class="title_text title_text1"  value="<?php echo $re_title_name ?>">
+            <input type="text" name="ques_title" class="title_text title_text1">
           </div>
         <div class="inner_title1 fleft ">
             <label>Title Size</label>
             <br>
             <div class="wrapper-demo">
-            <div id="dd" class="wrapper-dropdown-3"  tabindex="1"> <span id="title_size"><!--Dropdown--><?php echo $re_title_size?> </span>
-                <input type="hidden" name="title_size_hidden" id="title_size_hidden" >
+            <div id="dd" class="wrapper-dropdown-3" tabindex="1"> <span id="title_size">Dropdown </span>
+                <input type="hidden" name="title_size_hidden" id="title_size_hidden">
                 <ul class="dropdown">
                 <li><a href="#">Element 1</a></li>
                 <li><a href="#">Element 2</a></li>
@@ -299,8 +221,8 @@ function checkbox(ques_id)
             <label>Title Font</label>
             <br>
             <div class="wrapper-demo">
-            <div id="dd1" class="wrapper-dropdown-3" tabindex="1"> <span id="title_font"><!--Dropdown--><?php echo $re_title_font?> </span>
-                <input type="hidden" name="title_font_hidden" id="title_font_hidden" >
+            <div id="dd1" class="wrapper-dropdown-3" tabindex="1"> <span id="title_font">Dropdown </span>
+                <input type="hidden" name="title_font_hidden" id="title_font_hidden">
                 <ul class="dropdown">
                 <li><a href="#">Element 1</a></li>
                 <li><a href="#">Element 2</a></li>
@@ -313,7 +235,7 @@ function checkbox(ques_id)
             <label>Title Color</label>
             <br>
             <div class='example'>
-            <input type='text' id='13' name="title_color" value="<?php echo $re_title_color ?>" />
+            <input type='text' id='13' name="title_color" value='orangered' />
           </div>
           </div>
       </div>
@@ -322,23 +244,23 @@ function checkbox(ques_id)
         <div class="inner_title1 fleft">
             <label>Text</label>
             <br>
-            <textarea rows="5" cols="25" id="ques_text" name="ques_text" ><?php echo $re_text_name?></textarea>
+            <textarea rows="5" cols="25" id="ques_text" name="ques_text"></textarea>
           </div>
         <div class="inner_title1 fleft ">
-            <label>Text Size</label>
+            <label>Title Size</label>
             <br>
-            <input type="number" id="text_size" name="text_size" class="title_size title_size1" value="<?php echo  $re_text_size?>">
+            <input type="number" id="text_size" name="text_size" class="title_size title_size1">
           </div>
         <div class="inner_title1 fleft">
-            <label>Text Font</label>
+            <label>Title Font</label>
             <br>
-            <input type="number" id="text_font" name="text_font" class="title_size title_size_font title_size1" value="<?php echo  $re_text_font?>">
+            <input type="number" id="text_font" name="text_font" class="title_size title_size_font title_size1">
           </div>
         <div class="inner_title1 fleft">
-            <label>Text Color</label>
+            <label>Title Color</label>
             <br>
             <div class='example'>
-            <input type='text' name="text_color" id='14' value="<?php echo  $re_text_color?>" />
+            <input type='text' name="text_color" id='14' value='orangered' />
           </div>
           </div>
       </div>
@@ -356,7 +278,7 @@ function checkbox(ques_id)
         <label>Background-color</label>
         <br>
         <div class='example'>
-            <input type='text' name="bgcolor" id='15' value="<?php echo $re_back_color?>" />
+            <input type='text' name="bgcolor" id='15' value='orangered' />
           </div>
       </div>
       </div>
@@ -366,27 +288,27 @@ function checkbox(ques_id)
         <div class="inner_title1 fleft">
             <label> Button Text</label>
             <br>
-            <input type="text" name="btn_text" class="la_text" style="width: 210px;" value="<?php echo $re_button_name?>">
+            <input type="text" name="btn_text" class="la_text" style="width: 210px;">
         </div>
               
         <div class="inner_title1 fleft ">
              <label>Button Color</label>
             <br>
             <div class='example'>
-                  <input type='text' name="btn_color" id='16' value="<?php echo $re_button_color?>" />
+                  <input type='text' name="btn_color" id='16' value='orangered' />
                     
               </div>
           </div>
         <div class="inner_title1 fleft">
             <label>Button Size</label>
             <br>
-            <input type="number" name="btn_size" class="title_size title_size1" value="<?php echo $re_button_size?>">
+            <input type="number" name="btn_size" class="title_size title_size1">
         </div>        
         <div class="fleft">
             <label>Show/Hide Button</label>
             <br>
             <div class="onoffswitch1">
-            <input type="checkbox" name="btn_switch" class="onoffswitch-checkbox" id="tab2" value="<?php echo $re_button_active?>" checked>
+            <input type="checkbox" name="btn_switch" class="onoffswitch-checkbox" id="tab2" checked>
             <label class="onoffswitch-label" for="tab2"> <span class="onoffswitch-inner onoffswitch-inner1"></span> <span class="onoffswitch-switch onoffswitch-switch1"></span></label>
           </div>
             <!--label class=" fright"> Show</label--> 
