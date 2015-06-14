@@ -582,7 +582,6 @@ if(!isset($_GET['ques_id'])) {
     }
 }
 ?>
-
 <!DOCTYPE html>
 <html>
 <head>
