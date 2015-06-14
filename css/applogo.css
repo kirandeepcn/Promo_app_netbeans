@@ -5,7 +5,7 @@
 
 
 .clear{clear:both;}
-body{ background-color:#ecf0f1; margin:0 ; padding:0 ;}
+body{ /*background-color:#ecf0f1;*/ margin:0 ; padding:0 ;}
 .wrapper{ margin:0 auto; width:100%;background-color: #fff;}
 .logo{ text-align:center;}
 .logo img {width: 250px !important;}
@@ -18,7 +18,7 @@ body{ background-color:#ecf0f1; margin:0 ; padding:0 ;}
  .text:focus{border: 1px solid #bbd6e6; color:#0d7cc1; font-weight:bold;}
  .head{width:70%;float:left;}
  .ryt_admin{width:20%;float:right;}
- .inner_admin{background-color:#fff; float:right;}
+ .inner_admin{float:right;}
  .inner_inn_arr{ height:50px; background-color:#fff; line-height:50px;}
  .logo.head {
     width: 60%;
@@ -94,7 +94,8 @@ ul#selectUl:hover li.unselected {
    background-color: #ecf0f1;
    display: none;
    float: left;
-   padding: 10px;
+  padding-right: 9px;
+  padding-left: 9px;
 }
 .htab_o1 {
   display: none;
@@ -200,8 +201,8 @@ ul#selectUl:hover li.unselected {
     margin-top: 60px;
 }
 p{color:#31475e; font-family:lato;font-size:17px; font-weight:bold;word-wrap: break-word; margin:0; padding:0;}
-.butt_view{margin-top:60px;width:150px;}
-.logo img{width:350px; margin-left:-5px;}
+.butt_view{margin-top:86px;width:150px;}
+.logo img{width:350px;}
 /*-----------------------------ended questionnaries------------------------------*/
 
 .inn_div2{width:28%;float:left; background-color:#ecf0f1;height:auto; border:1px solid gray;border-radius:5px; border:none;}
@@ -235,6 +236,22 @@ p{color:#31475e; font-family:lato;font-size:17px; font-weight:bold;word-wrap: br
 	
 
 /*---------------------------------------- create questionnars---------------------------------------------------*/
+.onoff_bb{margin-top:5px;}
+#btn_text {
+    margin-top: 6px;
+    height: 25px;
+}
+#bgimagebutt {
+    margin-top: 10px;
+}
+#ques_text {
+    margin-top: 10px;
+}
+.labl_op{margin-right: 36px;}
+.labl_mm{margin:16px;}
+#ques_type{margin:14px;}
+#ques_type1{margin:10px;}
+.add_t img{margin-bottom:-6px !important;}
 .sec_create{ background-color:#efefef;height:50px; margin:0 auto;width:100%;line-height:30px;}
 .sec_head_ques{  color: #324a60;font-family:lato;font-size: 18px;font-weight: bold;margin: 0 auto;text-align: center;} 
 .container{width:92%;margin:0 auto;}
@@ -246,7 +263,7 @@ label{margin:0;padding:0px;color: #324a60;font-family:lato;font-size: 12px;font-
 .fright{float:right;}
 .bb_ques{height:20px !important;display:block; width:80px; margin-left:10px; cursor:pointer;}
 .outer_title1{width:100%;}
-.inner_title1{width:25%; height:150px;}
+.inner_title1{width:25%; height:150px;margin-top: 14px;}
 .title_text{height:27px;padding: 5px 11px 6px 8px;width:85%; /*border:1px solid #e7e8ea;*/}
 .title_size{border-radius:4px; border: 1px solid gray; width:70%;}
 .title_size_font{width:75%;border-radius:4px; border: 1px solid gray;}
@@ -280,6 +297,7 @@ h3{margin:0;padding:0;color: #324a60;font-family:lato;font-size: 14px;font-weigh
 .inner_title3.fleft {
     width: 20%;
     height:135px;
+	margin-top: 8px;
 }
 .wel_lastpara{width:37%;}
 .wel_lastpara_span{color: #324a60;font-family:lato;font-size: 12px;font-weight:bold;}
@@ -363,7 +381,7 @@ height: 18px !important;
 }
 .header_browse{margin-top:10px;}
 .ww{width:75% !important;}
-.title_text1{height:29px !important;}
+.title_text1{height:29px !important;margin-top: 10px;}
 .title_size1{height:21px;}
 .inner_title fleft{width:134%;}
 
@@ -425,6 +443,10 @@ h4{color: #324a60;font-family:lato; font-size:13px;}
 .title_text2 {
     height: 16px !important;
 }
+.title_drop{
+      height:26px !important;
+
+}
 .inner_drag_hh{height: 50px !important;}
 .drag_num{
     border: 1px solid #c8c8c8;
@@ -434,7 +456,7 @@ h4{color: #324a60;font-family:lato; font-size:13px;}
 .label_ff{color: #324a60;font-family:lato;font-size: 12px;}
 .date_ff{ border: 1px solid #c8c8c8; border-radius: 13px;opacity: 0.5; padding:4px;}
 span{color: #324a60;font-family:lato;font-size: 12px;}
-.input_text{width:40% !important;}
+.input_text{width:40% !important;margin-left: -17px;}
 .txt{width:23% !important;}
 .range1{ border-radius: 2px;
     margin-left:22px;
@@ -450,8 +472,8 @@ span{color: #324a60;font-family:lato;font-size: 12px;}
 #outer_drag1{width:50% ;margin-top: 25px;}
 
 .inner_title2{width:90%;}
-.img_m{float:right;margin-right:128px;}
-.img_m1{float:right;margin-right: 225px;}
+.img_m{float:right;margin-right:85px;}
+.img_m1{float:right;margin-right: 173px;}
 .img_m2{float:right;margin-right:218px;}
 .img_m3{float:right;margin-right:216px;}
 .r_field{margin-right:221px !important;}
