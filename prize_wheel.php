@@ -78,17 +78,15 @@ $(document).ready(function(){
 	$('#hmw').click(function(){
 		$('#hmws_bt').click();
 	});
-  
-       $("#outer_drag").sortable({
-           handle : '.handle',
-           update : function () {
-               var order = $('#outer_drag').sortable('serialize');                
-           }
-       });
+   });
        
 
 </script>
-
+<?php
+$bcol = $_POST['bcol'];
+$pb_col = $_POST['pb_col'];
+$spin_col = $_POST['spin_col'];
+?>
 </style>
 </head>
 <body>
@@ -101,7 +99,7 @@ $(document).ready(function(){
   <h2 class="sec_head_ques"> Create a Questionnaire</h2>
 </div>
 <section>
-  <div class="wrapper">
+  <div class="wrapper" style="background-color:<?php echo $pb_col; ?>">
     <div class="container ww">
       <h2 class="sec_head_ques1">Would You Like a...</h2>
       <div class="prize"> <img src="images/radio.jpg"><span class="pr_span bg_random">Prize Wheel</span> <span class="or_span">OR</span>
@@ -113,23 +111,26 @@ $(document).ready(function(){
 </section>
 
 <section>
-<div class="wrapper">
+<div class="wrapper"  style="background-color:<?php echo $pb_col; ?>">
   <div class="container ww">
     <div class="wheel_app">
       <h2 class="sec_head_ques1">Prize Wheel Appearance</h2>
       <div class="fleft wheel_inn"> 
-<div>
-<canvas id="canvas" width="400" height="300">
-</canvas>
-</div>
+	  <div class="arrow-down" style="border-top:20px solid <?php echo $spin_col; ?>;"></div>
+	<div class="outer_can" style="border: 5px solid <?php echo $bcol; ?>;">
+	<div class="cnt_img"><img src="images/logo_cnt2.png"></div>
+	</div> 
+	<canvas id="canvas" width="400" height="300"></canvas>
+
+
 
 <script type="text/javascript">
 //var tval = document.getElementById("tval").value;
 //function gettotal_1(){
 //var tval = $("#hmw_id").val();
 
-	var i = 6;
-	 var value=360/6;
+	var i = 10;
+	 var value=360/10;
 	 
 	var myColor = ["#ECD078","#D95B43","#C02942","#542437","#53777A","red","pink","yellow","green"];
 	var myData = [];
@@ -161,6 +162,7 @@ canvas = document.getElementById("canvas");
 ctx = canvas.getContext("2d");
 ctx.clearRect(0, 0, canvas.width, canvas.height);
 
+
 for (var i = 0; i < myData.length; i++) {
 ctx.fillStyle = myColor[i];
 ctx.beginPath();
@@ -181,19 +183,21 @@ plotData();
       
        </div>
       <!---wheel_inn closed----->
+	   <form id="numpie" method="POST" name="col" action="#" >
       <div class="fright wheel_inn">
         <div class="wheel_tabs">
           <label class="fleft wh_tab_mm">Page Background Color</label>
           <div class='example'>
-            <input type='text' name="pb_col" id='18' value='' />
+            <input type='text' name="pb_col" id='18' value='<?php echo $pb_col; ?>' />
           </div>
         </div>
         <div class="clear"></div>
         <br>
         <div class="wheel_tabs">
+		
           <label class="fleft wh_tab_mm ">Spin Arrow Color</label>
           <div class='example spin_mm'>
-            <input type='text' name='preferredRgb' id='19' value='orangered' />
+            <input type='text' name="spin_col" id='19' value='<?php echo $spin_col; ?>' />
           </div>
         </div>
         <div class="clear"></div>
@@ -201,7 +205,7 @@ plotData();
         <div class="wheel_tabs">
           <label class="fleft wh_tab_mm ouline_mm">Wheel Outline Color</label>
           <div class='example outline_mm'>
-            <input type='text' name="bcol" id='2' value='' />
+            <input type='text' name="bcol" id='2' value='<?php echo $bcol; ?>' />
           </div>
         </div>
         <div class="clear"></div>
@@ -212,10 +216,7 @@ plotData();
         
           <label class="fleft wh_tab_mm">How Many Wheel Panels?</label>
           <div class="panel_mm fleft">
-            <input type="number"  name="tval" class="title_size title_size_font" value="" id="hmw_id"/>
-          
-      
-		 
+            <input type="number"  name="tval" class="title_size title_size_font" value="orangered" id="hmw_id"/>
           </div>
         </div>
         <div class="clear"></div>
@@ -275,7 +276,10 @@ plotData();
             <input type="number" class="title_size title_size_font">
           </div>
         </div>
-		 <input type="submit" id="hmws_bt"onclick="gettotal_1()" />
+
+		 <input type="submit" id="hmws_bt" style="display:none;"  />
+		       
+         </form>
 	
 		 
         <div class="clear"></div>
@@ -292,7 +296,7 @@ plotData();
 <!---wrapper closed----->
 </section>
 <section>
-  <div class="wrapper">
+  <div class="wrapper"  style="background-color:<?php echo $pb_col; ?>">
     <div class="container ww">
       <h2 class="sec_head_ques1">Winner Options</h2>
       <div class="random_outer">
@@ -301,23 +305,20 @@ plotData();
           <input type="radio">
           <span class="pr_span">Timed</span> <br>
           <span class="pr_span">Every 2 Hours</span>
-          <input type=range class="range_wheel" min=0 max=100 value=50 oninput="outputUpdate1(value)">
-          <output for=fader id="1">100%</output>
+          <input type=range class="range_wheel">
         </div>
         <div class="random_corner fright">
           <input type="radio">
           <span class="pr_span">Every X Person</span> <br>
           <span class="pr_span">60</span> <br>
-          <input type=range class="range_wheel" min=0 max=100 value=50 oninput="outputUpdate2(value)">
-          <output for=fader id="2">100%</output>
+          <input type=range class="range_wheel">
         </div>
       </div>
       <div class="clear"></div>
       <h2 class="sec_head_ques1">Number Of Winners</h2>
       <div class="winnr_div1 fleft"> <span class="pr_span">Grand Prize</span> <br>
         <span class="pr_span spn_positn">60</span> <br>
-        <input type=range class="range_wheel1" min=0 max=100 value=50  oninput="outputUpdate3(value)">
-        <output for=fader id="3">100%</output>
+        <input type=range class="range_wheel1">
       </div>
       <div class="winnr_div1 fleft"> <span class="pr_span">Runner Up</span>
         <div class="run_bb">
@@ -328,8 +329,7 @@ plotData();
           </div>
         </div>
         <span class="pr_span spn_positn">60</span> <br>
-        <input type=range class="range_wheel1" min=0 max=100 value=50 id=fader step=1 oninput="outputUpdate(value)">
-        <output for=fader id=volume>100%</output>
+        <input type=range class="range_wheel1">
       </div>
       <div class="clear"></div>
       <div class="blank_div"> </div>
@@ -339,7 +339,7 @@ plotData();
   <!---wrapper closed-----> 
 </section>
 <section>
-  <div class="wrapper">
+  <div class="wrapper"  style="background-color:<?php echo $pb_col; ?>">
     <div class="container ww">
       <h2 class="sec_head_ques1">Grand Prize Winner Page</h2>
       <div class="sec_ques_div">
@@ -407,7 +407,7 @@ plotData();
   <!--wrapper closed--> 
 </section>
 <section>
-  <div class="wrapper">
+  <div class="wrapper"  style="background-color:<?php echo $pb_col; ?>">
     <div class="container ww">
       <div class="outer_title1">
         <div class="inner_title3 inner_title_ttl hh fleft">
@@ -446,7 +446,7 @@ plotData();
   <!--wrapper closed--> 
 </section>
 <section>
-  <div class="wrapper">
+  <div class="wrapper"  style="background-color:<?php echo $pb_col; ?>">
   <div class="container ww">
     <div class="outer_sec4">
       <div class="fleft inner_title_ttl">
@@ -461,7 +461,7 @@ plotData();
   <!--wrapper closed--> 
 </section>
 <section>
-  <div class="wrapper">
+  <div class="wrapper"  style="background-color:<?php echo $pb_col; ?>">
     <div class="container ww">
       <div class="outer_sec5">
         <div class="inn_sec5 fleft inner_title_ttl">
