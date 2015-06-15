@@ -14,7 +14,7 @@ header('Access-Control-Allow-Origin: *');
 function __autoload($classname) {
     include "include/" . $classname . ".class.php";
 }
-
+$WEB_URL = "www.codenomad.net/promo_app/";
 $type = $_POST["type"];
 switch ($type) {
     case "login": 
@@ -27,7 +27,7 @@ switch ($type) {
             $check = ($access_token != -1) ? true : false;  
             if($check) {
                 $_SESSION['access_token'] = $access_token;
-                echo str_replace("\/", "/", json_encode(array("access_token" => $access_token ,"code" => "1")));
+                echo str_replace("\/", "/", json_encode(array("access_token" => $access_token ,"code" => "1", "ques_id"=>"66")));
             } else {
                 echo str_replace("\/", "/", json_encode(array("message"=>"Invalid Username or Password" ,"code" => "0")));
             }
@@ -230,6 +230,59 @@ switch ($type) {
             $active = isset($_POST['active'])?$_POST['active']:"";            
             $questObj->inserQuesElement($ques_id, $setting_id, $element_type, $element_name, $element_color, $element_size, $element_font, $element_attachment, $active);
         }
+        break;
+        
+    case "welcome_page";
+         $questObj = new Quest();
+        $ques_id = isset($_POST['ques_id'])?$_POST['ques_id']:"";
+        $elements = $questObj->getQuesSettingElement($ques_id, array(3));
+        
+        foreach ($elements as $element) {
+            if ($element['element_type'] == "Header Image") {
+                $header_image_attach = "";
+                if(trim($element['element_attachment']) != "") {
+                    $header_image_attach = $WEB_URL."images/".$element['element_attachment'];         
+                }
+            } else if ($element['element_type'] == "Title") {
+                $re_title_name = $element['element_name'];
+                $re_title_size = $element['element_size'];
+                $re_title_font = $element['element_font'];
+                $re_title_color = substr($element['element_color'], 4, (count($element['element_color'])-2)); 
+            } else if ($element['element_type'] == "Text") {
+                $re_text_name = $element['element_name'];
+                $re_text_size = $element['element_size'];
+                $re_text_font = $element['element_font'];
+                $re_text_color = substr($element['element_color'], 4, (count($element['element_color'])-2)); 
+            } else if ($element['element_type'] == "Background Image") {
+                $re_bg_image_attach = "";
+                if(trim($element['element_attachment']) != "") {
+                    $re_bg_image_attach = $WEB_URL."images/".$element['element_attachment'];
+                }                
+                $re_bg_color = substr($element['element_color'], 4, (count($element['element_color'])-2)); 
+            } else if ($element['element_type'] == "Button") {
+                $re_button_name = $element['element_name'];
+                $re_button_size = $element['element_size'];
+                $re_button_color = substr($element['element_color'], 4, (count($element['element_color'])-2)); 
+                $re_button_active = $element['active'];
+            } else if ($element['element_type'] == "Tap") {
+                $re_tap_active = $element['active'] ;
+            }
+        }
+        
+        echo json_encode(
+                array(
+                    "header"=>array("image"=>$header_image_attach),
+                    "title"=>array("name"=>$re_title_name,"size"=>$re_title_size,"font"=>$re_title_font,"color"=>$re_title_color),
+                    "text"=>array("name"=>$re_text_name,"size"=>$re_text_size,"font"=>$re_text_font,"color"=>$re_text_color),
+                    "background"=>array("image"=>$re_bg_image_attach, "color"=>$re_bg_color),
+                    "button" => array("name"=>$re_button_name,"size"=>$re_button_size,"color"=>$re_button_color,"active"=>$re_button_active),
+                    "tap"=>array("active"=>$re_tap_active),
+                    "code"=>"1"
+                )
+              );
+        
+        break;
+        
     case "logout":
         session_start();
         session_destroy();
