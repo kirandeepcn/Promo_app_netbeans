@@ -282,7 +282,13 @@ switch ($type) {
               );
         
         break;
+    case "questions":
+        $questObj = new Quest();
+        $ques_id = isset($_POST['ques_id'])?$_POST['ques_id']:"";
+        $temp_order = $questObj->getQuesQuestionnaire($ques_id);
+        echo json_encode($temp_order);
         
+        break;
     case "logout":
         session_start();
         session_destroy();

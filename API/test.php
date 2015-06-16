@@ -50,12 +50,23 @@ and open the template in the editor.
         
       <form action="index.php" method="post">
         <fieldset>
-            <legend>Get Questionnaire</legend>
+            <legend>Get Welcome Page</legend>
             <table>
                 <tr><td>Question ID:</td> <td><input type="text" name="ques_id" /></td></tr>                
                 <tr><td><input type="hidden" name="type" value="welcome_page" /><input type="submit" value="Get" /></td></tr>
             </table>
         </fieldset>        
-        </form>
+      </form>
+      
+      <form action="index.php" method="post">
+        <fieldset>
+            <legend>Get Questionnaire</legend>
+            <table>
+                <tr><td>Question ID:</td> <td><input type="text" name="ques_id" /></td></tr>                
+                <tr><td><input type="hidden" name="type" value="questions" /><input type="submit" value="Get" /></td></tr>
+            </table>
+        </fieldset>        
+      </form>
+       
     </body>
 </html>

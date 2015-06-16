@@ -301,8 +301,6 @@ if(!isset($_GET['ques_id'])) {
 }
 
 ?>
-<script type="text/javascript" src="jquery/spectrum.js"></script>
-<script type='text/javascript' src="jquery/docs.js"></script>
 <script>
 function readURL(input) {
 
@@ -370,18 +368,52 @@ document.querySelector('#volume').value = vol;
         <div class="inner_title1 fleft ">
           <label>Title Size</label>
           <br>
-          <input type="number" name="title_size" value="<?php echo $re_title_size ?>" class="title_size title_text">
+		  <div class="wrapper-demo">
+
+                                        <div id="dd" class="wrapper-dropdown-3" tabindex="1"> <span id="title_size"><?php echo $re_title_size; ?></span>
+                                            <input type="hidden" name="title_size_hidden" id="title_size_hidden" />
+                                            <ul class="dropdown">
+                                                <?php for ($size = 10; $size < 30; $size++) { ?>
+                                                    <li><a href="#"><?php echo $size; ?></a></li>
+                                                <?php } ?>                
+
+                                            </ul>
+
+                                        </div>
+
+                                        ​</div>
+          <!--input type="number" name="title_size" value="<?php echo $re_title_size ?>" class="title_size title_text"-->
         </div>
         <div class="inner_title1 fleft">
           <label>Title Font</label>
           <br>
-          <input type="text" name="title_font" class="title_text" value="<?php echo $re_title_font ?>">
+		   <div class="wrapper-demo">
+
+                                        <div id="dd1" class="wrapper-dropdown-3" tabindex="1"> <span id="title_font"><?php echo $re_title_font; ?></span>
+                                            <input type="hidden" name="title_font_hidden" id="title_font_hidden" />
+                                            <?php $font_array = ["Arial", "Times New Roman", "Sans-Serif"]; ?>
+                                            <ul class="dropdown">
+                                                <?php
+                                                foreach ($font_array as $font) {
+                                                    ?>
+                                                    <li><a href="#"><?php echo $font; ?></a></li>
+                                                    <?php
+                                                }
+                                                ?>
+
+                                            </ul>
+
+                                        </div>
+
+                                        ​</div>
+
+          <!--input type="text" name="title_font" class="title_text" value="<?php echo $re_title_font ?>"-->
         </div>
-        <div class="inner_title1 fleft">
+        <div class="inner_title3 fleft">
           <label>Title Color</label>
           <br>
           <div class='example'>
-            <input type='text' name="title_color" id='1' value="<?php echo $re_title_color ?>" />
+            <input type='text' id='27' name="title_color" value="<?php echo $re_title_color ?>" />
           </div>
         </div>
       </div>
@@ -390,23 +422,59 @@ document.querySelector('#volume').value = vol;
         <div class="inner_title1 fleft">
           <label>Text</label>
           <br>
-          <textarea rows="5" cols="25" name="text_name" ><?php echo $re_text_name ?></textarea>
+          <textarea class="txt_area" rows="5" cols="25" name="text_name" ><?php echo $re_text_name ?></textarea>
         </div>
         <div class="inner_title1 fleft ">
           <label>Text Size</label>
           <br>
-          <input type="number" name="text_size" value="<?php echo $re_text_size ?>" class="title_size title_text">
+		  
+		  <div class="wrapper-demo">
+
+                                        <div id="dd2" class="wrapper-dropdown-3" tabindex="1"> <span id="title_size"><?php echo $re_title_size; ?></span>
+                                            <input type="hidden" name="title_size_hidden" id="title_size_hidden" />
+                                            <ul class="dropdown">
+                                                <?php for ($size = 10; $size < 30; $size++) { ?>
+                                                    <li><a href="#"><?php echo $size; ?></a></li>
+                                                <?php } ?>                
+
+                                            </ul>
+
+                                        </div>
+
+                                        ​</div>
+          <!--input type="number" name="text_size" value="<?php echo $re_text_size ?>" class="title_size title_text"-->
         </div>
         <div class="inner_title1 fleft">
           <label>Text Font</label>
           <br>
-          <input type="text" name="text_font" class="title_text" value="<?php echo $re_text_font ?>">
+		  
+		   <div class="wrapper-demo">
+
+                                        <div id="dd3" class="wrapper-dropdown-3" tabindex="1"> <span id="title_font"><?php echo $re_title_font; ?></span>
+                                            <input type="hidden" name="title_font_hidden" id="title_font_hidden" />
+                                            <?php $font_array = ["Arial", "Times New Roman", "Sans-Serif"]; ?>
+                                            <ul class="dropdown">
+                                                <?php
+                                                foreach ($font_array as $font) {
+                                                    ?>
+                                                    <li><a href="#"><?php echo $font; ?></a></li>
+                                                    <?php
+                                                }
+                                                ?>
+
+                                            </ul>
+
+                                        </div>
+
+                                        ​</div>
+
+          <!--input type="text" name="text_font" class="title_text" value="<?php echo $re_text_font ?>"-->
         </div>
-        <div class="inner_title1 fleft">
+        <div class="inner_title3 fleft">
           <label>Text Color</label>
           <br>
           <div class='example'>
-            <input type='text' name="text_color"  id='2' value="<?php echo $re_text_color ?>" />
+            <input type='text' name="text_color"  id='28' value="<?php echo $re_text_color ?>" />
           </div>
         </div>
       </div>
@@ -426,7 +494,7 @@ document.querySelector('#volume').value = vol;
         <div class="inner_title3 inner_title_ttl hh fleft">
           <label class="sec_head_ques1 "> Background-image </label>
           <div class="sec_ques_div">
-            <button class="bb_ques fleft">Browse..</button>
+            <button class="bb_ques fleft browse_bb">Browse..</button>
             <input type="file" name="appearance_image" id="appearance_image" class="browewin" style="display:none;"/>
           </div>
         </div>
@@ -434,7 +502,7 @@ document.querySelector('#volume').value = vol;
           <label>Background image color overlay</label>
           <br>
           <div class='example'>
-            <input type='text' name='appearance_image_overlay' id='3' value="<?php echo $re_bg_color; ?>" />
+            <input type='text' name='appearance_image_overlay' id='29' value="<?php echo $re_bg_color; ?>" />
           </div>
         </div>
         <div class="inner_title3 inner_title_ttl hh fleft">
@@ -448,9 +516,13 @@ document.querySelector('#volume').value = vol;
       <div class="inner_title2 inner_title_ttl  fleft">
         <label>Background color</label>
         <br>
-        <div class='example1'>
-          <input type='text' name='appearance_color' id='4' value="<?php echo $re_bg_re_color?>" />
-        </div>
+        <div class='example'>
+
+                                    <input type='text' name='bgcolor' id='30' value='<?php echo $re_bg_color; ?>' />
+
+
+
+                                </div>
       </div>
       <div class="clear"> </div>
     </div>
@@ -466,19 +538,55 @@ document.querySelector('#volume').value = vol;
         <div class="inner_title1 inner_title_ttl hh fleft ">
           <label>Size</label>
           <br>
-          <input type="number" name="ques_text_size" class="title_size title_text" value="<?php echo $re_ques_size?>">
+		  <div class="wrapper-demo">
+
+                                        <div id="dd4" class="wrapper-dropdown-3" tabindex="1"> <span id="title_size"><?php echo $re_title_size; ?></span>
+                                            <input type="hidden" name="title_size_hidden" id="title_size_hidden" />
+                                            <ul class="dropdown">
+                                                <?php for ($size = 10; $size < 30; $size++) { ?>
+                                                    <li><a href="#"><?php echo $size; ?></a></li>
+                                                <?php } ?>                
+
+                                            </ul>
+
+                                        </div>
+
+                                        ​</div>
+          <!--input type="number" name="ques_text_size" class="title_size title_text" value="<?php echo $re_ques_size?>"-->
         </div>
         <div class="inner_title1 inner_title_ttl hh fleft">
           <label> Font</label>
           <br>
-          <input type="text" name="ques_font" class="title_text" value="<?php echo $re_ques_font?>">
+		  
+		   <div class="wrapper-demo">
+
+                                        <div id="dd5" class="wrapper-dropdown-3" tabindex="1"> <span id="title_font"><?php echo $re_title_font; ?></span>
+                                            <input type="hidden" name="title_font_hidden" id="title_font_hidden" />
+                                            <?php $font_array = ["Arial", "Times New Roman", "Sans-Serif"]; ?>
+                                            <ul class="dropdown">
+                                                <?php
+                                                foreach ($font_array as $font) {
+                                                    ?>
+                                                    <li><a href="#"><?php echo $font; ?></a></li>
+                                                    <?php
+                                                }
+                                                ?>
+
+                                            </ul>
+
+                                        </div>
+
+                                        ​</div>
+
+          <!--input type="text" name="ques_font" class="title_text" value="<?php echo $re_ques_font?>"-->
         </div>
-        <div class="inner_title1 inner_title_ttl fleft">
+        <div class="inner_title3 inner_title_ttl fleft">
           <label> Color</label>
           <br>
           <div class='example'>
-            <input type='text' name="ques_color" id='5' value="<?php echo $re_ques_color?>" />
+            <input type='text' name="ques_color" id='31' value="<?php echo $re_ques_color?>" />
           </div>
+		  
         </div>
       </div>
       <div class="clear"> </div>
@@ -496,24 +604,60 @@ document.querySelector('#volume').value = vol;
         <label>Box Background color</label>
         <br>
         <div class='example'>
-          <input type='text' name='box_bg_color' id='6' value="<?php echo $re_ans_color?>" />
+          <input type='text' name='box_bg_color' id='32' value="<?php echo $re_ans_color?>" />
         </div>
       </div>
       <div class="inn_sec4 fleft inner_title_ttl">
         <label>Size</label>
         <br>
-        <input type="number" name="answer_size" class="title_size title_text" value="<?php echo $re_ans_size?>">
+		
+		<div class="wrapper-demo">
+
+                                        <div id="dd6" class="wrapper-dropdown-3" tabindex="1"> <span id="title_size"><?php echo $re_title_size; ?></span>
+                                            <input type="hidden" name="title_size_hidden" id="title_size_hidden" />
+                                            <ul class="dropdown">
+                                                <?php for ($size = 10; $size < 30; $size++) { ?>
+                                                    <li><a href="#"><?php echo $size; ?></a></li>
+                                                <?php } ?>                
+
+                                            </ul>
+
+                                        </div>
+
+                                        ​</div>
+        <!--input type="number" name="answer_size" class="title_size title_text" value="<?php echo $re_ans_size?>"-->
       </div>
       <div class="inn_sec4 fleft inner_title_ttl">
         <label>Font</label>
         <br>
-        <input type="text" name="answer_font" class="title_size_font title_text" value="<?php echo $re_ans_font?>">
+		
+		 <div class="wrapper-demo">
+
+                                        <div id="dd7" class="wrapper-dropdown-3" tabindex="1"> <span id="title_font"><?php echo $re_title_font; ?></span>
+                                            <input type="hidden" name="title_font_hidden" id="title_font_hidden" />
+                                            <?php $font_array = ["Arial", "Times New Roman", "Sans-Serif"]; ?>
+                                            <ul class="dropdown">
+                                                <?php
+                                                foreach ($font_array as $font) {
+                                                    ?>
+                                                    <li><a href="#"><?php echo $font; ?></a></li>
+                                                    <?php
+                                                }
+                                                ?>
+
+                                            </ul>
+
+                                        </div>
+
+                                        ​</div>
+
+        <!--input type="text" name="answer_font" class="title_size_font title_text" value="<?php echo $re_ans_font?>"-->
       </div>
-      <div class="inn_sec4 fleft inner_title_ttl">
+      <div class="inn_sec4 fleft inner_title_ttl txt_col">
         <label>Color</label>
         <br>
         <div class='example'>
-          <input type='text' name="answer_color" id='7' value='orangered' />
+          <input type='text' name="answer_color" id='33' value='orangered' />
         </div>
       </div>
     </div>
@@ -531,19 +675,37 @@ document.querySelector('#volume').value = vol;
           <label>Button Color</label>
           <br>
           <div class='example'>
-            <input type='text' name='btn_color' id='8' value="<?php echo $re_btn_color?>"  />
-          </div>
+
+                                    <input type='text' name='bgcolor' id='34' value='<?php echo $re_bg_color; ?>' />
+
+
+
+                                </div>
         </div>
         <div class="inn_sec5 hh fleft inner_title_ttl">
           <label>Button Size</label>
           <br>
-          <input type="number" name="btn_size" class="title_size title_text" value="<?php echo $re_btn_size?>">
+		  <div class="wrapper-demo">
+
+                                        <div id="dd8" class="wrapper-dropdown-3" tabindex="1"> <span id="title_size"><?php echo $re_title_size; ?></span>
+                                            <input type="hidden" name="title_size_hidden" id="title_size_hidden" />
+                                            <ul class="dropdown">
+                                                <?php for ($size = 10; $size < 30; $size++) { ?>
+                                                    <li><a href="#"><?php echo $size; ?></a></li>
+                                                <?php } ?>                
+
+                                            </ul>
+
+                                        </div>
+
+                                        ​</div>
+          <!--input type="number" name="btn_size" class="title_size title_text" value="<?php echo $re_btn_size?>"-->
         </div>
-        <div class="inn_sec5 fleft inner_title_ttl">
+        <div class="inn_sec5 fleft inner_title_ttl txt_col">
           <label>Button Text Color</label>
           <br>
           <div class='example'>
-            <input type='text' name='btn_text_color' id='9' value="<?php echo $re_btn_text_color?>" />
+            <input type='text' name='btn_text_color' id='35' value="<?php echo $re_btn_text_color?>" />
           </div>
         </div>
       </div>
@@ -561,14 +723,14 @@ document.querySelector('#volume').value = vol;
           <label>Check Box Color</label>
           <br>
           <div class='example'>
-            <input type='text' name='checkbox_color' id='10' value="<?php echo $re_checkbox_color?>" />
+            <input type='text' name='checkbox_color' id='36' value="<?php echo $re_checkbox_color?>" />
           </div>
         </div>
-        <div class="inn_sec6 fleft inner_title_ttl">
+        <div class="inn_sec6 fleft inner_title_ttl txt_col">
           <label>Radio Button Color</label>
           <br>
           <div class='example'>
-            <input type='text' name='radio_color' id='11' value="<?php echo $re_radio_color?>" />
+            <input type='text' name='radio_color' id='37' value="<?php echo $re_radio_color?>" />
           </div>
         </div>
       </div>
@@ -595,23 +757,57 @@ document.querySelector('#volume').value = vol;
         <div class="inner_title1 fleft">
           <label>Text</label>
           <br>
-          <textarea name="footer_text" rows="5" cols="25"><?php echo $re_footer_text_name?></textarea>
+          <textarea name="footer_text" rows="5" cols="25" class="textarea_mm"><?php echo $re_footer_text_name?></textarea>
         </div>
         <div class="inner_title1 fleft ">
           <label>Text Size</label>
           <br>
-          <input type="number" name="footer_text_size" class="title_size title_text" value="<?php echo $re_footer_text_size?>">
+		  <div class="wrapper-demo">
+
+                                        <div id="dd9" class="wrapper-dropdown-3" tabindex="1"> <span id="title_size"><?php echo $re_title_size; ?></span>
+                                            <input type="hidden" name="title_size_hidden" id="title_size_hidden" />
+                                            <ul class="dropdown">
+                                                <?php for ($size = 10; $size < 30; $size++) { ?>
+                                                    <li><a href="#"><?php echo $size; ?></a></li>
+                                                <?php } ?>                
+
+                                            </ul>
+
+                                        </div>
+
+                                        ​</div>
+          <!--input type="number" name="footer_text_size" class="title_size title_text" value="<?php echo $re_footer_text_size?>"-->
         </div>
         <div class="inner_title1 fleft">
           <label>Text Font</label>
           <br>
-          <input type="text" name="footer_text_font" class="title_text" value="<?php echo $re_footer_text_font?>">
+		   <div class="wrapper-demo">
+
+                                        <div id="dd10" class="wrapper-dropdown-3" tabindex="1"> <span id="title_font"><?php echo $re_title_font; ?></span>
+                                            <input type="hidden" name="title_font_hidden" id="title_font_hidden" />
+                                            <?php $font_array = ["Arial", "Times New Roman", "Sans-Serif"]; ?>
+                                            <ul class="dropdown">
+                                                <?php
+                                                foreach ($font_array as $font) {
+                                                    ?>
+                                                    <li><a href="#"><?php echo $font; ?></a></li>
+                                                    <?php
+                                                }
+                                                ?>
+
+                                            </ul>
+
+                                        </div>
+
+                                        ​</div>
+
+          <!--input type="text" name="footer_text_font" class="title_text" value="<?php echo $re_footer_text_font?>"-->
         </div>
-        <div class="inner_title1 fleft">
+        <div class="inner_title3 fleft txt_col">
           <label>Text Color</label>
           <br>
           <div class='example'>
-            <input type='text' name='footer_text_color' id='12' value="<?php echo $re_footer_text_color?>" />
+            <input type='text' name='footer_text_color' id='38' value="<?php echo $re_footer_text_color?>" />
           </div>
         </div>
       </div>
@@ -628,5 +824,489 @@ document.querySelector('#volume').value = vol;
   <!--wrapper closed--> 
 </section>
 </form>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script> 
+<script type="text/javascript">
+			
+			function DropDown(el) {
+				this.dd = el;
+				this.placeholder = this.dd.children('span');
+				this.opts = this.dd.find('ul.dropdown > li');
+				this.val = '';
+				this.index = -1;
+				this.initEvents();
+			}
+			DropDown.prototype = {
+				initEvents : function() {
+					var obj = this;
+
+					obj.dd.on('click', function(event){
+						$(this).toggleClass('active');
+						return false;
+					});
+
+					obj.opts.on('click',function(){
+						var opt = $(this);
+						obj.val = opt.text();
+						obj.index = opt.index();
+						obj.placeholder.text(obj.val);
+					});
+				},
+				getValue : function() {
+					return this.val;
+				},
+				getIndex : function() {
+					return this.index;
+				}
+			}
+
+			$(function() {
+
+				var dd = new DropDown( $('#dd') );
+
+				$(document).click(function() {
+					// all dropdowns
+					$('.wrapper-dropdown-3').removeClass('active');
+				});
+
+			});
+
+		</script> 
+<script type="text/javascript">
+			
+			function DropDown(el) {
+				this.dd1 = el;
+				this.placeholder = this.dd1.children('span');
+				this.opts = this.dd1.find('ul.dropdown > li');
+				this.val = '';
+				this.index = -1;
+				this.initEvents();
+			}
+			DropDown.prototype = {
+				initEvents : function() {
+					var obj = this;
+
+					obj.dd1.on('click', function(event){
+						$(this).toggleClass('active');
+						return false;
+					});
+
+					obj.opts.on('click',function(){
+						var opt = $(this);
+						obj.val = opt.text();
+						obj.index = opt.index();
+						obj.placeholder.text(obj.val);
+					});
+				},
+				getValue : function() {
+					return this.val;
+				},
+				getIndex : function() {
+					return this.index;
+				}
+			}
+
+			$(function() {
+
+				var dd1 = new DropDown( $('#dd1') );
+
+				$(document).click(function() {
+					// all dropdowns
+					$('.wrapper-dropdown-3').removeClass('active');
+				});
+
+			});
+
+		</script> 
+		<script type="text/javascript">
+    function DropDown(el) {
+        this.dd2 = el;
+        this.placeholder = this.dd2.children('span');
+        this.opts = this.dd2.find('ul.dropdown > li');
+        this.val = '';
+        this.index = -1;
+        this.initEvents();
+    }
+
+    DropDown.prototype = {
+        initEvents: function() {
+            var obj = this;
+            obj.dd2.on('click', function(event) {
+                $(this).toggleClass('active');
+                return false;
+            });
+
+            obj.opts.on('click', function() {
+                var opt = $(this);
+                obj.val = opt.text();
+                obj.index = opt.index();
+                obj.placeholder.text(obj.val);
+            });
+        },
+        getValue: function() {
+            return this.val;
+        },
+        getIndex: function() {
+            return this.index;
+        }
+
+    }
+
+    $(function() {
+        var dd2 = new DropDown($('#dd2'));
+        $(document).click(function() {
+            // all dropdowns
+            $('.wrapper-dropdown-3').removeClass('active');
+        });
+    });
+</script>
+<script type="text/javascript">
+    function DropDown(el) {
+        this.dd3 = el;
+        this.placeholder = this.dd3.children('span');
+        this.opts = this.dd3.find('ul.dropdown > li');
+        this.val = '';
+        this.index = -1;
+        this.initEvents();
+    }
+
+    DropDown.prototype = {
+        initEvents: function() {
+            var obj = this;
+            obj.dd3.on('click', function(event) {
+                $(this).toggleClass('active');
+                return false;
+            });
+
+            obj.opts.on('click', function() {
+                var opt = $(this);
+                obj.val = opt.text();
+                obj.index = opt.index();
+                obj.placeholder.text(obj.val);
+            });
+        },
+        getValue: function() {
+            return this.val;
+        },
+        getIndex: function() {
+            return this.index;
+        }
+
+    }
+
+    $(function() {
+        var dd3 = new DropDown($('#dd3'));
+        $(document).click(function() {
+            // all dropdowns
+            $('.wrapper-dropdown-3').removeClass('active');
+        });
+    });
+</script>
+<script type="text/javascript">
+    function DropDown(el) {
+        this.dd4 = el;
+        this.placeholder = this.dd4.children('span');
+        this.opts = this.dd4.find('ul.dropdown > li');
+        this.val = '';
+        this.index = -1;
+        this.initEvents();
+    }
+
+    DropDown.prototype = {
+        initEvents: function() {
+            var obj = this;
+            obj.dd4.on('click', function(event) {
+                $(this).toggleClass('active');
+                return false;
+            });
+
+            obj.opts.on('click', function() {
+                var opt = $(this);
+                obj.val = opt.text();
+                obj.index = opt.index();
+                obj.placeholder.text(obj.val);
+            });
+        },
+        getValue: function() {
+            return this.val;
+        },
+        getIndex: function() {
+            return this.index;
+        }
+
+    }
+
+    $(function() {
+        var dd4 = new DropDown($('#dd4'));
+        $(document).click(function() {
+            // all dropdowns
+            $('.wrapper-dropdown-3').removeClass('active');
+        });
+    });
+</script>
+<script type="text/javascript">
+			
+			function DropDown(el) {
+				this.dd5 = el;
+				this.placeholder = this.dd5.children('span');
+				this.opts = this.dd5.find('ul.dropdown > li');
+				this.val = '';
+				this.index = -1;
+				this.initEvents();
+			}
+			DropDown.prototype = {
+				initEvents : function() {
+					var obj = this;
+
+					obj.dd5.on('click', function(event){
+						$(this).toggleClass('active');
+						return false;
+					});
+
+					obj.opts.on('click',function(){
+						var opt = $(this);
+						obj.val = opt.text();
+						obj.index = opt.index();
+						obj.placeholder.text(obj.val);
+					});
+				},
+				getValue : function() {
+					return this.val;
+				},
+				getIndex : function() {
+					return this.index;
+				}
+			}
+
+			$(function() {
+
+				var dd5 = new DropDown( $('#dd5') );
+
+				$(document).click(function() {
+					// all dropdowns
+					$('.wrapper-dropdown-3').removeClass('active');
+				});
+
+			});
+
+		</script> 
+<script type="text/javascript">
+			
+			function DropDown(el) {
+				this.dd6 = el;
+				this.placeholder = this.dd6.children('span');
+				this.opts = this.dd6.find('ul.dropdown > li');
+				this.val = '';
+				this.index = -1;
+				this.initEvents();
+			}
+			DropDown.prototype = {
+				initEvents : function() {
+					var obj = this;
+
+					obj.dd6.on('click', function(event){
+						$(this).toggleClass('active');
+						return false;
+					});
+
+					obj.opts.on('click',function(){
+						var opt = $(this);
+						obj.val = opt.text();
+						obj.index = opt.index();
+						obj.placeholder.text(obj.val);
+					});
+				},
+				getValue : function() {
+					return this.val;
+				},
+				getIndex : function() {
+					return this.index;
+				}
+			}
+
+			$(function() {
+
+				var dd6 = new DropDown( $('#dd6') );
+
+				$(document).click(function() {
+					// all dropdowns
+					$('.wrapper-dropdown-3').removeClass('active');
+				});
+
+			});
+
+		</script> 
+		<script type="text/javascript">
+    function DropDown(el) {
+        this.dd7 = el;
+        this.placeholder = this.dd7.children('span');
+        this.opts = this.dd7.find('ul.dropdown > li');
+        this.val = '';
+        this.index = -1;
+        this.initEvents();
+    }
+
+    DropDown.prototype = {
+        initEvents: function() {
+            var obj = this;
+            obj.dd7.on('click', function(event) {
+                $(this).toggleClass('active');
+                return false;
+            });
+
+            obj.opts.on('click', function() {
+                var opt = $(this);
+                obj.val = opt.text();
+                obj.index = opt.index();
+                obj.placeholder.text(obj.val);
+            });
+        },
+        getValue: function() {
+            return this.val;
+        },
+        getIndex: function() {
+            return this.index;
+        }
+
+    }
+
+    $(function() {
+        var dd7 = new DropDown($('#dd7'));
+        $(document).click(function() {
+            // all dropdowns
+            $('.wrapper-dropdown-3').removeClass('active');
+        });
+    });
+</script>
+<script type="text/javascript">
+    function DropDown(el) {
+        this.dd8 = el;
+        this.placeholder = this.dd8.children('span');
+        this.opts = this.dd8.find('ul.dropdown > li');
+        this.val = '';
+        this.index = -1;
+        this.initEvents();
+    }
+
+    DropDown.prototype = {
+        initEvents: function() {
+            var obj = this;
+            obj.dd8.on('click', function(event) {
+                $(this).toggleClass('active');
+                return false;
+            });
+
+            obj.opts.on('click', function() {
+                var opt = $(this);
+                obj.val = opt.text();
+                obj.index = opt.index();
+                obj.placeholder.text(obj.val);
+            });
+        },
+        getValue: function() {
+            return this.val;
+        },
+        getIndex: function() {
+            return this.index;
+        }
+
+    }
+
+    $(function() {
+        var dd8 = new DropDown($('#dd8'));
+        $(document).click(function() {
+            // all dropdowns
+            $('.wrapper-dropdown-3').removeClass('active');
+        });
+    });
+</script>
+<script type="text/javascript">
+    function DropDown(el) {
+        this.dd9 = el;
+        this.placeholder = this.dd9.children('span');
+        this.opts = this.dd9.find('ul.dropdown > li');
+        this.val = '';
+        this.index = -1;
+        this.initEvents();
+    }
+
+    DropDown.prototype = {
+        initEvents: function() {
+            var obj = this;
+            obj.dd9.on('click', function(event) {
+                $(this).toggleClass('active');
+                return false;
+            });
+
+            obj.opts.on('click', function() {
+                var opt = $(this);
+                obj.val = opt.text();
+                obj.index = opt.index();
+                obj.placeholder.text(obj.val);
+            });
+        },
+        getValue: function() {
+            return this.val;
+        },
+        getIndex: function() {
+            return this.index;
+        }
+
+    }
+
+    $(function() {
+        var dd9 = new DropDown($('#dd9'));
+        $(document).click(function() {
+            // all dropdowns
+            $('.wrapper-dropdown-3').removeClass('active');
+        });
+    });
+</script>
+<script type="text/javascript">
+    function DropDown(el) {
+        this.dd10 = el;
+        this.placeholder = this.dd10.children('span');
+        this.opts = this.dd10.find('ul.dropdown > li');
+        this.val = '';
+        this.index = -1;
+        this.initEvents();
+    }
+
+    DropDown.prototype = {
+        initEvents: function() {
+            var obj = this;
+            obj.dd10.on('click', function(event) {
+                $(this).toggleClass('active');
+                return false;
+            });
+
+            obj.opts.on('click', function() {
+                var opt = $(this);
+                obj.val = opt.text();
+                obj.index = opt.index();
+                obj.placeholder.text(obj.val);
+            });
+        },
+        getValue: function() {
+            return this.val;
+        },
+        getIndex: function() {
+            return this.index;
+        }
+
+    }
+
+    $(function() {
+        var dd10 = new DropDown($('#dd10'));
+        $(document).click(function() {
+            // all dropdowns
+            $('.wrapper-dropdown-3').removeClass('active');
+        });
+    });
+</script>
+ <!--     <script type="text/javascript" src="jquery/jquery-1.9.1.js"></script>-->
+
+<script type="text/javascript" src="jquery/spectrum.js"></script>
+
+<script type='text/javascript' src="jquery/docs.js"></script>
 </body>
 </html>

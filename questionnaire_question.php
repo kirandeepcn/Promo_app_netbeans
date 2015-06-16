@@ -20,7 +20,7 @@ if(!isset($_GET['ques_id'])) {
           <div class="inner_title1 inner_drag_hh fleft"> <img src="images/drag.png" alt="move" width="16" height="11" class="handle" />
               <label class="label_ff" id="ques_title">First Name</label>
           </div>
-          <div class="inner_title1  inner_drag_hh fleft">
+          <div class="inner_t inner_drag_hh fleft">
             <input type="text" class="title_text title_text2">
           </div>
           <div class="inner_title1 inner_drag_hh fleft">
@@ -34,7 +34,7 @@ if(!isset($_GET['ques_id'])) {
             <div class="inner_title1 inner_drag_hh fleft"> <img src="images/drag.png" alt="move" width="16" height="11" class="handle" />
               <label class="label_ff" id="ques_title">Last Name</label>
             </div>
-            <div class="inner_title1 inner_drag_hh fleft">
+            <div class="inner_t inner_drag_hh fleft">
               <input type="text" class="title_text title_text2">
             </div>
             <div class="inner_title1 inner_drag_hh fleft">
@@ -47,7 +47,7 @@ if(!isset($_GET['ques_id'])) {
           <div class="inner_title1 inner_drag_hh fleft"> <img src="images/drag.png" alt="move" width="16" height="11" class="handle" />
             <label class="label_ff" id="ques_title">Title</label>
           </div>
-          <div class="inner_title1 inner_drag_hh fleft">
+          <div class="inner_t inner_drag_hh fleft">
             <select class="date_ff title_text"><option>Mr.</option><option>Ms.</option><option>Mrs</option></select>
           </div>
           <div class="inner_title1  inner_drag_hh fleft">
@@ -67,7 +67,7 @@ if(!isset($_GET['ques_id'])) {
           <div class="inner_title1 inner_drag_hh fleft"> <img src="images/drag.png" alt="move" width="16" height="11" class="handle" />
             <label  class="label_ff" id="ques_title">Email</label>
           </div>
-          <div class="inner_title1 inner_drag_hh fleft">
+          <div class="inner_t inner_drag_hh fleft">
             <input type="text" class="title_text title_text2">
           </div>
           <div class="inner_title1  inner_drag_hh fleft">
@@ -86,7 +86,7 @@ if(!isset($_GET['ques_id'])) {
           <div class="inner_title1 inner_drag_hh fleft"> <img src="images/drag.png" alt="move" width="16" height="11" class="handle" />
             <label  class="label_ff" id="ques_title">Telephone</label>
           </div>
-          <div class="inner_title1 inner_drag_hh fleft">
+          <div class="inner_t inner_drag_hh fleft">
               <input type="text" placeholder="Mobile" id="tele_val" value="Mobile" class="title_text title_text2">
           </div>
           <div class="inner_title1  inner_drag_hh fleft">
@@ -99,8 +99,8 @@ if(!isset($_GET['ques_id'])) {
             </div>
           </div>
           <div class="clear"> </div>
-          <div class="inner_title1 inner_drag_hh fleft"> </div>
-          <div class="inner_title1 inner_drag_hh fleft">
+          <div class="inner_t inner_drag_hh fleft"> </div>
+          <div class="inner_t inner_drag_hh fleft">
               <input type="text" id="tele_val" placeholder="Home" value="Home" class="title_text title_text2">
           </div>
 
@@ -115,7 +115,7 @@ if(!isset($_GET['ques_id'])) {
           </div>
           <div class="clear"> </div>
            <div class="inner_title1 inner_drag_hh fleft"> </div>
-          <div class="inner_title1 inner_drag_hh fleft">
+          <div class="inner_t inner_drag_hh fleft">
             <input type="text" placeholder="Work" id="tele_val" value="Work" class="title_text title_text2">
           </div>
           <div class="inner_title1  inner_drag_hh fleft">
@@ -135,7 +135,7 @@ if(!isset($_GET['ques_id'])) {
           <div class="inner_title1 inner_drag_hh fleft"> <img src="images/drag.png" alt="move" width="16" height="11" class="handle" />
             <label  class="label_ff" id="ques_title">Date of birth</label>
           </div>
-          <div class="inner_title1 inner_drag_hh fleft">
+          <div class="inner_t inner_drag_hh fleft">
             <select name="DOBMonth" class="date_ff">
               <option> Month </option>
               <option value="January">January</option>
@@ -193,7 +193,7 @@ if(!isset($_GET['ques_id'])) {
           <div class="inner_title1 inner_drag_hh fleft"> <img src="images/drag.png" alt="move" width="16" height="11" class="handle" />
             <label class="label_ff" id="ques_title">Street Address</label>
           </div>
-          <div class="inner_title1 inner_drag_hh fleft">
+          <div class="inner_t inner_drag_hh fleft">
             <input type="text" class="title_text title_text2">
           </div>
           <div class="inner_title1  inner_drag_hh fleft">
@@ -212,7 +212,7 @@ if(!isset($_GET['ques_id'])) {
           <div class="inner_title1 inner_drag_hh fleft"> <img src="images/drag.png" alt="move" width="16" height="11" class="handle" />
             <label class="label_ff" id="ques_title">Post Code</label>
           </div>
-          <div class="inner_title1 inner_drag_hh fleft">
+          <div class="inner_t inner_drag_hh fleft">
             <input type="text" class="title_text title_text2">
           </div>
           <div class="inner_title1  inner_drag_hh fleft">
@@ -231,7 +231,7 @@ if(!isset($_GET['ques_id'])) {
           <div class="inner_title1 inner_drag_hh fleft"> <img src="images/drag.png" alt="move" width="16" height="11" class="handle" />
             <label class="label_ff" id="ques_title">Country</label>
           </div>
-          <div class="inner_title1 inner_drag_hh fleft">
+          <div class="inner_t inner_drag_hh fleft">
             <select class="date_ff title_text"><option>Select Country</option></select>
           </div>
           <div class="inner_title1  inner_drag_hh fleft">
@@ -287,7 +287,7 @@ if(!isset($_GET['ques_id'])) {
                       <div class="inner_title1 inner_drag_hh fleft"> <img src="images/drag.png" alt="move" width="16" height="11" class="handle" />
                           <label class="label_ff" id="ques_title">First Name</label>
                       </div>
-                      <div class="inner_title1  inner_drag_hh fleft">
+                      <div class="inner_t  inner_drag_hh fleft">
                         <input type="text" class="title_text title_text2">
                       </div>
                       <div class="inner_title1 inner_drag_hh fleft">
@@ -303,7 +303,7 @@ if(!isset($_GET['ques_id'])) {
                     <div class="inner_title1 inner_drag_hh fleft"> <img src="images/drag.png" alt="move" width="16" height="11" class="handle" />
                       <label class="label_ff" id="ques_title">Last Name</label>
                     </div>
-                    <div class="inner_title1 inner_drag_hh fleft">
+                    <div class="inner_t inner_drag_hh fleft">
                       <input type="text" class="title_text title_text2">
                     </div>
                     <div class="inner_title1 inner_drag_hh fleft">
@@ -319,7 +319,7 @@ if(!isset($_GET['ques_id'])) {
                       <div class="inner_title1 inner_drag_hh fleft"> <img src="images/drag.png" alt="move" width="16" height="11" class="handle" />
                         <label class="label_ff" id="ques_title">Title</label>
                       </div>
-                      <div class="inner_title1 inner_drag_hh fleft">
+                      <div class="inner_t inner_drag_hh fleft">
                         <select class="date_ff title_text"><option>Mr.</option><option>Ms.</option><option>Mrs</option></select>
                       </div>
                       <div class="inner_title1  inner_drag_hh fleft">
@@ -341,7 +341,7 @@ if(!isset($_GET['ques_id'])) {
                     <div class="inner_title1 inner_drag_hh fleft"> <img src="images/drag.png" alt="move" width="16" height="11" class="handle" />
                     <label  class="label_ff" id="ques_title">Email</label>
                     </div>
-                    <div class="inner_title1 inner_drag_hh fleft">
+                    <div class="inner_t inner_drag_hh fleft">
                     <input type="text" class="title_text title_text2">
                     </div>
                     <div class="inner_title1  inner_drag_hh fleft">
@@ -372,7 +372,7 @@ if(!isset($_GET['ques_id'])) {
                     <div class="inner_title1 inner_drag_hh fleft"> <img src="images/drag.png" alt="move" width="16" height="11" class="handle" />
                     <label  class="label_ff" id="ques_title">Telephone</label>
                     </div>
-                    <div class="inner_title1 inner_drag_hh fleft">
+                    <div class="inner_t inner_drag_hh fleft">
                     <input type="text" placeholder="Mobile" id="tele_val" value="Mobile" class="title_text title_text2">
                     </div>
                     <div class="inner_title1  inner_drag_hh fleft">
@@ -386,7 +386,7 @@ if(!isset($_GET['ques_id'])) {
                     </div>
                     <div class="clear"> </div>
                     <div class="inner_title1 inner_drag_hh fleft"> </div>
-                    <div class="inner_title1 inner_drag_hh fleft">
+                    <div class="inner_t inner_drag_hh fleft">
                     <input type="text" id="tele_val" placeholder="Home" value="Home" class="title_text title_text2">
                     </div>
 
@@ -401,7 +401,7 @@ if(!isset($_GET['ques_id'])) {
                     </div>
                     <div class="clear"> </div>
                     <div class="inner_title1 inner_drag_hh fleft"> </div>
-                    <div class="inner_title1 inner_drag_hh fleft">
+                    <div class="inner_t inner_drag_hh fleft">
                     <input type="text" placeholder="Work" id="tele_val" value="Work" class="title_text title_text2">
                     </div>
                     <div class="inner_title1  inner_drag_hh fleft">
@@ -425,7 +425,7 @@ if(!isset($_GET['ques_id'])) {
                     <div class="inner_title1 inner_drag_hh fleft"> <img src="images/drag.png" alt="move" width="16" height="11" class="handle" />
                       <label  class="label_ff" id="ques_title">Date of birth</label>
                     </div>
-                    <div class="inner_title1 inner_drag_hh fleft">
+                    <div class="inner_t inner_drag_hh fleft">
                       <select name="DOBMonth" class="date_ff">
                         <option> Month </option>
                         <option value="January">January</option>
@@ -486,7 +486,7 @@ if(!isset($_GET['ques_id'])) {
                     <div class="inner_title1 inner_drag_hh fleft"> <img src="images/drag.png" alt="move" width="16" height="11" class="handle" />
                     <label class="label_ff" id="ques_title">Street Address</label>
                     </div>
-                    <div class="inner_title1 inner_drag_hh fleft">
+                    <div class="inner_t inner_drag_hh fleft">
                     <input type="text" class="title_text title_text2">
                     </div>
                     <div class="inner_title1  inner_drag_hh fleft">
@@ -509,7 +509,7 @@ if(!isset($_GET['ques_id'])) {
                     <div class="inner_title1 inner_drag_hh fleft"> <img src="images/drag.png" alt="move" width="16" height="11" class="handle" />
                     <label class="label_ff" id="ques_title">Post Code</label>
                     </div>
-                    <div class="inner_title1 inner_drag_hh fleft">
+                    <div class="inner_t inner_drag_hh fleft">
                     <input type="text" class="title_text title_text2">
                     </div>
                     <div class="inner_title1  inner_drag_hh fleft">
@@ -531,7 +531,7 @@ if(!isset($_GET['ques_id'])) {
                     <div class="inner_title1 inner_drag_hh fleft"> <img src="images/drag.png" alt="move" width="16" height="11" class="handle" />
                     <label class="label_ff" id="ques_title">Country</label>
                     </div>
-                    <div class="inner_title1 inner_drag_hh fleft">
+                    <div class="inner_t inner_drag_hh fleft">
                     <select class="date_ff title_text"><option>Select Country</option></select>
                     </div>
                     <div class="inner_title1  inner_drag_hh fleft">
@@ -548,8 +548,9 @@ if(!isset($_GET['ques_id'])) {
                     $element = $country;
                 } else {
                     if($temp['ques_type_id'] == "1") {
+                        $tl_val = $temp['ques_options'];
                         $order_ques_dyn[] = 'btn_num++; '.
-                        '$("#outer_drag1").append("<div id=\'drag_"+btn_num+"\' class=\'inner_drag\'><div class=\'inner_title2  inner_drag_hh fleft\'><img src=\'images/drag.png\' alt=\'move\' width=\'16\' height=\'11\' class=\'handle\' /><label id=\'ques_type\'>Text Line</label><input type=\'checkbox\' name=\'ques_check\'><span> Required </span> </div><div class=\'clear\'> </div><div class=\'inner_title2  inner_drag_hh fleft\'><label> Question Title</label><input type=\'text\' id=\'ques_title\' class=\'title_text title_text2 input_text\'><div class=\'img_m\' id=\'img_1\'><img src=\'images/minus.png\' id=\'img_1\'onclick=\'showpop(\"drag_"+btn_num+"\")\'></div></div></div><div class=\"clear\"></div></div>");';
+                        '$("#outer_drag1").append("<div id=\'drag_"+btn_num+"\' class=\'inner_drag\'><div class=\'inner_title2  inner_drag_hh fleft\'><img src=\'images/drag.png\' alt=\'move\' width=\'16\' height=\'11\' class=\'handle\' /><label id=\'ques_type\'>Text Line</label><input type=\'checkbox\' name=\'ques_check\'><span> Required </span> </div><div class=\'clear\'> </div><div class=\'inner_title2  inner_drag_hh fleft\'><label> Question Title</label><input type=\'text\' id=\'ques_title\' value=\'$tl_val\' class=\'title_text title_text2 input_text\'><div class=\'img_m\' id=\'img_1\'><img src=\'images/minus.png\' id=\'img_1\'onclick=\'showpop(\"drag_"+btn_num+"\")\'></div></div></div><div class=\"clear\"></div></div>");';
                     } else if($temp['ques_type_id'] == "2") {
                         $order_ques_dyn[] = "btn_num_area++;".
                         "$(\"#outer_drag1\").append(\"<div id='drag_\"+btn_num_area+\"' class='inner_drag'><div class='inner_title2  inner_drag_hh fleft'><img src='images/drag.png' alt='move' width='16' height='11' class='handle' /><label id='ques_type'>Text Area</label><input type='checkbox' name=ques_check><span> Required </span> </div><div class='clear'> </div><div class='inner_title2  inner_drag_hh fleft'><label> Question Title</label><input type='text' id='ques_title' class='title_text title_text2 input_text'><div class='img_m'><img src='images/minus.png' onClick='showpop(\\\"drag_\"+btn_num_area+\"\\\")'></div></div></div>\");";
@@ -600,21 +601,21 @@ function showpop(id) {
 
 function add(id, num) {
 		//num_new = num + 1;
-         $("#adding_new_option_checkbox_"+id).before("<div class='inner_title2  inner_drag_hh fleft' id='drag_"+id+"_"+num+"'><label> Options</label><input type='checkbox'><input type='text' class='title_text title_text2 input_text txt' name='options_temp'><div class='img_m1'><img src='images/minus.png' onclick='showpop(\"drag_"+id+"_"+num+"\")'></div></div>");
+         $("#adding_new_option_checkbox_"+id).before("<div class='inner_title2  inner_drag_hh fleft' id='drag_"+id+"_"+num+"'><label class='\ques_ti'\> Options</label><input type='checkbox' class='\check'\><input type='text' class='title_text title_text2 input_text txt' name='options_temp'><div class='img_m1'><img src='images/lgt_m.png' onclick='showpop(\"drag_"+id+"_"+num+"\")'></div></div>");
 		 num++;
-		 $("#adding_new_option_checkbox_"+id).html("<img src='images/lgt_p.png' style='margin-left:100px' onclick='add(\""+id+"\", \""+num+"\");'>");		 
+		 $("#adding_new_option_checkbox_"+id).html("<img src='images/lgt_p.png' style='margin-left:158px' onclick='add(\""+id+"\", \""+num+"\");'>");		 
 }
 
 function add_radio(id, num) {
-        $("#adding_new_option_radio_"+id).before("<div class='inner_title2  inner_drag_hh fleft' id='drag_"+id+"_"+num+"'><label> Options</label><input type='radio'><input type='text' class='title_text title_text2 input_text txt'><div class='img_m1'><img src='images/minus.png' onclick='showpop(\"drag_"+id+"_"+num+"\")'></div></div>");
+        $("#adding_new_option_radio_"+id).before("<div class='inner_title2  inner_drag_hh fleft' id='drag_"+id+"_"+num+"'><label class='\ques_ti'\> Options</label><input type='radio' class='\check'\><input type='text' class='title_text title_text2 input_text txt'><div class='img_m1'><img src='images/lgt_m.png' onclick='showpop(\"drag_"+id+"_"+num+"\")'></div></div>");
 	 num++;
-	 $("#adding_new_option_radio_"+id).html("<img src='images/lgt_p.png' style='margin-left:100px' onclick='add_radio(\""+id+"\", \""+num+"\");'>");
+	 $("#adding_new_option_radio_"+id).html("<img src='images/lgt_p.png' style='margin-left:158px' onclick='add_radio(\""+id+"\", \""+num+"\");'>");
 }
 
 function add_dropdown(id, num) {
-        $("#adding_new_option_dropdown_"+id).before("<div class='inner_title2  inner_drag_hh fleft' id='drag_"+id+"_"+num+"'><label> Options</label><input type='checkbox'><input type='text' class='title_text title_text2 input_text txt'><div class='img_m1'><img src='images/minus.png' onclick='showpop(\"drag_"+id+"_"+num+"\")'></div></div>");
+        $("#adding_new_option_dropdown_"+id).before("<div class='inner_title2  inner_drag_hh fleft' id='drag_"+id+"_"+num+"'><label class='\ques_ti'\> Options</label><input type='checkbox' class='\check'\><input type='text' class='title_text title_text2 input_text txt'><div class='img_m1'><img src='images/lgt_m.png' onclick='showpop(\"drag_"+id+"_"+num+"\")'></div></div>");
         num++;
-        $("#adding_new_option_dropdown_"+id).html("<img src='images/lgt_p.png' style='margin-left:100px' onclick='add_dropdown(\""+id+"\", \""+num+"\");'>");
+        $("#adding_new_option_dropdown_"+id).html("<img src='images/lgt_p.png' style='margin-left:158px' onclick='add_dropdown(\""+id+"\", \""+num+"\");'>");
 }
 
 $(document).ready(function(){
@@ -634,31 +635,31 @@ $(document).ready(function(){
         
         $(".btn1").click(function(){
             btn_num++;
-            $("#outer_drag1").append("<div id='drag_"+btn_num+"' class='inner_drag'><div class='inner_title2  inner_drag_hh fleft'><img src='images/drag.png' alt='move' width='16' height='11' class='handle' /><label id='ques_type'>Text Line</label><input type='checkbox' name='ques_check'><span> Required </span> </div><div class='clear'> </div><div class='inner_title2  inner_drag_hh fleft'><label> Question Title</label><input type='text' id='ques_title' class='title_text title_text2 input_text'><div class='img_m' id='img_1'><img src='images/minus.png' id='img_1'onclick='showpop(\"drag_"+btn_num+"\")'></div></div></div><div class=\"clear\"></div></div>");
+            $("#outer_drag1").append("<div id='drag_"+btn_num+"' class='inner_drag'><div class='inner_title2  inner_drag_hh fleft'><img src='images/drag.png' alt='move' width='16' height='11' class='handle' /><label id='ques_type'>Text Line</label><input type='checkbox' name='ques_check'><span> Required </span> </div><div class='clear'> </div><div class='inner_title2  inner_drag_hh fleft first_1'><label class='\ques_ti'\> Question Title</label><input type='text' id='ques_title' class='title_text title_text2 input_text'><div class='img_m' id='img_1'><img src='images/minus.png' id='img_1'onclick='showpop(\"drag_"+btn_num+"\")'></div></div></div><div class=\"clear\"></div></div>");
        });
         $(".btn2").click(function(){
              btn_num_area++;
-            $("#outer_drag1").append("<div id='drag_"+btn_num_area+"' class='inner_drag'><div class='inner_title2  inner_drag_hh fleft'><img src='images/drag.png' alt='move' width='16' height='11' class='handle' /><label id='ques_type'>Text Area</label><input type='checkbox' name=ques_check><span> Required </span> </div><div class='clear'> </div><div class='inner_title2  inner_drag_hh fleft'><label> Question Title</label><input type='text' id='ques_title' class='title_text title_text2 input_text'><div class='img_m'><img src='images/minus.png' onClick='showpop(\"drag_"+btn_num_area+"\")'></div></div></div>");
+            $("#outer_drag1").append("<div id='drag_"+btn_num_area+"' class='inner_drag'><div class='inner_title2  inner_drag_hh fleft'><img src='images/drag.png' alt='move' width='16' height='11' class='handle' /><label id='ques_type' class='\ques_ti'\>Text Area</label><input type='checkbox' name=ques_check><span> Required </span> </div><div class='clear'> </div><div class='inner_title2  inner_drag_hh fleft first_1'><label class='\ques_ti'\> Question Title</label><input type='text' id='ques_title' class='title_text title_text2 input_text'><div class='img_m'><img src='images/minus.png' onClick='showpop(\"drag_"+btn_num_area+"\")'></div></div></div>");
        });
 	$(".btn3").click(function(){
 		btn_num_check++;
-            $("#outer_drag1").append("<div id='drag_check"+btn_num_check+"' class='inner_drag'><div class='inner_drag'><div class='inner_title2  inner_drag_hh fleft'> <img src='images/drag.png' alt='move' width='16' height='11' class='handle' /><label id='ques_type'>Check Boxes</label><input type='checkbox' name=ques_check><span> Required </span> </div><div class='clear'> </div><div class='inner_title2  inner_drag_hh fleft'><label> Question Title</label><input type='text' id='ques_title' class='title_text title_text2 input_text' value='' id='minus_id_check'><div class='img_m r_check fright' id='img_13'><img src='images/minus.png' onclick='showpop(\"drag_check"+btn_num_check+"\")'></div></div><div class='clear'> </div><div class='inner_title2  inner_drag_hh fleft' id='drag_"+btn_num_check+"_0'><label> Options</label><input type='checkbox'><input type='text' name='options_temp' class='title_text title_text2 input_text txt'><div class='img_m1'><img src='images/minus.png' onclick='showpop(\"drag_"+btn_num_check+"_0\")'></div></div><div class='clear'><div id='adding_new_option_checkbox_"+btn_num_check+"' class='inner_drag minus_img3'> <img src='images/lgt_p.png' style='margin-left:100px' onclick='add(\""+btn_num_check+"\", \"1\");'> </div> </div></div></div>");
+            $("#outer_drag1").append("<div id='drag_check"+btn_num_check+"' class='inner_drag'><div class='inner_drag'><div class='inner_title2  inner_drag_hh fleft'> <img src='images/drag.png' alt='move' width='16' height='11' class='handle' /><label id='ques_type' class='\ques_ti'\>Check Boxes</label><input type='checkbox' name=ques_check><span> Required </span> </div><div class='clear'> </div><div class='inner_title2  inner_drag_hh fleft first_2'><label class='\ques_ti'\> Question Title</label><input type='text' id='ques_title' class='title_text title_text2 input_text' value='' id='minus_id_check'><div class='img_m r_check fright' id='img_13'><img src='images/minus.png' onclick='showpop(\"drag_check"+btn_num_check+"\")'></div></div><div class='clear'> </div><div class='inner_title2  inner_drag_hh fleft' id='drag_"+btn_num_check+"_0'><label class='\ques_ti'\> Options</label><input type='checkbox'class='\check'\><input type='text' name='options_temp' class='title_text title_text2 input_text txt'><div class='img_m1'><img src='images/lgt_m.png' onclick='showpop(\"drag_"+btn_num_check+"_0\")'></div></div><div class='clear'><div id='adding_new_option_checkbox_"+btn_num_check+"' class='inner_drag minus_img3'> <img src='images/lgt_p.png' style='margin-left:158px' onclick='add(\""+btn_num_check+"\", \"1\");'> </div> </div></div></div>");
         });
 	$(".btn4").click(function(){
             btn_num_radio++;
-            $("#outer_drag1").append("<div id='drag_radio"+btn_num_radio+"' class='inner_drag'><div class='inner_title2  inner_drag_hh fleft'> <img src='images/drag.png' alt='move' width='16' height='11' class='handle' /><label id='ques_type'>Radio Button</label><input type='checkbox' name=ques_check><span> Required </span> </div><div class='clear'> </div><div class='inner_title2  inner_drag_hh fleft'><label> Question Title</label><input type='text' id='ques_title' class='title_text title_text2 input_text' value='' id='minus_id_check'><div class='img_m r_check fright' id='img_13'><img src='images/minus.png' onclick='showpop(\"drag_radio"+btn_num_radio+"\")'></div></div><div class='clear'> </div><div class='inner_title2  inner_drag_hh fleft'  id='drag_"+btn_num_radio+"_0'><label> Options</label><input type='radio'><input type='text' name='options_temp' class='title_text title_text2 input_text txt'><div class='img_m1'><img src='images/minus.png' onclick='showpop(\"drag_"+btn_num_radio+"_0\")'></'></div></div><div class='clear'> </div><div id='adding_new_option_radio_"+btn_num_radio+"' class='inner_drag minus_img1'> <img src='images/lgt_p.png' style='margin-left:100px' onclick='add_radio(\""+btn_num_radio+"\", \"1\");';> </div></div>");
+            $("#outer_drag1").append("<div id='drag_radio"+btn_num_radio+"' class='inner_drag'><div class='inner_title2  inner_drag_hh fleft'> <img src='images/drag.png' alt='move' width='16' height='11' class='handle' /><label id='ques_type'>Radio Button</label><input type='checkbox' name=ques_check><span> Required </span> </div><div class='clear'> </div><div class='inner_title2  inner_drag_hh fleft first_2'><label class='\ques_ti'\> Question Title</label><input type='text' id='ques_title' class='title_text title_text2 input_text' value='' id='minus_id_check'><div class='img_m r_check fright' id='img_13'><img src='images/minus.png' onclick='showpop(\"drag_radio"+btn_num_radio+"\")'></div></div><div class='clear'> </div><div class='inner_title2  inner_drag_hh fleft'  id='drag_"+btn_num_radio+"_0'><label class='\ques_ti'\> Options</label><input type='radio' class='\check'\><input type='text' name='options_temp' class='title_text title_text2 input_text txt'><div class='img_m1'><img src='images/lgt_m.png' onclick='showpop(\"drag_"+btn_num_radio+"_0\")'></'></div></div><div class='clear'> </div><div id='adding_new_option_radio_"+btn_num_radio+"' class='inner_drag minus_img1'> <img src='images/lgt_p.png' style='margin-left:158px' onclick='add_radio(\""+btn_num_radio+"\", \"1\");';> </div></div>");
         });
 	$(".btn5").click(function(){
             btn_num_dropdown++;
-            $("#outer_drag1").append("<div id='drag_dropdown"+btn_num_dropdown+"' class='inner_drag'><div class='inner_title2  inner_drag_hh fleft'> <img src='images/drag.png' alt='move' width='16' height='11' class='handle' /><label id='ques_type'>Drop Down</label><input type='checkbox' name=ques_check><span> Required </span> </div><div class='clear'> </div><div class='inner_title2  inner_drag_hh fleft'><label> Question Title</label><input type='text' id='ques_title' class='title_text title_text2 input_text' value='' id='minus_id_check'><div class='img_m r_check fright' id='img_13'><img src='images/minus.png' onclick='showpop(\"drag_dropdown"+btn_num_dropdown+"\")'></div></div><div class='clear'> </div><div class='inner_title2  inner_drag_hh fleft'  id='drag_"+btn_num_dropdown+"_0'><label> Options</label><input type='checkbox'><input type='text' name='options_temp' class='title_text title_text2 input_text txt'><div class='img_m1'><img src='images/minus.png' onclick='showpop(\"drag_"+btn_num_dropdown+"_0\")'></div></div><div class='clear'> </div><div id='adding_new_option_dropdown_"+btn_num_dropdown+"' class='inner_drag minus_img2'> <img src='images/lgt_p.png' style='margin-left:100px' onclick='add_dropdown(\""+btn_num_dropdown+"\", \"1\");';> </div></div>");
+            $("#outer_drag1").append("<div id='drag_dropdown"+btn_num_dropdown+"' class='inner_drag'><div class='inner_title2  inner_drag_hh fleft'> <img src='images/drag.png' alt='move' width='16' height='11' class='handle' /><label id='ques_type'>Drop Down</label><input type='checkbox' name=ques_check><span> Required </span> </div><div class='clear'> </div><div class='inner_title2  inner_drag_hh fleft first_3'><label class='\ques_ti'\> Question Title</label><input type='text' id='ques_title' class='title_text title_text2 input_text' value='' id='minus_id_check'><div class='img_m r_check fright' id='img_13'><img src='images/minus.png' onclick='showpop(\"drag_dropdown"+btn_num_dropdown+"\")'></div></div><div class='clear'> </div><div class='inner_title2  inner_drag_hh fleft'  id='drag_"+btn_num_dropdown+"_0'><label class='\ques_ti'\> Options</label><input type='checkbox' class='\check'\><input type='text' name='options_temp' class='title_text title_text2 input_text txt'><div class='img_m1'><img src='images/lgt_m.png' onclick='showpop(\"drag_"+btn_num_dropdown+"_0\")'></div></div><div class='clear'> </div><div id='adding_new_option_dropdown_"+btn_num_dropdown+"' class='inner_drag minus_img2'> <img src='images/lgt_p.png' style='margin-left:158px' onclick='add_dropdown(\""+btn_num_dropdown+"\", \"1\");';> </div></div>");
         });
 	$(".btn6").click(function(){
             btn_num_photo++;
-            $("#outer_drag1").append("<div id='drag_photo"+btn_num_photo+"' class='inner_drag'><div class='inner_title2  inner_drag_hh fleft'> <img src='images/drag.png' alt='move' width='16' height='11' class='handle' /><label id='ques_type'>Photo Question</label><input type='checkbox' name=ques_check><span> Required </span></div><div class='clear'> </div><div class='inner_title2  inner_drag_hh fleft'><label> Question Title</label><input type='text' id='ques_title' class='title_text title_text2 input_text'><div class='img_m'><img src='images/minus.png' onclick='showpop(\"drag_photo"+btn_num_photo+"\")'></div></div><div class='clear'></div><div class='sec_ques_div'><input type='text' class='fleft' ><button class='bb_ques fleft'>Browse..</button><input type='file' name='photo_ques[]' class='browewin' style='display:none;'/></div><div class='clear'></div><div class='inner_title2  inner_drag_hh fleft'> <label> Answer Type:</label><input type='number' class='drag_num'></div></div><div class='clear'> </div>");
+            $("#outer_drag1").append("<div id='drag_photo"+btn_num_photo+"' class='inner_drag'><div class='inner_title2  inner_drag_hh fleft'> <img src='images/drag.png' alt='move' width='16' height='11' class='handle' /><label id='ques_type'>Photo Question</label><input type='checkbox' name=ques_check><span> Required </span></div><div class='clear'> </div><div class='inner_title2  inner_drag_hh fleft first_3'><label class='\ques_ti'\> Question Title</label><input type='text' id='ques_title' class='title_text title_text2 input_text'><div class='img_m'><img src='images/minus.png' onclick='showpop(\"drag_photo"+btn_num_photo+"\")'></div></div><div class='clear'></div><div class='sec_ques_div'><input type='text' class='fleft inp' ><button class='bb_ques fleft'>Browse..</button><input type='file' name='photo_ques[]' class='browewin' style='display:none;'/></div><div class='clear'></div><div class='inner_title2  inner_drag_hh fleft first_4'> <label class='\ques_ti'\> Answer Type:</label><select class='drag_num'></><option>Check Boxes</option>;<option>Radio Buttons</option>;<option>Text</option>;</select></div></div><div class='clear'> </div>");
         });
 	$(".btn7").click(function(){
             btn_num_answer++;
-            $("#outer_drag1").append("<div id='drag_answer"+btn_num_answer+"' class='inner_drag'><label id='ques_type'>Rating Scale</label><input type='checkbox' name=ques_check><span> Required </span><br><br><div class='clear'> </div><div class='inner_title2  inner_drag_hh'><label>Question Title</label><input type='text' id='ques_title' class='title_text title_text2 input_text '><div class='img_m'><img src='images/minus.png' onclick='showpop(\"drag_"+btn_num_answer+"\")'></div></div><div class='inner_title2  inner_drag_hh'><label>Left Value</label><input type='text' name='options_temp' class='title_text title_text2 input_text mm'></div><div class='inner_title2 inner_drag_hh'><label> Right Value</label><input type='text' name='options_temp' class='title_text title_text2 input_text mm1'></div><div class='clear'> </div><input type='range' class='range1'></div>");
+            $("#outer_drag1").append("<div id='drag_answer"+btn_num_answer+"' class='inner_drag'><img src='images/drag.png' alt='move' width='16' height='11' class='handle' /><label id='ques_type'>Rating Scale</label><input type='checkbox' name=ques_check><span> Required </span><br><br><div class='clear'> </div><div class='inner_title2  inner_drag_hh first_3'><label class='\ques_ti'\>Question Title</label><input type='text' id='ques_title' class='title_text title_text2 input_text '><div class='img_m'><img src='images/minus.png' onclick='showpop(\"drag_"+btn_num_answer+"\")'></div></div><div class='inner_title2  inner_drag_hh'><label class='\ques_ti'\>Left Value</label><input type='text' name='options_temp' class='title_text title_text2 input_text mm'></div><div class='inner_title2 inner_drag_hh'><label class='\ques_ti'\> Right Value</label><input type='text' name='options_temp' class='title_text title_text2 input_text mm1'></div><div class='clear'> </div><input type='range' class='range1'></div>");
         });
     
         $("#outer_drag").sortable({
