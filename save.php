@@ -17,6 +17,30 @@ for (var i = 0; i < styleSheets.length; i++) {
         break;
     }
 }
+
+function run(ques_id,status)
+{
+    $.ajax({
+            method: "POST",
+            url: "API/index.php",
+            data: { ques_id: ques_id, status: status, type:"change_status" }
+        }).done(function( data ) {
+            location.href = location.href;
+          });
+}
+
+function delete_ques(ques_id)
+{
+    if(confirm("Do you really want to delete the questionnaire ?")) {
+        $.ajax({
+                method: "POST",
+                url: "API/index.php",
+                data: { ques_id: ques_id, type:"delete_ques" }
+            }).done(function( data ) {
+                location.href = location.href;
+              });
+   }
+}
 </script>
 <div class="sec_create">
   <h2 class="sec_head_ques"> Create a Questionnaire</h2>
@@ -47,12 +71,12 @@ for (var i = 0; i < styleSheets.length; i++) {
           <div class="inn_div2 marg1"> <img src="images/home_y.jpg" alt="img">
             <?php echo $name_final; ?>
               <a href="client_login.php?ques_id=<?php echo $ques['ques_id']; ?>" ><button class="butt_view1"> Edit </button></a>
-            <button class="butt_view1"> Run </button>
+              <button class="butt_view1" onclick="run(<?php echo $ques['ques_id'].",1"; ?>)"> Run </button>
             <button class="butt_view1 nn"> Preview </button>
             <br>
             <br>
             <label class="lab_mm">Last Modified: <?php echo $ques['updated_datetime'] ?></label>
-            <div class="del_img"><a href="#"><img src="images/delete.jpg"></a></div>
+            <div class="del_img" style="cursor: pointer;" onclick="delete_ques(<?php echo $ques['ques_id']; ?>)"><img src="images/delete.jpg"></div>
           </div>
             <?php 
             }
@@ -63,40 +87,29 @@ for (var i = 0; i < styleSheets.length; i++) {
           <div class="clear"> </div>
         </div>
       <div id="tabs-2">
-        <div class="inn_div_img">
+        <div class="inn_dimg">
+            <?php 
+                $ques_list_live = $questObj->getQuesList("1");
+                foreach($ques_list_live as $ques) 
+                {
+                    $name_final = "<p>".$ques['ques_name']."</p>";
+            ?>      
           <div class="inn_div2 marg1"> <img src="images/home_g.jpg" alt="img">
-            <p> Questionnaire</p>
-            <p> Name</p>
-            <button class="butt_view1"> Edit </button>
+            <?php echo $name_final; ?>
+              <a href="client_login.php?ques_id=<?php echo $ques['ques_id']; ?>" ><button class="butt_view1"> Edit </button></a>
             <button class="butt_view1"> End </button>
             <button class="butt_view1 nn"> Preview </button>
             <br>
             <br>
-            <label class="lab_mm">last Modified: 15-05-2015</label>
-            <div class="del_img"><a href="#"><img src="images/delete.jpg"></a></div>
-          </div>
-          <div class="inn_div2 marg1"> <img src="images/home_g.jpg" alt="img">
-            <p> Questionnaires </p>
-            <p> Name </p>
-            <button class="butt_view1"> Edit </button>
-            <button class="butt_view1"> End </button>
-            <button class="butt_view1 nn"> Preview </button>
-            <br>
-            <br>
-            <label class="lab_mm">last Modified: 15-05-2015</label>
-            <div  class="del_img"><a href="#"><img src="images/delete.jpg"></a></div>
-          </div>
-          <div class="inn_div2 marg1"> <img src="images/home_g.jpg" alt="img">
-            <p> Questionnaires </p>
-            <p> Name </p>
-            <button class="butt_view1"> Edit </button>
-            <button class="butt_view1"> End </button>
-            <button class="butt_view1 nn"> Preview </button>
-            <br>
-            <br>
-            <label class="lab_mm">last Modified: 15-05-2015</label>
-            <div  class="del_img"> <a href="#"><img src="images/delete.jpg"></a></div>
-          </div>
+            <label class="lab_mm">Last Modified:  <?php echo $ques['updated_datetime'] ?></label>
+            <div class="del_img" style="cursor: pointer;" onclick="delete_ques(<?php echo $ques['ques_id']; ?>)"><img src="images/delete.jpg"></div>
+          </div>  
+            <?php 
+            }
+            if(empty($ques_list_live)) {
+                echo '<h1>No questionnaires in Live !</h1>';
+            }
+            ?>  
           <div class="clear"> </div>
         </div>
       </div>

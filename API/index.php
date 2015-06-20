@@ -289,6 +289,22 @@ switch ($type) {
         echo json_encode($temp_order);
         
         break;
+    
+    case "change_status":
+        $questObj = new Quest();
+        $ques_id = isset($_POST['ques_id'])?$_POST['ques_id']:"";
+        $status = isset($_POST['status'])?$_POST['status']:"";
+        $temp_order = $questObj->updateQuesStatus($ques_id, $status);
+        
+        break;
+ 
+    case "delete_ques":
+        $questObj = new Quest();
+        $ques_id = isset($_POST['ques_id'])?$_POST['ques_id']:"";        
+        $temp_order = $questObj->deleteQues($ques_id);       
+        
+        break;
+ 
     case "logout":
         session_start();
         session_destroy();

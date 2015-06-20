@@ -266,7 +266,7 @@ if(!isset($_GET['ques_id'])) {
                 $ques_attachment = $questObj->uploadFile($photo_file, $access_token);
             } else {
                 $ques_attachment = "";
-            }
+            }				
             $questObj->insertQnsrQuestions($ques_id, $_POST['ques_type_id'][$i], $_POST['ques_title'][$i], $_POST['ques_options'][$i],$ques_attachment, $_POST['ques_required'][$i], $_POST['ques_active'][$i], $_POST['ques_order'][$i]);
         }
         $submit_btn_text = $_POST['submit_btn_text'];
@@ -548,9 +548,8 @@ if(!isset($_GET['ques_id'])) {
                     $element = $country;
                 } else {
                     if($temp['ques_type_id'] == "1") {
-                        $tl_val = $temp['ques_options'];
                         $order_ques_dyn[] = 'btn_num++; '.
-                        '$("#outer_drag1").append("<div id=\'drag_"+btn_num+"\' class=\'inner_drag\'><div class=\'inner_title2  inner_drag_hh fleft\'><img src=\'images/drag.png\' alt=\'move\' width=\'16\' height=\'11\' class=\'handle\' /><label id=\'ques_type\'>Text Line</label><input type=\'checkbox\' name=\'ques_check\'><span> Required </span> </div><div class=\'clear\'> </div><div class=\'inner_title2  inner_drag_hh fleft\'><label> Question Title</label><input type=\'text\' id=\'ques_title\' value=\'$tl_val\' class=\'title_text title_text2 input_text\'><div class=\'img_m\' id=\'img_1\'><img src=\'images/minus.png\' id=\'img_1\'onclick=\'showpop(\"drag_"+btn_num+"\")\'></div></div></div><div class=\"clear\"></div></div>");';
+                        '$("#outer_drag1").append("<div id=\'drag_"+btn_num+"\' class=\'inner_drag\'><div class=\'inner_title2  inner_drag_hh fleft\'><img src=\'images/drag.png\' alt=\'move\' width=\'16\' height=\'11\' class=\'handle\' /><label id=\'ques_type\'>Text Line</label><input type=\'checkbox\' name=\'ques_check\'><span> Required </span> </div><div class=\'clear\'> </div><div class=\'inner_title2  inner_drag_hh fleft\'><label> Question Title</label><input type=\'text\' id=\'ques_title\' class=\'title_text title_text2 input_text\'><div class=\'img_m\' id=\'img_1\'><img src=\'images/minus.png\' id=\'img_1\'onclick=\'showpop(\"drag_"+btn_num+"\")\'></div></div></div><div class=\"clear\"></div></div>");';
                     } else if($temp['ques_type_id'] == "2") {
                         $order_ques_dyn[] = "btn_num_area++;".
                         "$(\"#outer_drag1\").append(\"<div id='drag_\"+btn_num_area+\"' class='inner_drag'><div class='inner_title2  inner_drag_hh fleft'><img src='images/drag.png' alt='move' width='16' height='11' class='handle' /><label id='ques_type'>Text Area</label><input type='checkbox' name=ques_check><span> Required </span> </div><div class='clear'> </div><div class='inner_title2  inner_drag_hh fleft'><label> Question Title</label><input type='text' id='ques_title' class='title_text title_text2 input_text'><div class='img_m'><img src='images/minus.png' onClick='showpop(\\\"drag_\"+btn_num_area+\"\\\")'></div></div></div>\");";

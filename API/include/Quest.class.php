@@ -232,6 +232,25 @@ class Quest {
 
         return $output;
     }
+    
+    public function updateQuesStatus($ques_id,$status) {
+        $query = "UPDATE `ques_user_xref` SET `status` = :status , `updated_datetime` = NOW() WHERE `ques_id`= :ques_id";
+
+        $bindParams = array("ques_id" => $ques_id, "status" => $status);
+
+        $id = $this->con->insertQuery($query, $bindParams);
+        return $id;
+    }
+    
+    public function deleteQues($ques_id) {
+        $query = "DELETE FROM `ques_user_xref` WHERE `ques_id`= :ques_id";
+
+        $bindParams = array("ques_id" => $ques_id);
+
+        $id = $this->con->insertQuery($query, $bindParams);
+        return $id;
+    }
+
 
      public function getQuesQuestionnaire($ques_id) {
         $query = "SELECT `ques_type_id`, `ques_title`, `ques_options`, `ques_attachment`, `required`, `active`, `ques_order` FROM `ques_questions` "
