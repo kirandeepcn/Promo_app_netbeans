@@ -1,4 +1,4 @@
-<!DOCTYPE html>-
+<!--DOCTYPE html-->
 <html>
 <head>
 <?php
@@ -58,6 +58,8 @@ if(!isset($_GET['ques_id'])) {
         exit();
     }
 }
+	
+	
 	if(isset($_POST['perview_submit']))
 	{
 			$setting_id[] = 13;
@@ -373,7 +375,7 @@ if(!isset($_GET['ques_id'])) {
         $count = count($element_type);
         $access_token = $_SESSION['access_token'];
 	$file_name = "NULL";
-       // $questObj->deleteQnsrSettings($ques_id, array($setting_id));
+      // $questObj->deleteQnsrSettings($ques_id, array($setting_id));
         for($i=0;$i<$count;$i++) {
            /* if($element_attachment[$i] != '') {
                 $file_name = $questObj->uploadFile($element_attachment[$i], $access_token);
@@ -547,9 +549,8 @@ $(document).ready(function(){
 		box_col++;
 		num++;
 		 var abc=$("#op");
-		$("#op").append("<div id='drag_"+box_col+"'class='wheel_tabs'><div class='example'><input type='text' name='preferredRgb' id='num' value='orangered'  /><div><img src='images/minus.png' onclick='showpop(\"drag_"+box_col+"\")'></div></div>");	
-	});
-    
+		$("#op").append("<div id='drag_"+box_col+"'class='wheel_tabs'><div class='example'><input type='text' name='preferredRgb' id='num' value='orangered'/><div><img src='images/minus.png' onclick='showpop(\"drag_"+box_col+"\")'></div></div>");	
+	});  
 });
 </script>
 
@@ -628,6 +629,15 @@ $(document).ready(function(){
        
 
 </script>
+<script>
+function coupon_page()
+{
+	location.href = 'coupon.php?ques_id=<?php echo $ques_id?>';
+}
+
+
+</script>
+
 <?php
 if(isset($_POST['bcol']))
 {
@@ -645,11 +655,11 @@ $spin_col = $_POST['spin_col'];
 <!--/style-->
 </head>
 <body>
-<header>
+<!--header>
   <div class="wrapper">
     <div class="logo"> <img src="images/logo.jpg" alt="logo"> </div>
   </div>
-</header>
+</header-->
 <div class="sec_create">
   <h2 class="sec_head_ques"> Create a Questionnaire</h2>
 </div>
@@ -658,7 +668,7 @@ $spin_col = $_POST['spin_col'];
     <div class="container ww">
       <h2 class="sec_head_ques1">Would You Like a...</h2>
       <div class="prize"> <img src="images/radio.jpg"><span class="pr_span bg_random">Prize Wheel</span> <span class="or_span">OR</span>
-        <input type="radio">
+        <input type="radio" value="" onclick="coupon_page();">
         <span class="pr_span">Coupon Code</span> </div>
       <div class="blank_div"> </div>
     </div>
@@ -874,8 +884,8 @@ plotData();
       <div class="random_outer">
         <div class="random fleft"> <img src="images/radio.jpg"><span class="pr_span bg_random">Random</span> </div>
         <div class="random_center fleft">
-          <input type="radio" name="radio_range" value="Every 2 hour">
-          <span class="pr_span">Timed</span> <br>
+          <input type="radio" class="rad_coup" name="radio_range" value="Every 2 hour">
+          <span class="pr_span1">Timed</span> <br>
           <!--span class="pr_span">Every 2 Hours</span-->
 		<div class="pr_span">Every 2 Hours</div>
 		<label for ="fader_1" id="pr_span"><?php echo $hour_chg?></label>
@@ -905,7 +915,7 @@ plotData();
 	<output for=fader_3 id=volume_3><?php echo $grand_range?></output>
         
       </div>
-      <div class="winnr_div1 fleft"> <label for="fader_4"><span class="pr_span">Runner Up</label></span>
+      <div class="winnr_div2 fleft txt_coup"> <label for="fader_4"><span class="pr_span">Runner Up</label></span>
         <div class="run_bb">
           <div class="onoffswitch1 fright">
             <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="tab12" checked>
@@ -914,7 +924,7 @@ plotData();
           </div>
         </div>
         <span class="pr_span spn_positn"id = "pr_span_3"><?php echo $runner?></span> <br>
-        <input type=range class="range_wheel" name ="range_runner" min=0 max=100 value=" " id=fader_4 step=1 oninput="outputUpdate_4(value)">
+        <input type=range class="range_wheel switch_coup" name ="range_runner" min=0 max=100 value=" " id=fader_4 step=1 oninput="outputUpdate_4(value)">
 
 	<output for=fader_4 id=volume_4><?php echo $runner_up_range?></output>
       </div>
@@ -949,12 +959,40 @@ plotData();
         <div class="inner_title1 fleft ">
           <label>Title Size</label>
           <br>
-          <input type="number" class="title_size" name="title_size" value="<?php echo $title_size?>">
+		  
+		  <div class="wrapper-demo">
+
+                                        <div id="dd5" class="wrapper-dropdown-3" tabindex="1">
+						<span>Dropdown </span>
+						<ul class="dropdown">
+							<li><a href="#">Element 1</a></li>
+							<li><a href="#">Element 2</a></li>
+							<li><a href="#">Element 3</a></li>
+						</ul>
+					</div>
+
+                                        ​</div>
+		  
+          <!--input type="number" class="title_size" name="title_size" value="<?php echo $title_size?>"-->
         </div>
         <div class="inner_title1 fleft">
           <label>Title Font</label>
           <br>
-          <input type="number" class="title_size title_size_font" name="title_font" value="<?php echo $title_font?>">
+		  
+		  <div class="wrapper-demo">
+
+                                        <div id="dd6" class="wrapper-dropdown-3" tabindex="1">
+						<span>Dropdown </span>
+						<ul class="dropdown">
+							<li><a href="#">Element 1</a></li>
+							<li><a href="#">Element 2</a></li>
+							<li><a href="#">Element 3</a></li>
+						</ul>
+					</div>
+
+                                        ​</div>
+		  
+          <!--input type="number" class="title_size title_size_font" name="title_font" value="<?php echo $title_font?>"-->
         </div>
         <div class="inner_title1 fleft">
           <label>Title Color</label>
@@ -969,17 +1007,45 @@ plotData();
         <div class="inner_title1 fleft">
           <label>Text</label>
           <br>
-          <textarea rows="5" cols="25" name="text" ><?php echo $text?></textarea>
+          <textarea rows="5" cols="25" name="text" class="txt-coup"><?php echo $text?></textarea>
         </div>
         <div class="inner_title1 fleft ">
           <label>Text Size</label>
           <br>
-          <input type="number" class="title_size" name="text_size" value="<?php echo $text_size?>">
+		  
+		  <div class="wrapper-demo">
+
+                                        <div id="dd7" class="wrapper-dropdown-3" tabindex="1">
+						<span>Dropdown </span>
+						<ul class="dropdown">
+							<li><a href="#">Element 1</a></li>
+							<li><a href="#">Element 2</a></li>
+							<li><a href="#">Element 3</a></li>
+						</ul>
+					</div>
+
+                                        ​</div>
+		  
+          <!--input type="number" class="title_size" name="text_size" value="<?php echo $text_size?>"-->
         </div>
         <div class="inner_title1 fleft">
           <label>Text Font</label>
           <br>
-          <input type="number" class="title_size title_size_font" name="text_font" value="<?php echo $text_font?>">
+		  
+		  <div class="wrapper-demo">
+
+                                        <div id="dd8" class="wrapper-dropdown-3" tabindex="1">
+						<span>Dropdown </span>
+						<ul class="dropdown">
+							<li><a href="#">Element 1</a></li>
+							<li><a href="#">Element 2</a></li>
+							<li><a href="#">Element 3</a></li>
+						</ul>
+					</div>
+
+                                        ​</div>
+		  
+          <!--input type="number" class="title_size title_size_font" name="text_font" value="<?php echo $text_font?>"-->
         </div>
         <div class="inner_title1 fleft">
           <label>Text Color</label>
@@ -999,21 +1065,21 @@ plotData();
   <div class="wrapper"  style="background-color:<?php echo $pb_col; ?>">
     <div class="container ww">
       <div class="outer_title1">
-        <div class="inner_title3 inner_title_ttl hh fleft">
+        <div class="inner_title6 inner_title_ttl hh fleft">
           <label class="sec_head_ques1 "> Background-image </label>
           <div class="sec_ques_div">
-            <input type="text" class="fleft">
-            <button class="bb_ques fleft">Browse..</button>
+            <input type="text" class="fleft txt-coup">
+            <button class="bb_ques fleft txt-coup">Browse..</button>
           </div>
         </div>
-        <div class="inner_title3 inner_title_ttl hh fleft ">
+        <div class="inner_title6 inner_title_ttl hh fleft ">
           <label>Background image color overlay</label>
           <br>
           <div class='example'>
             <input type='text' name='background_image_color' id='20' value="<?php echo $background_image_color?>" />
           </div>
         </div>
-        <div class="inner_title3 inner_title_ttl hh fleft">
+        <div class="inner_title6 inner_title_ttl hh fleft">
           <label for=fader>Opacity</label>
           <br>
 	
@@ -1030,9 +1096,9 @@ plotData();
       <div class="inner_title2 inner_title_ttl  fleft">
         <label>Background Color</label>
         <br>
-        <div class='example1'>
-          <input type='text' name="background_color" id='4' value="<?php echo $background_color?>" />
-        </div>
+        <div class='example'>
+            <input type='text' name='background_image_color' id='4' value="<?php echo $background_image_color?>" />
+          </div>
       </div>
       <div class="clear"> </div>
     </div>
@@ -1044,7 +1110,7 @@ plotData();
   <div class="wrapper"  style="background-color:<?php echo $pb_col; ?>">
   <div class="container ww">
     <div class="outer_sec4">
-      <div class="fleft inner_title_ttl">
+      <div class="fleft inner_title_ttl txt_coup">
         <label>Button Text</label>
         <br>
         <input type="text" class="bb_text" name="button_text" value="<?php echo $button_name?>">
@@ -1070,13 +1136,34 @@ plotData();
         <div class="inn_sec5 hh fleft inner_title_ttl">
           <label>Button Size</label>
           <br>
-          <input type="number" class="title_size" name="button_size" value="<?php echo $button_size?>">
+		  
+		  <div class="wrapper-demo">
+
+                                        <div id="dd9" class="wrapper-dropdown-3" tabindex="1">
+						<span>Dropdown </span>
+						<ul class="dropdown">
+							<li><a href="#">Element 1</a></li>
+							<li><a href="#">Element 2</a></li>
+							<li><a href="#">Element 3</a></li>
+						</ul>
+					</div>
+
+                                        ​</div>
+		  
+          <!--input type="number" class="title_size" name="button_size" value="<?php echo $button_size?>"-->
         </div>
         <div class="inn_sec5 fleft inner_title_ttl">
           <label>Button TextColor</label>
           <br>
           <div class='example'>
             <input type='text' name='button_text_color' id='9' value="<?php echo $button_text_color?>" />
+          </div>
+        </div>
+		        <div class="inner_title1 inner_title_ttl hh fleft">
+          <label class="sec_head_ques1 "> Upload Video </label>
+          <div class="sec_ques_div">
+            <input type="text" class="fleft txt-coup">
+            <button class="bb_ques fleft txt-coup">Browse..</button>
           </div>
         </div>
       </div>
@@ -1106,23 +1193,51 @@ plotData();
         <div class="inner_title1 fleft">
           <label>Title</label>
           <br>
-          <input type="text" class="title_text" name="runner_title_text" value="<?php echo $runner_title_show?>">
+          <input type="text" class="title_text" name="title_text" value="<?php echo $title?>">
         </div>
         <div class="inner_title1 fleft ">
           <label>Title Size</label>
           <br>
-          <input type="number" class="title_size" name="runner_title_size" value="<?php echo $runner_title_size_show?>">
+		  
+		  <div class="wrapper-demo">
+
+                                        <div id="dd5" class="wrapper-dropdown-3" tabindex="1">
+						<span>Dropdown </span>
+						<ul class="dropdown">
+							<li><a href="#">Element 1</a></li>
+							<li><a href="#">Element 2</a></li>
+							<li><a href="#">Element 3</a></li>
+						</ul>
+					</div>
+
+                                        ​</div>
+		  
+          <!--input type="number" class="title_size" name="title_size" value="<?php echo $title_size?>"-->
         </div>
         <div class="inner_title1 fleft">
           <label>Title Font</label>
           <br>
-          <input type="number" class="title_size title_size_font" name="runner_title_font" value="<?php echo $runner_title_font_show?>">
+		  
+		  <div class="wrapper-demo">
+
+                                        <div id="dd6" class="wrapper-dropdown-3" tabindex="1">
+						<span>Dropdown </span>
+						<ul class="dropdown">
+							<li><a href="#">Element 1</a></li>
+							<li><a href="#">Element 2</a></li>
+							<li><a href="#">Element 3</a></li>
+						</ul>
+					</div>
+
+                                        ​</div>
+		  
+          <!--input type="number" class="title_size title_size_font" name="title_font" value="<?php echo $title_font?>"-->
         </div>
         <div class="inner_title1 fleft">
           <label>Title Color</label>
           <br>
           <div class='example'>
-            <input type='text' name='runner_title_color' id='27' value="<?php echo $runner_title_color_show?>" />
+            <input type='text' name='title_color' id='1' value="<?php echo $title_color?>" />
           </div>
         </div>
       </div>
@@ -1131,23 +1246,51 @@ plotData();
         <div class="inner_title1 fleft">
           <label>Text</label>
           <br>
-          <textarea rows="5" cols="25" name="runner_text" ><?php echo $runner_text_show?></textarea>
+          <textarea rows="5" cols="25" name="text" class="txt-coup"><?php echo $text?></textarea>
         </div>
         <div class="inner_title1 fleft ">
           <label>Text Size</label>
           <br>
-          <input type="number" class="title_size" name="runner_text_size" value="<?php echo $runner_text_size_show?>">
+		  
+		  <div class="wrapper-demo">
+
+                                        <div id="dd7" class="wrapper-dropdown-3" tabindex="1">
+						<span>Dropdown </span>
+						<ul class="dropdown">
+							<li><a href="#">Element 1</a></li>
+							<li><a href="#">Element 2</a></li>
+							<li><a href="#">Element 3</a></li>
+						</ul>
+					</div>
+
+                                        ​</div>
+		  
+          <!--input type="number" class="title_size" name="text_size" value="<?php echo $text_size?>"-->
         </div>
         <div class="inner_title1 fleft">
           <label>Text Font</label>
           <br>
-          <input type="number" class="title_size title_size_font" name="runner_text_font" value="<?php echo $runner_text_font_show?>">
+		  
+		  <div class="wrapper-demo">
+
+                                        <div id="dd8" class="wrapper-dropdown-3" tabindex="1">
+						<span>Dropdown </span>
+						<ul class="dropdown">
+							<li><a href="#">Element 1</a></li>
+							<li><a href="#">Element 2</a></li>
+							<li><a href="#">Element 3</a></li>
+						</ul>
+					</div>
+
+                                        ​</div>
+		  
+          <!--input type="number" class="title_size title_size_font" name="text_font" value="<?php echo $text_font?>"-->
         </div>
         <div class="inner_title1 fleft">
           <label>Text Color</label>
           <br>
           <div class='example'>
-            <input type='text' name='runner_text_color' id='38' value="<?php echo $runner_text_color_show?>"/>
+            <input type='text' name='text_color' id='40' value="<?php echo $text_color?>"/>
           </div>
         </div>
       </div>
@@ -1161,31 +1304,30 @@ plotData();
   <div class="wrapper"  style="background-color:<?php echo $pb_col; ?>">
     <div class="container ww">
       <div class="outer_title1">
-        <div class="inner_title3 inner_title_ttl hh fleft">
+        <div class="inner_title6 inner_title_ttl hh fleft">
           <label class="sec_head_ques1 "> Background-image </label>
           <div class="sec_ques_div">
-            <input type="text" class="fleft">
-            <button class="bb_ques fleft">Browse..</button>
+            <input type="text" class="fleft txt-coup">
+            <button class="bb_ques fleft txt-coup">Browse..</button>
           </div>
         </div>
-        <div class="inner_title3 inner_title_ttl hh fleft ">
+        <div class="inner_title6 inner_title_ttl hh fleft ">
           <label>Background image color overlay</label>
           <br>
           <div class='example'>
-            <input type='text' name='runner_background_image_color' id='28' value="<?php echo $runner_background_image_color_show?>" />
+            <input type='text' name='background_image_color' id='3' value="<?php echo $background_image_color?>" />
           </div>
         </div>
-        <div class="inner_title3 inner_title_ttl hh fleft">
+        <div class="inner_title6 inner_title_ttl hh fleft">
           <label for=fader>Opacity</label>
           <br>
 	
-         
+          <!--input type=range class="range" name ="range" min=0 max=100 value="<?php echo $range_value?>" id=fader step=1 oninput="outputUpdate(value)">
+          <output for=fader id=volume>100%</output-->
 
-	<!--label for ="fader_5" id="pr_span_5"><?php echo $runner_background_range_show ?></label-->
+<input type=range min=0 max=100 value=50 id=fader step=1 oninput="outputUpdate(value)">
 
-	<input type=range class="range_wheel" name ="runner_background_range" min=0 max=100 value="" id=fader_1 step=1 oninput="outputUpdate_5(value)">
-
-	<output for=fader_5 id=volume_5><?php echo $runner_background_range_show?></output>
+<output for=fader id=volume><?php echo $range_value?></output>
 
         </div>
       </div>
@@ -1193,9 +1335,9 @@ plotData();
       <div class="inner_title2 inner_title_ttl  fleft">
         <label>Background Color</label>
         <br>
-        <div class='example1'>
-          <input type='text' name="runner_background_color" id='29' value="<?php echo $runner_background_color_show?>" />
-        </div>
+        <div class='example'>
+            <input type='text' name='background_image_color' id='34' value="<?php echo $background_image_color?>" />
+          </div>
       </div>
       <div class="clear"> </div>
     </div>
@@ -1207,10 +1349,10 @@ plotData();
   <div class="wrapper"  style="background-color:<?php echo $pb_col; ?>">
   <div class="container ww">
     <div class="outer_sec4">
-      <div class="fleft inner_title_ttl">
+      <div class="fleft inner_title_ttl txt_coup">
         <label>Button Text</label>
         <br>
-        <input type="text" class="bb_text" name="runner_button_text" value="<?php echo $runner_button_name_show?>">
+        <input type="text" class="bb_text" name="button_text" value="<?php echo $button_name?>">
       </div>
     </div>
 	
@@ -1227,24 +1369,45 @@ plotData();
           <label>Button Color</label>
           <br>
           <div class='example'>
-            <input type='text' name='runner_button_color' id='30' value="<?php echo $runner_button_color_show?>" />
+            <input type='text' name='button_color' id='5' value="<?php echo $button_color?>" />
           </div>
         </div>
         <div class="inn_sec5 hh fleft inner_title_ttl">
           <label>Button Size</label>
           <br>
-          <input type="number" class="title_size" name="runner_button_size" value="<?php echo $runner_button_size_show?>">
+		  
+		  <div class="wrapper-demo">
+
+                                        <div id="dd9" class="wrapper-dropdown-3" tabindex="1">
+						<span>Dropdown </span>
+						<ul class="dropdown">
+							<li><a href="#">Element 1</a></li>
+							<li><a href="#">Element 2</a></li>
+							<li><a href="#">Element 3</a></li>
+						</ul>
+					</div>
+
+                                        ​</div>
+		  
+          <!--input type="number" class="title_size" name="button_size" value="<?php echo $button_size?>"-->
         </div>
         <div class="inn_sec5 fleft inner_title_ttl">
           <label>Button TextColor</label>
           <br>
           <div class='example'>
-            <input type='text' name='runner_button_text_color' id='31' value="<?php echo $runner_button_text_color_show?>" />
+            <input type='text' name='button_text_color' id='6' value="<?php echo $button_text_color?>" />
+          </div>
+        </div>
+		        <div class="inner_title1 inner_title_ttl hh fleft">
+          <label class="sec_head_ques1 "> Upload Video </label>
+          <div class="sec_ques_div">
+            <input type="text" class="fleft txt-coup">
+            <button class="bb_ques fleft txt-coup">Browse..</button>
           </div>
         </div>
       </div>
        <div class="clear"> </div>
-       <div class="blank_div">
+ <div class="blank_div">
        </div>
 </section>
      
@@ -1269,23 +1432,51 @@ plotData();
         <div class="inner_title1 fleft">
           <label>Title</label>
           <br>
-          <input type="text" class="title_text" name="looser_title_text" value="<?php echo $looser_title_show?>">
+          <input type="text" class="title_text" name="title_text" value="<?php echo $title?>">
         </div>
         <div class="inner_title1 fleft ">
           <label>Title Size</label>
           <br>
-          <input type="number" class="title_size" name="looser_title_size" value="<?php echo $looser_title_size_show?>">
+		  
+		  <div class="wrapper-demo">
+
+                                        <div id="dd5" class="wrapper-dropdown-3" tabindex="1">
+						<span>Dropdown </span>
+						<ul class="dropdown">
+							<li><a href="#">Element 1</a></li>
+							<li><a href="#">Element 2</a></li>
+							<li><a href="#">Element 3</a></li>
+						</ul>
+					</div>
+
+                                        ​</div>
+		  
+          <!--input type="number" class="title_size" name="title_size" value="<?php echo $title_size?>"-->
         </div>
         <div class="inner_title1 fleft">
           <label>Title Font</label>
           <br>
-          <input type="number" class="title_size title_size_font" name="looser_title_font" value="<?php echo $looser_title_font_show?>">
+		  
+		  <div class="wrapper-demo">
+
+                                        <div id="dd6" class="wrapper-dropdown-3" tabindex="1">
+						<span>Dropdown </span>
+						<ul class="dropdown">
+							<li><a href="#">Element 1</a></li>
+							<li><a href="#">Element 2</a></li>
+							<li><a href="#">Element 3</a></li>
+						</ul>
+					</div>
+
+                                        ​</div>
+		  
+          <!--input type="number" class="title_size title_size_font" name="title_font" value="<?php echo $title_font?>"-->
         </div>
         <div class="inner_title1 fleft">
           <label>Title Color</label>
           <br>
           <div class='example'>
-            <input type='text' name='looser_title_color' id='32' value="<?php echo $looser_title_color_show?>" />
+            <input type='text' name='title_color' id='31' value="<?php echo $title_color?>" />
           </div>
         </div>
       </div>
@@ -1294,23 +1485,51 @@ plotData();
         <div class="inner_title1 fleft">
           <label>Text</label>
           <br>
-          <textarea rows="5" cols="25" name="looser_text" ><?php echo $looser_text_show?></textarea>
+          <textarea rows="5" cols="25" name="text" class="txt-coup"><?php echo $text?></textarea>
         </div>
         <div class="inner_title1 fleft ">
           <label>Text Size</label>
           <br>
-          <input type="number" class="title_size" name="looser_text_size" value="<?php echo $looser_text_size_show?>">
+		  
+		  <div class="wrapper-demo">
+
+                                        <div id="dd7" class="wrapper-dropdown-3" tabindex="1">
+						<span>Dropdown </span>
+						<ul class="dropdown">
+							<li><a href="#">Element 1</a></li>
+							<li><a href="#">Element 2</a></li>
+							<li><a href="#">Element 3</a></li>
+						</ul>
+					</div>
+
+                                        ​</div>
+		  
+          <!--input type="number" class="title_size" name="text_size" value="<?php echo $text_size?>"-->
         </div>
         <div class="inner_title1 fleft">
           <label>Text Font</label>
           <br>
-          <input type="number" class="title_size title_size_font" name="looser_text_font" value="<?php echo $looser_text_font_show?>">
+		  
+		  <div class="wrapper-demo">
+
+                                        <div id="dd8" class="wrapper-dropdown-3" tabindex="1">
+						<span>Dropdown </span>
+						<ul class="dropdown">
+							<li><a href="#">Element 1</a></li>
+							<li><a href="#">Element 2</a></li>
+							<li><a href="#">Element 3</a></li>
+						</ul>
+					</div>
+
+                                        ​</div>
+		  
+          <!--input type="number" class="title_size title_size_font" name="text_font" value="<?php echo $text_font?>"-->
         </div>
         <div class="inner_title1 fleft">
           <label>Text Color</label>
           <br>
           <div class='example'>
-            <input type='text' name='looser_text_color' id='33' value="<?php echo $looser_text_color_show?>"/>
+            <input type='text' name='text_color' id='32' value="<?php echo $text_color?>"/>
           </div>
         </div>
       </div>
@@ -1324,30 +1543,30 @@ plotData();
   <div class="wrapper"  style="background-color:<?php echo $pb_col; ?>">
     <div class="container ww">
       <div class="outer_title1">
-        <div class="inner_title3 inner_title_ttl hh fleft">
+        <div class="inner_title6 inner_title_ttl hh fleft">
           <label class="sec_head_ques1 "> Background-image </label>
           <div class="sec_ques_div">
-            <input type="text" class="fleft">
-            <button class="bb_ques fleft">Browse..</button>
+            <input type="text" class="fleft txt-coup">
+            <button class="bb_ques fleft txt-coup">Browse..</button>
           </div>
         </div>
-        <div class="inner_title3 inner_title_ttl hh fleft ">
+        <div class="inner_title6 inner_title_ttl hh fleft ">
           <label>Background image color overlay</label>
           <br>
           <div class='example'>
-            <input type='text' name='looser_background_image_color' id='34' value="<?php echo $looser_background_image_color_show?>" />
+            <input type='text' name='background_image_color' id='33' value="<?php echo $background_image_color?>" />
           </div>
         </div>
-        <div class="inner_title3 inner_title_ttl hh fleft">
+        <div class="inner_title6 inner_title_ttl hh fleft">
           <label for=fader>Opacity</label>
           <br>
 	
-          
-	<!--label for ="fader_6" id="pr_span_6"><?php echo $looser_background_range_show ?></label-->
+          <!--input type=range class="range" name ="range" min=0 max=100 value="<?php echo $range_value?>" id=fader step=1 oninput="outputUpdate(value)">
+          <output for=fader id=volume>100%</output-->
 
-	<input type=range class="range_wheel" name ="looser_background_range" min=0 max=100 value="" id=fader_6 step=1 oninput="outputUpdate_6(value)">
+<input type=range min=0 max=100 value=50 id=fader step=1 oninput="outputUpdate(value)">
 
-	<output for=fader_6 id=volume_6><?php echo $looser_background_range_show?></output>
+<output for=fader id=volume><?php echo $range_value?></output>
 
         </div>
       </div>
@@ -1355,9 +1574,9 @@ plotData();
       <div class="inner_title2 inner_title_ttl  fleft">
         <label>Background Color</label>
         <br>
-        <div class='example1'>
-          <input type='text' name="looser_background_color" id='35' value="<?php echo $looser_background_color_show?>" />
-        </div>
+        <div class='example'>
+            <input type='text' name='background_image_color' id='38' value="<?php echo $background_image_color?>" />
+          </div>
       </div>
       <div class="clear"> </div>
     </div>
@@ -1369,10 +1588,10 @@ plotData();
   <div class="wrapper"  style="background-color:<?php echo $pb_col; ?>">
   <div class="container ww">
     <div class="outer_sec4">
-      <div class="fleft inner_title_ttl">
+      <div class="fleft inner_title_ttl txt_coup">
         <label>Button Text</label>
         <br>
-        <input type="text" class="bb_text" name="looser_button_text" value="<?php echo $looser_button_name_show?>">
+        <input type="text" class="bb_text" name="button_text" value="<?php echo $button_name?>">
       </div>
     </div>
 	
@@ -1389,25 +1608,45 @@ plotData();
           <label>Button Color</label>
           <br>
           <div class='example'>
-            <input type='text' name='looser_button_color' id='36' value="<?php echo $looser_button_color_show?>" />
+            <input type='text' name='button_color' id='35' value="<?php echo $button_color?>" />
           </div>
         </div>
         <div class="inn_sec5 hh fleft inner_title_ttl">
           <label>Button Size</label>
           <br>
-          <input type="number" class="title_size" name="looser_button_size" value="<?php echo $looser_button_size_show?>">
+		  
+		  <div class="wrapper-demo">
+
+                                        <div id="dd9" class="wrapper-dropdown-3" tabindex="1">
+						<span>Dropdown </span>
+						<ul class="dropdown">
+							<li><a href="#">Element 1</a></li>
+							<li><a href="#">Element 2</a></li>
+							<li><a href="#">Element 3</a></li>
+						</ul>
+					</div>
+
+                                        ​</div>
+		  
+          <!--input type="number" class="title_size" name="button_size" value="<?php echo $button_size?>"-->
         </div>
         <div class="inn_sec5 fleft inner_title_ttl">
           <label>Button TextColor</label>
           <br>
           <div class='example'>
-            <input type='text' name='looser_button_text_color' id='37' value="<?php echo $looser_button_text_color_show?>" />
+            <input type='text' name='button_text_color' id='36' value="<?php echo $button_text_color?>" />
+          </div>
+        </div>
+		        <div class="inner_title1 inner_title_ttl hh fleft">
+          <label class="sec_head_ques1 "> Upload Video </label>
+          <div class="sec_ques_div">
+            <input type="text" class="fleft txt-coup">
+            <button class="bb_ques fleft txt-coup">Browse..</button>
           </div>
         </div>
       </div>
        <div class="clear"> </div>
-       <div class="blank_div">
-       </div>
+
 </section>
      
 	<!-- section end-->
@@ -1425,71 +1664,1414 @@ plotData();
     <!--container closed--> 
   </div>
   <!--wrapper closed--> 
-  <!--
-<form>
-   
-    <input type="button" value="click" OnClick="kk()"/>
-    <script type="text/javascript">
-       var lol = document.getElementById('lolz');
-       function kk() {
-           alert(lol.value);
-       }
-    </script>
-</form>
--->
-</section>
-
-<!--script>
-var data;
-var i = 0;
-function myFunction() {
-    data = document.getElementById("text").value ;
-	var dataprovider = [];
-	
-	
-	for(var km = 0; km < data; km++){
-		dataprovider[km] = [];		
-		dataprovider[km]["country"] = km;
-		dataprovider[km]["litres"] = "301.58";
-		
-	}	
-	var chart = AmCharts.makeChart( "chartdiv", {
-  "type": "pie",
-  "dataProvider": dataprovider,
-  "valueField": "litres",
-  "titleField": "country",
-  "export": {
-    "enabled": true
-  }
   
-} 
+<script type="text/javascript">
+    function DropDown(el) {
+        this.dd = el;
+        this.placeholder = this.dd.children('span');
+        this.opts = this.dd.find('ul.dropdown > li');
+        this.val = '';
+        this.index = -1;
+        this.initEvents();
+    }
 
-);
-	}
-		
-var chart = AmCharts.makeChart( "chartdiv", {
-  "type": "pie",
-  "dataProvider": [
-  {
-    "country": "",
-    "litres": 1	  
-  },  
-  {
-    "country": "",
-    "litres": 1
-  }
-  ],
-  "valueField": "litres",
-  "titleField": "country",
-  "export": {
-    "enabled": true
-  }
-  
-} 
+    DropDown.prototype = {
+        initEvents: function() {
+            var obj = this;
+            obj.dd.on('click', function(event) {
+                $(this).toggleClass('active');
+                return false;
+            });
 
-);
-	
-	
-</script-->
+            obj.opts.on('click', function() {
+                var opt = $(this);
+                obj.val = opt.text();
+                obj.index = opt.index();
+                obj.placeholder.text(obj.val);
+            });
+
+        },
+        getValue: function() {
+
+            return this.val;
+
+        },
+        getIndex: function() {
+
+            return this.index;
+
+        }
+
+    }
+
+    $(function() {
+        var dd = new DropDown($('#dd'));
+        $(document).click(function() {
+            // all dropdowns
+            $('.wrapper-dropdown-3').removeClass('active');
+        });
+    });
+</script>
+<script type="text/javascript">
+    function DropDown(el) {
+        this.dd1 = el;
+        this.placeholder = this.dd1.children('span');
+        this.opts = this.dd1.find('ul.dropdown > li');
+        this.val = '';
+        this.index = -1;
+        this.initEvents();
+    }
+
+    DropDown.prototype = {
+        initEvents: function() {
+            var obj = this;
+            obj.dd1.on('click', function(event) {
+                $(this).toggleClass('active');
+                return false;
+            });
+
+            obj.opts.on('click', function() {
+                var opt = $(this);
+                obj.val = opt.text();
+                obj.index = opt.index();
+                obj.placeholder.text(obj.val);
+            });
+
+        },
+        getValue: function() {
+
+            return this.val;
+
+        },
+        getIndex: function() {
+
+            return this.index;
+
+        }
+
+    }
+
+    $(function() {
+        var dd1 = new DropDown($('#dd1'));
+        $(document).click(function() {
+            // all dropdowns
+            $('.wrapper-dropdown-3').removeClass('active');
+        });
+    });
+</script>
+<script type="text/javascript">
+    function DropDown(el) {
+        this.dd2 = el;
+        this.placeholder = this.dd2.children('span');
+        this.opts = this.dd2.find('ul.dropdown > li');
+        this.val = '';
+        this.index = -1;
+        this.initEvents();
+    }
+
+    DropDown.prototype = {
+        initEvents: function() {
+            var obj = this;
+            obj.dd2.on('click', function(event) {
+                $(this).toggleClass('active');
+                return false;
+            });
+
+            obj.opts.on('click', function() {
+                var opt = $(this);
+                obj.val = opt.text();
+                obj.index = opt.index();
+                obj.placeholder.text(obj.val);
+            });
+
+        },
+        getValue: function() {
+
+            return this.val;
+
+        },
+        getIndex: function() {
+
+            return this.index;
+
+        }
+
+    }
+
+    $(function() {
+        var dd2 = new DropDown($('#dd2'));
+        $(document).click(function() {
+            // all dropdowns
+            $('.wrapper-dropdown-3').removeClass('active');
+        });
+    });
+</script>
+<script type="text/javascript">
+    function DropDown(el) {
+        this.dd3 = el;
+        this.placeholder = this.dd3.children('span');
+        this.opts = this.dd3.find('ul.dropdown > li');
+        this.val = '';
+        this.index = -1;
+        this.initEvents();
+    }
+
+    DropDown.prototype = {
+        initEvents: function() {
+            var obj = this;
+            obj.dd3.on('click', function(event) {
+                $(this).toggleClass('active');
+                return false;
+            });
+
+            obj.opts.on('click', function() {
+                var opt = $(this);
+                obj.val = opt.text();
+                obj.index = opt.index();
+                obj.placeholder.text(obj.val);
+            });
+
+        },
+        getValue: function() {
+
+            return this.val;
+
+        },
+        getIndex: function() {
+
+            return this.index;
+
+        }
+
+    }
+
+    $(function() {
+        var dd3 = new DropDown($('#dd3'));
+        $(document).click(function() {
+            // all dropdowns
+            $('.wrapper-dropdown-3').removeClass('active');
+        });
+    });
+</script>
+<script type="text/javascript">
+    function DropDown(el) {
+        this.dd4 = el;
+        this.placeholder = this.dd4.children('span');
+        this.opts = this.dd4.find('ul.dropdown > li');
+        this.val = '';
+        this.index = -1;
+        this.initEvents();
+    }
+
+    DropDown.prototype = {
+        initEvents: function() {
+            var obj = this;
+            obj.dd4.on('click', function(event) {
+                $(this).toggleClass('active');
+                return false;
+            });
+
+            obj.opts.on('click', function() {
+                var opt = $(this);
+                obj.val = opt.text();
+                obj.index = opt.index();
+                obj.placeholder.text(obj.val);
+            });
+
+        },
+        getValue: function() {
+
+            return this.val;
+
+        },
+        getIndex: function() {
+
+            return this.index;
+
+        }
+
+    }
+
+    $(function() {
+        var dd4 = new DropDown($('#dd4'));
+        $(document).click(function() {
+            // all dropdowns
+            $('.wrapper-dropdown-3').removeClass('active');
+        });
+    });
+</script>
+<script type="text/javascript">
+    function DropDown(el) {
+        this.dd5 = el;
+        this.placeholder = this.dd5.children('span');
+        this.opts = this.dd5.find('ul.dropdown > li');
+        this.val = '';
+        this.index = -1;
+        this.initEvents();
+    }
+
+    DropDown.prototype = {
+        initEvents: function() {
+            var obj = this;
+            obj.dd5.on('click', function(event) {
+                $(this).toggleClass('active');
+                return false;
+            });
+
+            obj.opts.on('click', function() {
+                var opt = $(this);
+                obj.val = opt.text();
+                obj.index = opt.index();
+                obj.placeholder.text(obj.val);
+            });
+
+        },
+        getValue: function() {
+
+            return this.val;
+
+        },
+        getIndex: function() {
+
+            return this.index;
+
+        }
+
+    }
+
+    $(function() {
+        var dd5 = new DropDown($('#dd5'));
+        $(document).click(function() {
+            // all dropdowns
+            $('.wrapper-dropdown-3').removeClass('active');
+        });
+    });
+</script>
+<script type="text/javascript">
+    function DropDown(el) {
+        this.dd1 = el;
+        this.placeholder = this.dd1.children('span');
+        this.opts = this.dd1.find('ul.dropdown > li');
+        this.val = '';
+        this.index = -1;
+        this.initEvents();
+    }
+
+    DropDown.prototype = {
+        initEvents: function() {
+            var obj = this;
+            obj.dd1.on('click', function(event) {
+                $(this).toggleClass('active');
+                return false;
+            });
+
+            obj.opts.on('click', function() {
+                var opt = $(this);
+                obj.val = opt.text();
+                obj.index = opt.index();
+                obj.placeholder.text(obj.val);
+            });
+
+        },
+        getValue: function() {
+
+            return this.val;
+
+        },
+        getIndex: function() {
+
+            return this.index;
+
+        }
+
+    }
+
+    $(function() {
+        var dd1 = new DropDown($('#dd1'));
+        $(document).click(function() {
+            // all dropdowns
+            $('.wrapper-dropdown-3').removeClass('active');
+        });
+    });
+</script>
+<script type="text/javascript">
+    function DropDown(el) {
+        this.dd2 = el;
+        this.placeholder = this.dd2.children('span');
+        this.opts = this.dd2.find('ul.dropdown > li');
+        this.val = '';
+        this.index = -1;
+        this.initEvents();
+    }
+
+    DropDown.prototype = {
+        initEvents: function() {
+            var obj = this;
+            obj.dd2.on('click', function(event) {
+                $(this).toggleClass('active');
+                return false;
+            });
+
+            obj.opts.on('click', function() {
+                var opt = $(this);
+                obj.val = opt.text();
+                obj.index = opt.index();
+                obj.placeholder.text(obj.val);
+            });
+
+        },
+        getValue: function() {
+
+            return this.val;
+
+        },
+        getIndex: function() {
+
+            return this.index;
+
+        }
+
+    }
+
+    $(function() {
+        var dd2 = new DropDown($('#dd2'));
+        $(document).click(function() {
+            // all dropdowns
+            $('.wrapper-dropdown-3').removeClass('active');
+        });
+    });
+</script>
+<script type="text/javascript">
+    function DropDown(el) {
+        this.dd3 = el;
+        this.placeholder = this.dd3.children('span');
+        this.opts = this.dd3.find('ul.dropdown > li');
+        this.val = '';
+        this.index = -1;
+        this.initEvents();
+    }
+
+    DropDown.prototype = {
+        initEvents: function() {
+            var obj = this;
+            obj.dd3.on('click', function(event) {
+                $(this).toggleClass('active');
+                return false;
+            });
+
+            obj.opts.on('click', function() {
+                var opt = $(this);
+                obj.val = opt.text();
+                obj.index = opt.index();
+                obj.placeholder.text(obj.val);
+            });
+
+        },
+        getValue: function() {
+
+            return this.val;
+
+        },
+        getIndex: function() {
+
+            return this.index;
+
+        }
+
+    }
+
+    $(function() {
+        var dd3 = new DropDown($('#dd3'));
+        $(document).click(function() {
+            // all dropdowns
+            $('.wrapper-dropdown-3').removeClass('active');
+        });
+    });
+</script>
+<script type="text/javascript">
+    function DropDown(el) {
+        this.dd4 = el;
+        this.placeholder = this.dd4.children('span');
+        this.opts = this.dd4.find('ul.dropdown > li');
+        this.val = '';
+        this.index = -1;
+        this.initEvents();
+    }
+
+    DropDown.prototype = {
+        initEvents: function() {
+            var obj = this;
+            obj.dd4.on('click', function(event) {
+                $(this).toggleClass('active');
+                return false;
+            });
+
+            obj.opts.on('click', function() {
+                var opt = $(this);
+                obj.val = opt.text();
+                obj.index = opt.index();
+                obj.placeholder.text(obj.val);
+            });
+
+        },
+        getValue: function() {
+
+            return this.val;
+
+        },
+        getIndex: function() {
+
+            return this.index;
+
+        }
+
+    }
+
+    $(function() {
+        var dd4 = new DropDown($('#dd4'));
+        $(document).click(function() {
+            // all dropdowns
+            $('.wrapper-dropdown-3').removeClass('active');
+        });
+    });
+</script>
+<script type="text/javascript">
+    function DropDown(el) {
+        this.dd5 = el;
+        this.placeholder = this.dd5.children('span');
+        this.opts = this.dd5.find('ul.dropdown > li');
+        this.val = '';
+        this.index = -1;
+        this.initEvents();
+    }
+
+    DropDown.prototype = {
+        initEvents: function() {
+            var obj = this;
+            obj.dd5.on('click', function(event) {
+                $(this).toggleClass('active');
+                return false;
+            });
+
+            obj.opts.on('click', function() {
+                var opt = $(this);
+                obj.val = opt.text();
+                obj.index = opt.index();
+                obj.placeholder.text(obj.val);
+            });
+
+        },
+        getValue: function() {
+
+            return this.val;
+
+        },
+        getIndex: function() {
+
+            return this.index;
+
+        }
+
+    }
+
+    $(function() {
+        var dd5 = new DropDown($('#dd5'));
+        $(document).click(function() {
+            // all dropdowns
+            $('.wrapper-dropdown-3').removeClass('active');
+        });
+    });
+</script>
+<script type="text/javascript">
+    function DropDown(el) {
+        this.dd1 = el;
+        this.placeholder = this.dd1.children('span');
+        this.opts = this.dd1.find('ul.dropdown > li');
+        this.val = '';
+        this.index = -1;
+        this.initEvents();
+    }
+
+    DropDown.prototype = {
+        initEvents: function() {
+            var obj = this;
+            obj.dd1.on('click', function(event) {
+                $(this).toggleClass('active');
+                return false;
+            });
+
+            obj.opts.on('click', function() {
+                var opt = $(this);
+                obj.val = opt.text();
+                obj.index = opt.index();
+                obj.placeholder.text(obj.val);
+            });
+
+        },
+        getValue: function() {
+
+            return this.val;
+
+        },
+        getIndex: function() {
+
+            return this.index;
+
+        }
+
+    }
+
+    $(function() {
+        var dd1 = new DropDown($('#dd1'));
+        $(document).click(function() {
+            // all dropdowns
+            $('.wrapper-dropdown-3').removeClass('active');
+        });
+    });
+</script>
+<script type="text/javascript">
+    function DropDown(el) {
+        this.dd2 = el;
+        this.placeholder = this.dd2.children('span');
+        this.opts = this.dd2.find('ul.dropdown > li');
+        this.val = '';
+        this.index = -1;
+        this.initEvents();
+    }
+
+    DropDown.prototype = {
+        initEvents: function() {
+            var obj = this;
+            obj.dd2.on('click', function(event) {
+                $(this).toggleClass('active');
+                return false;
+            });
+
+            obj.opts.on('click', function() {
+                var opt = $(this);
+                obj.val = opt.text();
+                obj.index = opt.index();
+                obj.placeholder.text(obj.val);
+            });
+
+        },
+        getValue: function() {
+
+            return this.val;
+
+        },
+        getIndex: function() {
+
+            return this.index;
+
+        }
+
+    }
+
+    $(function() {
+        var dd2 = new DropDown($('#dd2'));
+        $(document).click(function() {
+            // all dropdowns
+            $('.wrapper-dropdown-3').removeClass('active');
+        });
+    });
+</script>
+<script type="text/javascript">
+    function DropDown(el) {
+        this.dd3 = el;
+        this.placeholder = this.dd3.children('span');
+        this.opts = this.dd3.find('ul.dropdown > li');
+        this.val = '';
+        this.index = -1;
+        this.initEvents();
+    }
+
+    DropDown.prototype = {
+        initEvents: function() {
+            var obj = this;
+            obj.dd3.on('click', function(event) {
+                $(this).toggleClass('active');
+                return false;
+            });
+
+            obj.opts.on('click', function() {
+                var opt = $(this);
+                obj.val = opt.text();
+                obj.index = opt.index();
+                obj.placeholder.text(obj.val);
+            });
+
+        },
+        getValue: function() {
+
+            return this.val;
+
+        },
+        getIndex: function() {
+
+            return this.index;
+
+        }
+
+    }
+
+    $(function() {
+        var dd3 = new DropDown($('#dd3'));
+        $(document).click(function() {
+            // all dropdowns
+            $('.wrapper-dropdown-3').removeClass('active');
+        });
+    });
+</script>
+<script type="text/javascript">
+    function DropDown(el) {
+        this.dd4 = el;
+        this.placeholder = this.dd4.children('span');
+        this.opts = this.dd4.find('ul.dropdown > li');
+        this.val = '';
+        this.index = -1;
+        this.initEvents();
+    }
+
+    DropDown.prototype = {
+        initEvents: function() {
+            var obj = this;
+            obj.dd4.on('click', function(event) {
+                $(this).toggleClass('active');
+                return false;
+            });
+
+            obj.opts.on('click', function() {
+                var opt = $(this);
+                obj.val = opt.text();
+                obj.index = opt.index();
+                obj.placeholder.text(obj.val);
+            });
+
+        },
+        getValue: function() {
+
+            return this.val;
+
+        },
+        getIndex: function() {
+
+            return this.index;
+
+        }
+
+    }
+
+    $(function() {
+        var dd4 = new DropDown($('#dd4'));
+        $(document).click(function() {
+            // all dropdowns
+            $('.wrapper-dropdown-3').removeClass('active');
+        });
+    });
+</script>
+<script type="text/javascript">
+    function DropDown(el) {
+        this.dd5 = el;
+        this.placeholder = this.dd5.children('span');
+        this.opts = this.dd5.find('ul.dropdown > li');
+        this.val = '';
+        this.index = -1;
+        this.initEvents();
+    }
+
+    DropDown.prototype = {
+        initEvents: function() {
+            var obj = this;
+            obj.dd5.on('click', function(event) {
+                $(this).toggleClass('active');
+                return false;
+            });
+
+            obj.opts.on('click', function() {
+                var opt = $(this);
+                obj.val = opt.text();
+                obj.index = opt.index();
+                obj.placeholder.text(obj.val);
+            });
+
+        },
+        getValue: function() {
+
+            return this.val;
+
+        },
+        getIndex: function() {
+
+            return this.index;
+
+        }
+
+    }
+
+    $(function() {
+        var dd5 = new DropDown($('#dd5'));
+        $(document).click(function() {
+            // all dropdowns
+            $('.wrapper-dropdown-3').removeClass('active');
+        });
+    });
+</script>
+<script type="text/javascript">
+    function DropDown(el) {
+        this.dd6 = el;
+        this.placeholder = this.dd6.children('span');
+        this.opts = this.dd6.find('ul.dropdown > li');
+        this.val = '';
+        this.index = -1;
+        this.initEvents();
+    }
+
+    DropDown.prototype = {
+        initEvents: function() {
+            var obj = this;
+            obj.dd6.on('click', function(event) {
+                $(this).toggleClass('active');
+                return false;
+            });
+
+            obj.opts.on('click', function() {
+                var opt = $(this);
+                obj.val = opt.text();
+                obj.index = opt.index();
+                obj.placeholder.text(obj.val);
+            });
+
+        },
+        getValue: function() {
+
+            return this.val;
+
+        },
+        getIndex: function() {
+
+            return this.index;
+
+        }
+
+    }
+
+    $(function() {
+        var dd6 = new DropDown($('#dd6'));
+        $(document).click(function() {
+            // all dropdowns
+            $('.wrapper-dropdown-3').removeClass('active');
+        });
+    });
+</script>
+<script type="text/javascript">
+    function DropDown(el) {
+        this.dd7 = el;
+        this.placeholder = this.dd7.children('span');
+        this.opts = this.dd7.find('ul.dropdown > li');
+        this.val = '';
+        this.index = -1;
+        this.initEvents();
+    }
+
+    DropDown.prototype = {
+        initEvents: function() {
+            var obj = this;
+            obj.dd7.on('click', function(event) {
+                $(this).toggleClass('active');
+                return false;
+            });
+
+            obj.opts.on('click', function() {
+                var opt = $(this);
+                obj.val = opt.text();
+                obj.index = opt.index();
+                obj.placeholder.text(obj.val);
+            });
+
+        },
+        getValue: function() {
+
+            return this.val;
+
+        },
+        getIndex: function() {
+
+            return this.index;
+
+        }
+
+    }
+
+    $(function() {
+        var dd7 = new DropDown($('#dd7'));
+        $(document).click(function() {
+            // all dropdowns
+            $('.wrapper-dropdown-3').removeClass('active');
+        });
+    });
+</script>
+<script type="text/javascript">
+    function DropDown(el) {
+        this.dd8 = el;
+        this.placeholder = this.dd8.children('span');
+        this.opts = this.dd8.find('ul.dropdown > li');
+        this.val = '';
+        this.index = -1;
+        this.initEvents();
+    }
+
+    DropDown.prototype = {
+        initEvents: function() {
+            var obj = this;
+            obj.dd8.on('click', function(event) {
+                $(this).toggleClass('active');
+                return false;
+            });
+
+            obj.opts.on('click', function() {
+                var opt = $(this);
+                obj.val = opt.text();
+                obj.index = opt.index();
+                obj.placeholder.text(obj.val);
+            });
+
+        },
+        getValue: function() {
+
+            return this.val;
+
+        },
+        getIndex: function() {
+
+            return this.index;
+
+        }
+
+    }
+
+    $(function() {
+        var dd8 = new DropDown($('#dd8'));
+        $(document).click(function() {
+            // all dropdowns
+            $('.wrapper-dropdown-3').removeClass('active');
+        });
+    });
+</script>
+<script type="text/javascript">
+    function DropDown(el) {
+        this.dd9 = el;
+        this.placeholder = this.dd9.children('span');
+        this.opts = this.dd9.find('ul.dropdown > li');
+        this.val = '';
+        this.index = -1;
+        this.initEvents();
+    }
+
+    DropDown.prototype = {
+        initEvents: function() {
+            var obj = this;
+            obj.dd9.on('click', function(event) {
+                $(this).toggleClass('active');
+                return false;
+            });
+
+            obj.opts.on('click', function() {
+                var opt = $(this);
+                obj.val = opt.text();
+                obj.index = opt.index();
+                obj.placeholder.text(obj.val);
+            });
+
+        },
+        getValue: function() {
+
+            return this.val;
+
+        },
+        getIndex: function() {
+
+            return this.index;
+
+        }
+
+    }
+
+    $(function() {
+        var dd9 = new DropDown($('#dd9'));
+        $(document).click(function() {
+            // all dropdowns
+            $('.wrapper-dropdown-3').removeClass('active');
+        });
+    });
+</script>
+<script type="text/javascript">
+    function DropDown(el) {
+        this.dd10 = el;
+        this.placeholder = this.dd10.children('span');
+        this.opts = this.dd10.find('ul.dropdown > li');
+        this.val = '';
+        this.index = -1;
+        this.initEvents();
+    }
+
+    DropDown.prototype = {
+        initEvents: function() {
+            var obj = this;
+            obj.dd10.on('click', function(event) {
+                $(this).toggleClass('active');
+                return false;
+            });
+
+            obj.opts.on('click', function() {
+                var opt = $(this);
+                obj.val = opt.text();
+                obj.index = opt.index();
+                obj.placeholder.text(obj.val);
+            });
+
+        },
+        getValue: function() {
+
+            return this.val;
+
+        },
+        getIndex: function() {
+
+            return this.index;
+
+        }
+
+    }
+
+    $(function() {
+        var dd10 = new DropDown($('#dd10'));
+        $(document).click(function() {
+            // all dropdowns
+            $('.wrapper-dropdown-3').removeClass('active');
+        });
+    });
+</script>
+<script type="text/javascript">
+    function DropDown(el) {
+        this.dd11 = el;
+        this.placeholder = this.dd11.children('span');
+        this.opts = this.dd11.find('ul.dropdown > li');
+        this.val = '';
+        this.index = -1;
+        this.initEvents();
+    }
+
+    DropDown.prototype = {
+        initEvents: function() {
+            var obj = this;
+            obj.dd11.on('click', function(event) {
+                $(this).toggleClass('active');
+                return false;
+            });
+
+            obj.opts.on('click', function() {
+                var opt = $(this);
+                obj.val = opt.text();
+                obj.index = opt.index();
+                obj.placeholder.text(obj.val);
+            });
+
+        },
+        getValue: function() {
+
+            return this.val;
+
+        },
+        getIndex: function() {
+
+            return this.index;
+
+        }
+
+    }
+
+    $(function() {
+        var dd11 = new DropDown($('#dd11'));
+        $(document).click(function() {
+            // all dropdowns
+            $('.wrapper-dropdown-3').removeClass('active');
+        });
+    });
+</script>
+<script type="text/javascript">
+    function DropDown(el) {
+        this.dd12 = el;
+        this.placeholder = this.dd12.children('span');
+        this.opts = this.dd12.find('ul.dropdown > li');
+        this.val = '';
+        this.index = -1;
+        this.initEvents();
+    }
+
+    DropDown.prototype = {
+        initEvents: function() {
+            var obj = this;
+            obj.dd12.on('click', function(event) {
+                $(this).toggleClass('active');
+                return false;
+            });
+
+            obj.opts.on('click', function() {
+                var opt = $(this);
+                obj.val = opt.text();
+                obj.index = opt.index();
+                obj.placeholder.text(obj.val);
+            });
+
+        },
+        getValue: function() {
+
+            return this.val;
+
+        },
+        getIndex: function() {
+
+            return this.index;
+
+        }
+
+    }
+
+    $(function() {
+        var dd12 = new DropDown($('#dd12'));
+        $(document).click(function() {
+            // all dropdowns
+            $('.wrapper-dropdown-3').removeClass('active');
+        });
+    });
+</script>
+<script type="text/javascript">
+    function DropDown(el) {
+        this.dd13 = el;
+        this.placeholder = this.dd13.children('span');
+        this.opts = this.dd13.find('ul.dropdown > li');
+        this.val = '';
+        this.index = -1;
+        this.initEvents();
+    }
+
+    DropDown.prototype = {
+        initEvents: function() {
+            var obj = this;
+            obj.dd13.on('click', function(event) {
+                $(this).toggleClass('active');
+                return false;
+            });
+
+            obj.opts.on('click', function() {
+                var opt = $(this);
+                obj.val = opt.text();
+                obj.index = opt.index();
+                obj.placeholder.text(obj.val);
+            });
+
+        },
+        getValue: function() {
+
+            return this.val;
+
+        },
+        getIndex: function() {
+
+            return this.index;
+
+        }
+
+    }
+
+    $(function() {
+        var dd13 = new DropDown($('#dd13'));
+        $(document).click(function() {
+            // all dropdowns
+            $('.wrapper-dropdown-3').removeClass('active');
+        });
+    });
+</script>
+<script type="text/javascript">
+    function DropDown(el) {
+        this.dd14 = el;
+        this.placeholder = this.dd14.children('span');
+        this.opts = this.dd14.find('ul.dropdown > li');
+        this.val = '';
+        this.index = -1;
+        this.initEvents();
+    }
+
+    DropDown.prototype = {
+        initEvents: function() {
+            var obj = this;
+            obj.dd14.on('click', function(event) {
+                $(this).toggleClass('active');
+                return false;
+            });
+
+            obj.opts.on('click', function() {
+                var opt = $(this);
+                obj.val = opt.text();
+                obj.index = opt.index();
+                obj.placeholder.text(obj.val);
+            });
+
+        },
+        getValue: function() {
+
+            return this.val;
+
+        },
+        getIndex: function() {
+
+            return this.index;
+
+        }
+
+    }
+
+    $(function() {
+        var dd14 = new DropDown($('#dd14'));
+        $(document).click(function() {
+            // all dropdowns
+            $('.wrapper-dropdown-3').removeClass('active');
+        });
+    });
+</script>
+<script type="text/javascript">
+    function DropDown(el) {
+        this.dd15 = el;
+        this.placeholder = this.dd15.children('span');
+        this.opts = this.dd15.find('ul.dropdown > li');
+        this.val = '';
+        this.index = -1;
+        this.initEvents();
+    }
+
+    DropDown.prototype = {
+        initEvents: function() {
+            var obj = this;
+            obj.dd15.on('click', function(event) {
+                $(this).toggleClass('active');
+                return false;
+            });
+
+            obj.opts.on('click', function() {
+                var opt = $(this);
+                obj.val = opt.text();
+                obj.index = opt.index();
+                obj.placeholder.text(obj.val);
+            });
+
+        },
+        getValue: function() {
+
+            return this.val;
+
+        },
+        getIndex: function() {
+
+            return this.index;
+
+        }
+
+    }
+
+    $(function() {
+        var dd15 = new DropDown($('#dd15'));
+        $(document).click(function() {
+            // all dropdowns
+            $('.wrapper-dropdown-3').removeClass('active');
+        });
+    });
+</script>
+<script type="text/javascript">
+    function DropDown(el) {
+        this.dd16 = el;
+        this.placeholder = this.dd16.children('span');
+        this.opts = this.dd16.find('ul.dropdown > li');
+        this.val = '';
+        this.index = -1;
+        this.initEvents();
+    }
+
+    DropDown.prototype = {
+        initEvents: function() {
+            var obj = this;
+            obj.dd16.on('click', function(event) {
+                $(this).toggleClass('active');
+                return false;
+            });
+
+            obj.opts.on('click', function() {
+                var opt = $(this);
+                obj.val = opt.text();
+                obj.index = opt.index();
+                obj.placeholder.text(obj.val);
+            });
+
+        },
+        getValue: function() {
+
+            return this.val;
+
+        },
+        getIndex: function() {
+
+            return this.index;
+
+        }
+
+    }
+
+    $(function() {
+        var dd16 = new DropDown($('#dd16'));
+        $(document).click(function() {
+            // all dropdowns
+            $('.wrapper-dropdown-3').removeClass('active');
+        });
+    });
+</script>
+<script type="text/javascript">
+    function DropDown(el) {
+        this.dd17 = el;
+        this.placeholder = this.dd17.children('span');
+        this.opts = this.dd17.find('ul.dropdown > li');
+        this.val = '';
+        this.index = -1;
+        this.initEvents();
+    }
+
+    DropDown.prototype = {
+        initEvents: function() {
+            var obj = this;
+            obj.dd17.on('click', function(event) {
+                $(this).toggleClass('active');
+                return false;
+            });
+
+            obj.opts.on('click', function() {
+                var opt = $(this);
+                obj.val = opt.text();
+                obj.index = opt.index();
+                obj.placeholder.text(obj.val);
+            });
+
+        },
+        getValue: function() {
+
+            return this.val;
+
+        },
+        getIndex: function() {
+
+            return this.index;
+
+        }
+
+    }
+
+    $(function() {
+        var dd17 = new DropDown($('#dd17'));
+        $(document).click(function() {
+            // all dropdowns
+            $('.wrapper-dropdown-3').removeClass('active');
+        });
+    });
+</script><script type="text/javascript">
+    function DropDown(el) {
+        this.dd18 = el;
+        this.placeholder = this.dd18.children('span');
+        this.opts = this.dd18.find('ul.dropdown > li');
+        this.val = '';
+        this.index = -1;
+        this.initEvents();
+    }
+
+    DropDown.prototype = {
+        initEvents: function() {
+            var obj = this;
+            obj.dd18.on('click', function(event) {
+                $(this).toggleClass('active');
+                return false;
+            });
+
+            obj.opts.on('click', function() {
+                var opt = $(this);
+                obj.val = opt.text();
+                obj.index = opt.index();
+                obj.placeholder.text(obj.val);
+            });
+
+        },
+        getValue: function() {
+
+            return this.val;
+
+        },
+        getIndex: function() {
+
+            return this.index;
+
+        }
+
+    }
+
+    $(function() {
+        var dd18 = new DropDown($('#dd18'));
+        $(document).click(function() {
+            // all dropdowns
+            $('.wrapper-dropdown-3').removeClass('active');
+        });
+    });
+</script><script type="text/javascript">
+    function DropDown(el) {
+        this.dd19 = el;
+        this.placeholder = this.dd19.children('span');
+        this.opts = this.dd19.find('ul.dropdown > li');
+        this.val = '';
+        this.index = -1;
+        this.initEvents();
+    }
+
+    DropDown.prototype = {
+        initEvents: function() {
+            var obj = this;
+            obj.dd19.on('click', function(event) {
+                $(this).toggleClass('active');
+                return false;
+            });
+
+            obj.opts.on('click', function() {
+                var opt = $(this);
+                obj.val = opt.text();
+                obj.index = opt.index();
+                obj.placeholder.text(obj.val);
+            });
+
+        },
+        getValue: function() {
+
+            return this.val;
+
+        },
+        getIndex: function() {
+
+            return this.index;
+
+        }
+
+    }
+
+    $(function() {
+        var dd19 = new DropDown($('#dd19'));
+        $(document).click(function() {
+            // all dropdowns
+            $('.wrapper-dropdown-3').removeClass('active');
+        });
+    });
+</script>
 </body>
 </html>

@@ -18,29 +18,29 @@ if(!isset($_GET['ques_id'])) {
     $re_header_image = "";
     
     $re_title_color = 'orangered';
-    $re_title_font = "";
+    $re_title_font = "Select Font";
     $re_title_name = "";
-    $re_title_size = "";
+    $re_title_size = "Select Size";
     
     $re_text_color = 'orangered';
-    $re_text_font = "";
+    $re_text_font = "Select Font";
     $re_text_name = "";
-    $re_text_size = "";
+    $re_text_size = "Select Size";
     
     $re_bg_image = "";
     $re_bg_color = "orangered";
     $re_bg_re_color = "orangered";
 
-    $re_ques_size = "";
-    $re_ques_font = "";
+    $re_ques_size = "Select Size";
+    $re_ques_font = "Select Font";
     $re_ques_color = "orangered";
     
-    $re_ans_size = "";
-    $re_ans_font = "";
+    $re_ans_size = "Select Size";
+    $re_ans_font = "Select Font";
     $re_ans_color = "orangered";
     
     $re_btn_color = "";
-    $re_btn_size = "";
+    $re_btn_size = "Select Size";
     $re_btn_text_color = "orangered";
     
     $re_checkbox_color = "orangered";
@@ -50,8 +50,8 @@ if(!isset($_GET['ques_id'])) {
     $re_footer_image = "";
     
     $re_footer_text_name = "";
-    $re_footer_text_size = "";
-    $re_footer_text_font = "";
+    $re_footer_text_size = "Select Size";
+    $re_footer_text_font = "Select Font";
     $re_footer_text_color = "orangered";
 
     
@@ -299,7 +299,12 @@ if(!isset($_GET['ques_id'])) {
         }
     }
 }
-
+$font_array = ["Helvetica-Oblique",
+                    "Helvetica-Light",
+                    "Helvetica-Bold",
+                    "Helvetica",
+                    "Helvetica-BoldOblique",
+                    "Helvetica-LightOblique"]; 
 ?>
 <script>
 function readURL(input) {
@@ -358,6 +363,7 @@ document.querySelector('#volume').value = vol;
       <div class="sec_ques_div">
         <button class="bb_ques fleft">Browse..</button>
         <input type="file" name="header_image" id="header_image" class="browewin" style="display:none;"/>
+        <img id="dispimg" alt="Header Image" style="max-width: 200px; margin-top: 10px;"/>
       </div>
       <div class="outer_title1">
         <div class="inner_title1 fleft">
@@ -373,7 +379,7 @@ document.querySelector('#volume').value = vol;
                                         <div id="dd" class="wrapper-dropdown-3" tabindex="1"> <span id="title_size"><?php echo $re_title_size; ?></span>
                                             <input type="hidden" name="title_size_hidden" id="title_size_hidden" />
                                             <ul class="dropdown">
-                                                <?php for ($size = 10; $size < 30; $size++) { ?>
+                                                <?php for ($size = 13; $size <= 20; $size++) { ?>
                                                     <li><a href="#"><?php echo $size; ?></a></li>
                                                 <?php } ?>                
 
@@ -382,7 +388,6 @@ document.querySelector('#volume').value = vol;
                                         </div>
 
                                         ​</div>
-          <!--input type="number" name="title_size" value="<?php echo $re_title_size ?>" class="title_size title_text"-->
         </div>
         <div class="inner_title1 fleft">
           <label>Title Font</label>
@@ -391,7 +396,6 @@ document.querySelector('#volume').value = vol;
 
                                         <div id="dd1" class="wrapper-dropdown-3" tabindex="1"> <span id="title_font"><?php echo $re_title_font; ?></span>
                                             <input type="hidden" name="title_font_hidden" id="title_font_hidden" />
-                                            <?php $font_array = ["Arial", "Times New Roman", "Sans-Serif"]; ?>
                                             <ul class="dropdown">
                                                 <?php
                                                 foreach ($font_array as $font) {
@@ -407,7 +411,6 @@ document.querySelector('#volume').value = vol;
 
                                         ​</div>
 
-          <!--input type="text" name="title_font" class="title_text" value="<?php echo $re_title_font ?>"-->
         </div>
         <div class="inner_title3 fleft">
           <label>Title Color</label>
@@ -430,10 +433,10 @@ document.querySelector('#volume').value = vol;
 		  
 		  <div class="wrapper-demo">
 
-                                        <div id="dd2" class="wrapper-dropdown-3" tabindex="1"> <span id="title_size"><?php echo $re_title_size; ?></span>
-                                            <input type="hidden" name="title_size_hidden" id="title_size_hidden" />
+                                        <div id="dd2" class="wrapper-dropdown-3" tabindex="1"> <span id="title_size"><?php echo $re_text_size; ?></span>
+                                            <input type="hidden" name="text_size_hidden" id="text_size_hidden" />
                                             <ul class="dropdown">
-                                                <?php for ($size = 10; $size < 30; $size++) { ?>
+                                                <?php for ($size = 13; $size <= 20; $size++) { ?>
                                                     <li><a href="#"><?php echo $size; ?></a></li>
                                                 <?php } ?>                
 
@@ -442,7 +445,6 @@ document.querySelector('#volume').value = vol;
                                         </div>
 
                                         ​</div>
-          <!--input type="number" name="text_size" value="<?php echo $re_text_size ?>" class="title_size title_text"-->
         </div>
         <div class="inner_title1 fleft">
           <label>Text Font</label>
@@ -450,9 +452,8 @@ document.querySelector('#volume').value = vol;
 		  
 		   <div class="wrapper-demo">
 
-                                        <div id="dd3" class="wrapper-dropdown-3" tabindex="1"> <span id="title_font"><?php echo $re_title_font; ?></span>
-                                            <input type="hidden" name="title_font_hidden" id="title_font_hidden" />
-                                            <?php $font_array = ["Arial", "Times New Roman", "Sans-Serif"]; ?>
+                                        <div id="dd3" class="wrapper-dropdown-3" tabindex="1"> <span id="title_font"><?php echo $re_text_font; ?></span>
+                                            <input type="hidden" name="text_font_hidden" id="text_font_hidden" />
                                             <ul class="dropdown">
                                                 <?php
                                                 foreach ($font_array as $font) {
@@ -468,7 +469,6 @@ document.querySelector('#volume').value = vol;
 
                                         ​</div>
 
-          <!--input type="text" name="text_font" class="title_text" value="<?php echo $re_text_font ?>"-->
         </div>
         <div class="inner_title3 fleft">
           <label>Text Color</label>
@@ -496,6 +496,7 @@ document.querySelector('#volume').value = vol;
           <div class="sec_ques_div">
             <button class="bb_ques fleft browse_bb">Browse..</button>
             <input type="file" name="appearance_image" id="appearance_image" class="browewin" style="display:none;"/>
+            <img id="dispimg" alt="Header Image" style="max-width: 200px; margin-top: 10px;"/>
           </div>
         </div>
         <div class="inner_title3 inner_title_ttl hh fleft ">
@@ -540,10 +541,10 @@ document.querySelector('#volume').value = vol;
           <br>
 		  <div class="wrapper-demo">
 
-                                        <div id="dd4" class="wrapper-dropdown-3" tabindex="1"> <span id="title_size"><?php echo $re_title_size; ?></span>
-                                            <input type="hidden" name="title_size_hidden" id="title_size_hidden" />
+                                        <div id="dd4" class="wrapper-dropdown-3" tabindex="1"> <span id="title_size"><?php echo $re_ques_size; ?></span>
+                                            <input type="hidden" name="ques_size_hidden" id="ques_size_hidden" />
                                             <ul class="dropdown">
-                                                <?php for ($size = 10; $size < 30; $size++) { ?>
+                                                <?php for ($size = 13; $size <= 20; $size++) { ?>
                                                     <li><a href="#"><?php echo $size; ?></a></li>
                                                 <?php } ?>                
 
@@ -552,7 +553,6 @@ document.querySelector('#volume').value = vol;
                                         </div>
 
                                         ​</div>
-          <!--input type="number" name="ques_text_size" class="title_size title_text" value="<?php echo $re_ques_size?>"-->
         </div>
         <div class="inner_title1 inner_title_ttl hh fleft">
           <label> Font</label>
@@ -560,9 +560,8 @@ document.querySelector('#volume').value = vol;
 		  
 		   <div class="wrapper-demo">
 
-                                        <div id="dd5" class="wrapper-dropdown-3" tabindex="1"> <span id="title_font"><?php echo $re_title_font; ?></span>
-                                            <input type="hidden" name="title_font_hidden" id="title_font_hidden" />
-                                            <?php $font_array = ["Arial", "Times New Roman", "Sans-Serif"]; ?>
+                                        <div id="dd5" class="wrapper-dropdown-3" tabindex="1"> <span id="title_font"><?php echo $re_ques_font; ?></span>
+                                            <input type="hidden" name="ques_font_hidden" id="ques_font_hidden" />
                                             <ul class="dropdown">
                                                 <?php
                                                 foreach ($font_array as $font) {
@@ -578,7 +577,6 @@ document.querySelector('#volume').value = vol;
 
                                         ​</div>
 
-          <!--input type="text" name="ques_font" class="title_text" value="<?php echo $re_ques_font?>"-->
         </div>
         <div class="inner_title3 inner_title_ttl fleft">
           <label> Color</label>
@@ -613,10 +611,10 @@ document.querySelector('#volume').value = vol;
 		
 		<div class="wrapper-demo">
 
-                                        <div id="dd6" class="wrapper-dropdown-3" tabindex="1"> <span id="title_size"><?php echo $re_title_size; ?></span>
-                                            <input type="hidden" name="title_size_hidden" id="title_size_hidden" />
+                                        <div id="dd6" class="wrapper-dropdown-3" tabindex="1"> <span id="title_size"><?php echo $re_ans_size; ?></span>
+                                            <input type="hidden" name="ans_size_hidden" id="ans_size_hidden" />
                                             <ul class="dropdown">
-                                                <?php for ($size = 10; $size < 30; $size++) { ?>
+                                                <?php for ($size = 13; $size <= 20; $size++) { ?>
                                                     <li><a href="#"><?php echo $size; ?></a></li>
                                                 <?php } ?>                
 
@@ -633,9 +631,8 @@ document.querySelector('#volume').value = vol;
 		
 		 <div class="wrapper-demo">
 
-                                        <div id="dd7" class="wrapper-dropdown-3" tabindex="1"> <span id="title_font"><?php echo $re_title_font; ?></span>
-                                            <input type="hidden" name="title_font_hidden" id="title_font_hidden" />
-                                            <?php $font_array = ["Arial", "Times New Roman", "Sans-Serif"]; ?>
+                                        <div id="dd7" class="wrapper-dropdown-3" tabindex="1"> <span id="title_font"><?php echo $re_ans_font; ?></span>
+                                            <input type="hidden" name="ans_font_hidden" id="ans_font_hidden" />
                                             <ul class="dropdown">
                                                 <?php
                                                 foreach ($font_array as $font) {
@@ -651,7 +648,6 @@ document.querySelector('#volume').value = vol;
 
                                         ​</div>
 
-        <!--input type="text" name="answer_font" class="title_size_font title_text" value="<?php echo $re_ans_font?>"-->
       </div>
       <div class="inn_sec4 fleft inner_title_ttl txt_col">
         <label>Color</label>
@@ -687,10 +683,10 @@ document.querySelector('#volume').value = vol;
           <br>
 		  <div class="wrapper-demo">
 
-                                        <div id="dd8" class="wrapper-dropdown-3" tabindex="1"> <span id="title_size"><?php echo $re_title_size; ?></span>
-                                            <input type="hidden" name="title_size_hidden" id="title_size_hidden" />
+                                        <div id="dd8" class="wrapper-dropdown-3" tabindex="1"> <span id="title_size"><?php echo $re_btn_size; ?></span>
+                                            <input type="hidden" name="btn_size_hidden" id="btn_size_hidden" />
                                             <ul class="dropdown">
-                                                <?php for ($size = 10; $size < 30; $size++) { ?>
+                                                <?php for ($size = 13; $size <= 20; $size++) { ?>
                                                     <li><a href="#"><?php echo $size; ?></a></li>
                                                 <?php } ?>                
 
@@ -699,7 +695,6 @@ document.querySelector('#volume').value = vol;
                                         </div>
 
                                         ​</div>
-          <!--input type="number" name="btn_size" class="title_size title_text" value="<?php echo $re_btn_size?>"-->
         </div>
         <div class="inn_sec5 fleft inner_title_ttl txt_col">
           <label>Button Text Color</label>
@@ -752,6 +747,7 @@ document.querySelector('#volume').value = vol;
       <div class="sec_ques_div">
         <button class="bb_ques fleft">Browse..</button>
         <input type="file" name="footer_image" id="footer_image" class="browewin" style="display:none;"/>
+        <img id="dispimg" alt="Header Image" style="max-width: 200px; margin-top: 10px;"/>
       </div>
       <div class="outer_title1">
         <div class="inner_title1 fleft">
@@ -764,10 +760,10 @@ document.querySelector('#volume').value = vol;
           <br>
 		  <div class="wrapper-demo">
 
-                                        <div id="dd9" class="wrapper-dropdown-3" tabindex="1"> <span id="title_size"><?php echo $re_title_size; ?></span>
-                                            <input type="hidden" name="title_size_hidden" id="title_size_hidden" />
+                                        <div id="dd9" class="wrapper-dropdown-3" tabindex="1"> <span id="title_size"><?php echo $re_footer_text_size; ?></span>
+                                            <input type="hidden" name="footer_text_size_hidden" id="footer_text_size_hidden" />
                                             <ul class="dropdown">
-                                                <?php for ($size = 10; $size < 30; $size++) { ?>
+                                                <?php for ($size = 13; $size <= 20; $size++) { ?>
                                                     <li><a href="#"><?php echo $size; ?></a></li>
                                                 <?php } ?>                
 
@@ -776,16 +772,14 @@ document.querySelector('#volume').value = vol;
                                         </div>
 
                                         ​</div>
-          <!--input type="number" name="footer_text_size" class="title_size title_text" value="<?php echo $re_footer_text_size?>"-->
         </div>
         <div class="inner_title1 fleft">
           <label>Text Font</label>
           <br>
 		   <div class="wrapper-demo">
 
-                                        <div id="dd10" class="wrapper-dropdown-3" tabindex="1"> <span id="title_font"><?php echo $re_title_font; ?></span>
-                                            <input type="hidden" name="title_font_hidden" id="title_font_hidden" />
-                                            <?php $font_array = ["Arial", "Times New Roman", "Sans-Serif"]; ?>
+                                        <div id="dd10" class="wrapper-dropdown-3" tabindex="1"> <span id="title_font"><?php echo $re_footer_text_font; ?></span>
+                                            <input type="hidden" name="footer_text_font_hidden" id="footer_text_font_hidden" />
                                             <ul class="dropdown">
                                                 <?php
                                                 foreach ($font_array as $font) {
@@ -800,8 +794,7 @@ document.querySelector('#volume').value = vol;
                                         </div>
 
                                         ​</div>
-
-          <!--input type="text" name="footer_text_font" class="title_text" value="<?php echo $re_footer_text_font?>"-->
+         
         </div>
         <div class="inner_title3 fleft txt_col">
           <label>Text Color</label>

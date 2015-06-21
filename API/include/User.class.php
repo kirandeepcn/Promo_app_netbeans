@@ -26,18 +26,18 @@ class User {
 
     public function authenticateUser($username, $password, $accountType) {
 
-        $hashPass = substr(hash('sha512', $password), 0, 20);
+       // $hashPass = substr(hash('sha512', $password), 0, 20);
 
         if ($accountType == "-1") {
 
             $query = "SELECT userID FROM `User_Login` WHERE accessToken = :accessToken AND password = :password AND role = :role LIMIT 1";
 
-            $bindParams = array("accessToken" => $username, "password" => $hashPass, "role" => "1");
+            $bindParams = array("accessToken" => $username, "password" => $password, "role" => "1");
         } else {
 
             $query = "SELECT `id`, `access_token` FROM `user_login` WHERE `username`=:username AND `password` = :password AND role = :role LIMIT 1";
 
-            $bindParams = array("username" => $username, "password" => $hashPass, "role" => $accountType);
+            $bindParams = array("username" => $username, "password" => $password, "role" => $accountType);
         }
 
 
@@ -59,11 +59,11 @@ class User {
         $accessToken = sha1(substr(md5($username), 0, 15));
        
 
-        $hashPass = substr(hash('sha512', $password), 0, 20);
+        //$hashPass = substr(hash('sha512', $password), 0, 20);
 
         $query = "INSERT INTO `user_login`(`access_token`, `username`, `password`, `role`, `active`) VALUES (:access_token,:username,:password,:role,1)";
 
-        $bindParams = array("access_token" => $accessToken,"username"=>$username, "password" => $hashPass, "role" => $role);
+        $bindParams = array("access_token" => $accessToken,"username"=>$username, "password" => $password, "role" => $role);
 
         $id = $this->con->insertQuery($query, $bindParams);
 
@@ -75,11 +75,11 @@ class User {
         $accessToken = sha1(substr(md5($username), 0, 15));
        
 
-        $hashPass = substr(hash('sha512', $password), 0, 20);
+        //$hashPass = substr(hash('sha512', $password), 0, 20);
 
         $query = "UPDATE `user_login` SET `access_token`= :access_token,`username`= :username,`password`= :password,`role`= :role WHERE `id` = :user_id";
 
-        $bindParams = array("user_id"=>$user_id,"access_token" => $accessToken,"username"=>$username, "password" => $hashPass, "role" => $role);
+        $bindParams = array("user_id"=>$user_id,"access_token" => $accessToken,"username"=>$username, "password" => $password, "role" => $role);
 
         $id = $this->con->insertQuery($query, $bindParams);
 
@@ -180,11 +180,11 @@ class User {
     
     public function resetPassword($userID, $password) {
 
-        $hashPass = substr(hash('sha512', $password), 0, 20);
+        //$hashPass = substr(hash('sha512', $password), 0, 20);
 
         $query = "UPDATE `User_Login` SET `password` = :password WHERE `userID` = :userID";
 
-        $bindParams = array("password" => $hashPass, "userID" => $userID);
+        $bindParams = array("password" => $password, "userID" => $userID);
 
         $id = $this->con->insertQuery($query, $bindParams);
 

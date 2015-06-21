@@ -129,16 +129,26 @@ class Quest {
     }
 
     public function updateQuesElement($ques_id, $setting_id, $element_type, $element_name, $element_color, $element_size, $element_font, $element_attachment, $active) {
-        $query = "UPDATE `ques_settings_element` SET `element_name`= :element_name,`element_color`= :element_color,`element_size`= :element_size,"
-                . "`element_font`= :element_font,`element_attachment`= :element_attachment,`active`= :active "
-                . "WHERE "
-                . "`ques_id`= :ques_id AND `setting_id`= :setting_id AND `element_type`= :element_type";
+        if(trim($element_attachment) == "") {
+            $query = "UPDATE `ques_settings_element` SET `element_name`= :element_name,`element_color`= :element_color,`element_size`= :element_size,"
+                    . "`element_font`= :element_font,`active`= :active "
+                    . "WHERE "
+                    . "`ques_id`= :ques_id AND `setting_id`= :setting_id AND `element_type`= :element_type";
 
-        $bindParams = array("ques_id" => $ques_id, "setting_id" => $setting_id, "element_type" => $element_type, "element_name" => $element_name,
-            "element_color" => $element_color, "element_size" => $element_size,
-            "element_font" => $element_font,
-            "element_attachment" => $element_attachment, "active" => $active);
+            $bindParams = array("ques_id" => $ques_id, "setting_id" => $setting_id, "element_type" => $element_type, "element_name" => $element_name,
+                "element_color" => $element_color, "element_size" => $element_size,
+                "element_font" => $element_font, "active" => $active);
+        } else {
+            $query = "UPDATE `ques_settings_element` SET `element_name`= :element_name,`element_color`= :element_color,`element_size`= :element_size,"
+                    . "`element_font`= :element_font,`element_attachment`= :element_attachment,`active`= :active "
+                    . "WHERE "
+                    . "`ques_id`= :ques_id AND `setting_id`= :setting_id AND `element_type`= :element_type";
 
+            $bindParams = array("ques_id" => $ques_id, "setting_id" => $setting_id, "element_type" => $element_type, "element_name" => $element_name,
+                "element_color" => $element_color, "element_size" => $element_size,
+                "element_font" => $element_font,
+                "element_attachment" => $element_attachment, "active" => $active);
+        }
         $id = $this->con->insertQuery($query, $bindParams);
         return $id;
     }
@@ -297,7 +307,7 @@ class Quest {
     }
 
     public function getQuesClientFromID($user_id) {
-        $query = "SELECT  `username` FROM `user_login` WHERE `id` = :user_id";
+        $query = "SELECT  `username`,`password` FROM `user_login` WHERE `id` = :user_id";
 
         $bindParams = array("user_id" => $user_id);
 
